@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signup } from '../../actions/session_actions';
+import { Link } from 'react-router-dom';
 // import SessionForm from './session_form';
 
 class SignupForm extends React.Component {
@@ -43,6 +44,7 @@ class SignupForm extends React.Component {
             <div id='signup-form-container'>
                 <h2>Welcome</h2>
                 <p>Create an account.</p>
+                {this.renderErrors()}
                 <form onSubmit={this.handleSubmit}>
                     <label>Email address
                         <input type="text" value={this.state.email} onChange={this.update('email')} />
@@ -62,6 +64,8 @@ class SignupForm extends React.Component {
                     <br/>
                     <input type="submit" value='Sign Up'/>
                 </form>
+
+                <Link to='/login'>Log In Instead</Link>
             </div>
         )
     }
