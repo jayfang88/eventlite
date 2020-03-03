@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
+                    <li className='error-message' key={`error-${i}`}>
                         {error}
                     </li>
                 ))}
@@ -38,19 +38,25 @@ class LoginForm extends React.Component {
 
     render() {
         return(
-            <div className='login-form-container'>
-                <h2>Welcome back</h2>
+            <div className='signin-form-container'>
+                <h2 className='signin-welcome'>Welcome back</h2>
+                <br/>
+                <p className='signin-message'>Please enter your password to log in.</p>
+                <br/>
                 {this.renderErrors()}
-                <form onSubmit={this.handleSubmit}>
+                <br/>
+                <form className='signin-form-box'>
                     <label>Email address
-                        <input type="text" value={this.state.email} onChange={this.update('email')} />
+                        <br/>
+                        <input className='signin-input' type="text" value={this.state.email} onChange={this.update('email')} />
                     </label>
                     <br/>
                     <label>Password
-                        <input type="password" value={this.state.password} onChange={this.update('password')} />
+                        <br/>
+                        <input className='signin-input' type="password" value={this.state.password} onChange={this.update('password')} />
                     </label>
                     <br/>
-                    <input type="submit" value='Log In'/>
+                    <button className='signin-button' onClick={this.handleSubmit}>Log In</button>
                 </form>
             </div>
         )

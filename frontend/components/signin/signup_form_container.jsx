@@ -31,8 +31,8 @@ class SignupForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
+                    <li className='error-message' key={`error-${i}`}>
+                        *{error}
                     </li>
                 ))}
             </ul>
@@ -41,31 +41,40 @@ class SignupForm extends React.Component {
 
     render() {
         return(
-            <div id='signup-form-container'>
-                <h2>Welcome</h2>
-                <p>Create an account.</p>
+            <div className='signin-form-container'>
+                <h2 className='signin-welcome'>Welcome</h2>
+                <br/>
+                <p className='signin-message'>Create an account.</p>
+                <br/>
                 {this.renderErrors()}
-                <form onSubmit={this.handleSubmit}>
+                <br/>
+                <form className='signin-form-box'>
                     <label>Email address
-                        <input type="text" value={this.state.email} onChange={this.update('email')} />
+                        <br/>
+                        <input className='signin-input' type="text" value={this.state.email} onChange={this.update('email')} />
                     </label>
                     <br/>
-                    <label>First Name
-                        <input type="text" value={this.state.fname} onChange={this.update('fname')} />
-                    </label>
-                    <br/>
-                    <label>Last Name
-                        <input type="text" value={this.state.lname} onChange={this.update('lname')} />
-                    </label>
+                    <div className='signin-input-names'>
+                        <label>First Name
+                            <br/>
+                            <input className='signin-input-name' type="text" value={this.state.fname} onChange={this.update('fname')} />
+                        </label>
+                        <br/>
+                        <label>Last Name
+                            <br/>
+                            <input className='signin-input-name' type="text" value={this.state.lname} onChange={this.update('lname')} />
+                        </label>
+                    </div>
                     <br/>
                     <label>Password
-                        <input type="password" value={this.state.password} onChange={this.update('password')} />
+                        <br/>
+                        <input className='signin-input' type="password" value={this.state.password} onChange={this.update('password')} />
                     </label>
                     <br/>
-                    <input type="submit" value='Sign Up'/>
+                    <button className='signin-button' onClick={this.handleSubmit}>Sign Up</button>
                 </form>
 
-                <Link to='/login'>Log In Instead</Link>
+                <div id='login-instead'><Link to='/login'>Log In Instead</Link></div>
             </div>
         )
     }

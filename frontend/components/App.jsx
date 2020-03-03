@@ -6,13 +6,14 @@ import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './signin/signup_form_container';
 import LoginFormContainer from './signin/login_form_container';
 import { AuthRoute } from '../util/route_util';
+import NavBarContainer from '../components/navbar/navbar_container';
 
 
 const App = () => (
     <div>
         <header>
-            <Link to='/'><h1>Eventbrite</h1></Link>
-            <GreetingContainer />
+            <NavBarContainer />
+            {/* <GreetingContainer /> */}
         </header>
 
         <Switch>
