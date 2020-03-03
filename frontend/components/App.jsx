@@ -7,6 +7,7 @@ import SignupFormContainer from './signin/signup_form_container';
 import LoginFormContainer from './signin/login_form_container';
 import { AuthRoute } from '../util/route_util';
 import NavBarContainer from '../components/navbar/navbar_container';
+import ForgotPassword from '../components/signin/forgot_password';
 
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
         <Switch>
             <AuthRoute exact path='/login' component={LoginFormContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
+            <AuthRoute exact path='/forgotpassword' component={ForgotPassword} />
         </Switch>
     </div>
 );
