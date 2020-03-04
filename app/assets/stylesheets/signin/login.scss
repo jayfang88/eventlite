@@ -34,43 +34,38 @@ input[type=text], input[type=password] {
     border: none;
     width: 100%;
     height: 25px;
-    padding-left: 10px;
+    padding-left: 11px;
+    margin-top: -2px;
+    font-size: 14px;
+    color: #39364f;
 }
 
 .signin-input {
-    // display: flex;
-    // justify-content: center;
-    // flex-direction: column;
     width: 100%;
-    height: 45px;
+    height: 48px;
     margin-bottom: 10px;
     font-size: 15px;
     border: 1px solid #dbdae3;
     border-radius: 2px;
-    // box-sizing: border-box;
+    padding-top: 5px;
 }
 
 .signin-input-names {
     display: flex;
-    /* width: 100%; */
     justify-content: space-between;
-    border: none;
 }
 
 .signin-input-name {
-    // display: flex;
-    // justify-content: center;
-    // flex-direction: column;
     width: 170px;
-    height: 45px;
+    height: 48px;
     font-size: 15px;
-    /* margin-bottom: 10px; */
     border: 1px solid #dbdae3;
     border-radius: 2px;
+    padding-top: 5px;
 }
 
 .signin-input:hover, .signin-input-name:hover {
-    border: 1px solid rgb(199, 197, 197);
+    border: 1px solid rgb(182, 180, 180);
 }
 
 input:focus{
@@ -79,7 +74,7 @@ input:focus{
 }
 
 .signin-input-text {
-    margin: 5px 0px 5px 10px;
+    margin: 5px 0px 0px 10px;
     font-size: 12px;
     color: rgb(153, 152, 152);
     height: auto;
@@ -89,7 +84,7 @@ input:focus{
 .signin-button {
     /* display: block; */
     width: 100%;
-    height: 45px;
+    height: 48px;
     margin-top: 20px;
     align-items: center;
     background-color: rgb(211, 69, 17);
@@ -98,7 +93,13 @@ input:focus{
     font-weight: 450;
     letter-spacing: 0.25px;
     border-radius: 5px;
-    border: rgb(189, 62, 15)
+    border: rgb(189, 62, 15);
+}
+
+.signin-button:hover {
+    background-color: #f76029;
+    cursor: pointer;
+    border: rgb(122, 42, 13);
 }
 
 #below-submit {

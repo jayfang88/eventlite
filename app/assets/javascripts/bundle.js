@@ -370,13 +370,19 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "logo-link"
-      }, "eventlite")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "tilt-e"
+      }, "e"), "v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "tilt-e"
+      }, "e"), "ntlit", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "tilt-e"
+      }, "e"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         id: "search-icon",
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faSearch"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "nav-search",
         type: "text",
-        value: "Search for events"
+        placeholder: "Search for events"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "create-event-link"
       }, "Create Event"), this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -834,12 +840,16 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "splash-bg-image"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "splash-img-container"
+        id: "splash-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        id: "splash=image",
+        id: "splash-image",
         src: "https://images.unsplash.com/photo-1508973379184-7517410fb0bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80",
-        alt: "splash-img"
-      })));
+        alt: "splash-image"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "made-for"
+      }, "Made for"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "those-who"
+      }, "those who do")));
     }
   }]);
 
