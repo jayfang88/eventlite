@@ -8,7 +8,7 @@ class NavBar extends React.Component {
     render() {
         return(
             <div className='navbar'>
-                <Link to='/'><h1 id='logo-link'><span class='tilt-e'>e</span>v<span class='tilt-e'>e</span>ntlit<span class='tilt-e'>e</span></h1></Link>
+                <Link to='/'><h1 id='logo-link'><span className='tilt-e'>e</span>v<span className='tilt-e'>e</span>ntlit<span className='tilt-e'>e</span></h1></Link>
                 {/* <div id='nav-search'>Search for events</div> */}
                 <FontAwesomeIcon id='search-icon' icon={faSearch} />
                 <input id='nav-search' type="text" placeholder='Search for events'/>

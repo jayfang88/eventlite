@@ -371,11 +371,11 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "logo-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "tilt-e"
+        className: "tilt-e"
       }, "e"), "v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "tilt-e"
+        className: "tilt-e"
       }, "e"), "ntlit", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "tilt-e"
+        className: "tilt-e"
       }, "e"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         id: "search-icon",
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faSearch"]
