@@ -29,7 +29,7 @@
     width: 360px;
 }
 
-input[type=text], input[type=password] {
+.signin-input {
     box-sizing: border-box;
     border: none;
     width: 100%;
@@ -40,7 +40,7 @@ input[type=text], input[type=password] {
     color: #39364f;
 }
 
-.signin-input {
+.signin-input-box {
     width: 100%;
     height: 48px;
     margin-bottom: 10px;
@@ -64,7 +64,7 @@ input[type=text], input[type=password] {
     padding-top: 5px;
 }
 
-.signin-input:hover, .signin-input-name:hover {
+.signin-input-box:hover, .signin-input-name:hover {
     border: 1px solid rgb(182, 180, 180);
 }
 
@@ -120,4 +120,9 @@ input:focus{
     margin-top: 100px;
     display: flex;
     justify-content: center;
+}
+
+.signin-input-box:focus-within, .signin-input-name:focus-within {
+    border: none;
+    border: 1px solid blue;
 }

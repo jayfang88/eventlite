@@ -659,10 +659,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, this.props.signinMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "signin-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "signin-input"
+        className: "signin-input-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "signin-input-text"
       }, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "signin-input",
         type: "text",
         value: this.state.email,
         onChange: this.update('email')
@@ -673,6 +674,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "signin-input-text"
       }, "First Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "signin-input",
         type: "text",
         value: this.state.fname,
         onChange: this.update('fname')
@@ -681,14 +683,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "signin-input-text"
       }, "Last Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "signin-input",
         type: "text",
         value: this.state.lname,
         onChange: this.update('lname')
       }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), this.props.history.location.pathname === '/signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "signin-input"
+        className: "signin-input-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "signin-input-text"
       }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "signin-input",
         type: "password",
         value: this.state.password,
         onChange: this.update('password')
@@ -1190,7 +1194,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: "/login"
+        to: "/"
       });
     }
   });

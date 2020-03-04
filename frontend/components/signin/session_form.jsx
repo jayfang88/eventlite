@@ -49,27 +49,27 @@ class SessionForm extends React.Component {
                 {this.renderErrors()}
                 <br />
                 <form className='signin-form-box'>
-                    <div className='signin-input'><span className='signin-input-text'>Email address</span>
+                    <div className='signin-input-box'><span className='signin-input-text'>Email address</span>
                         <br />
-                        <input type="text" value={this.state.email} onChange={this.update('email')} />
+                        <input className='signin-input' type="text" value={this.state.email} onChange={this.update('email')} />
                     </div>
                     {this.props.history.location.pathname === '/signup' ? (
                         <div className='signin-input-names'>
                             <label className='signin-input-name'><span className='signin-input-text'>First Name</span>
                                 <br />
-                                <input type="text" value={this.state.fname} onChange={this.update('fname')} />
+                                <input className='signin-input' type="text" value={this.state.fname} onChange={this.update('fname')} />
                             </label>
                             <br />
                             <label className='signin-input-name'><span className='signin-input-text'>Last Name</span>
                                 <br />
-                                <input type="text" value={this.state.lname} onChange={this.update('lname')} />
+                                <input className='signin-input' type="text" value={this.state.lname} onChange={this.update('lname')} />
                             </label>
                         </div>
                     ) : (<div></div>)}
                     {this.props.history.location.pathname === '/signup' ? (<br />) : (<div></div>)}
-                    <div className='signin-input'><span className='signin-input-text'>Password</span>
+                    <div className='signin-input-box'><span className='signin-input-text'>Password</span>
                         <br />
-                        <input type="password" value={this.state.password} onChange={this.update('password')} />
+                        <input className='signin-input' type="password" value={this.state.password} onChange={this.update('password')} />
                     </div>
                     <br />
                     <button className='signin-button' onClick={this.handleSubmit}>{this.props.formType}</button>
