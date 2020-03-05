@@ -6,13 +6,11 @@
 }
 
 #logo-link {
-    // position: relative;
     color: #f05537;
     font-size: 22px;
     font-weight: 650;
     margin: 20px 25px;
     letter-spacing: -0.5px;
-    // font-style: italic-reverse;
     width: 90px;
 }
 
@@ -30,7 +28,7 @@
 #nav-search {
     width: 90%;
     margin: 18px 5px;
-    font-size: 15px;
+    font-size: 14px;
     border: none;
     color: #39364f;
 }
@@ -68,12 +66,10 @@
 }
 
 .nav-signout {
-    // text-decoration: none;
+    text-decoration: none;
     width: 100px;
     margin: 20px 5px;
     font-size: 13px;
-    // text-align: center;
-    // justify-content: center;
     border: none;
     color: #6f7287;
     cursor: pointer;

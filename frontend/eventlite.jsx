@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import * as SessionApiUtil from './util/session_api_util';
-import { signup, login } from './actions/session_actions';
+import { requestEvents, requestEvent } from './actions/event_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
@@ -21,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         store = configureStore();
     }
+
+    window.dispatch = store.dispatch;
+    window.getState = store.getState;
+    window.requestEvents = requestEvents;
+    window.requestEvent = requestEvent;
     
     ReactDOM.render(<Root store={store} />, root);
 });

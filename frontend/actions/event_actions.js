@@ -21,12 +21,12 @@ const removeEvent = eventId => ({
 });
 
 const receiveErrors = errors => ({
-    type: RECEIVE_EVENT_ERRORS
+    type: RECEIVE_EVENT_ERRORS,
     errors
-})
+});
 
 export const requestEvents = () => (
-    EventApiUtil.fetchEvents
+    EventApiUtil.fetchEvents()
         .then(events => dispatch(receiveEvents(events)))
 );
 

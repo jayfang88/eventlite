@@ -1,6 +1,5 @@
 #splash-container {
     height: 100%;
-    // width: auto;
     overflow: hidden;
     margin-top: 1px;
 }
@@ -8,7 +7,7 @@
 #splash-bg-image {
     background-image: url("https://images.unsplash.com/photo-1508973379184-7517410fb0bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80");
     min-height: 580px;
-    // filter: blur(10px);
+    filter: blur(10px);
     -webkit-filter: blur(10px);
     box-sizing: border-box;
     background-position: center;
@@ -22,10 +21,8 @@
 #splash-main {
     position: absolute;
     width: 65vw;
-    // min-width: 600px;
     max-width: 1000px;
     max-height: 580px;
-    // min-height: 580px;
     object-fit: contain;
     top: 10%;
     left: 14%;
@@ -33,13 +30,10 @@
 }
 
 #splash-image {
-    // display: block;
-    // margin: 0 auto;
     max-width: 100%;
     min-height: 580px;
-    // max-height: 600px;
     object-fit: contain;
-    // z-index: -1;
+    // text-align: center;
 }
 
 #made-for {

@@ -54,3 +54,7 @@ e3 = Event.create!(
     category: "Health & Fitness",
     ticket_type: "Paid"
 )
+
+# e4 = Event.create! (
+    
+# )
