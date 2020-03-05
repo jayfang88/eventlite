@@ -38,7 +38,7 @@ e1 = Event.create!(
     title: "Haight-Ashbury Community Potluck",
     location: "1685 Haight St, San Francisco, CA",
     starts: "2020-04-04 12:30:00 GMT-0700",
-    ends: "2020-04-05 12:30:00 GMT-0700",
+    ends: "2020-04-04 18:30:00 GMT-0700",
     description: "Join us in celebratign the diverse culture of San Francisco's
     own Haight-Ashbury district.",
     organizer_id: u1.id,

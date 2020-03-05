@@ -513,10 +513,39 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       this.props.requestEvent(this.props.match.params.eventId);
     }
   }, {
+    key: "convertDate",
+    value: function convertDate(datetime) {
+      var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var hours = ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+      var fullDate = new Date(datetime);
+      var day = days[fullDate.getDay()];
+      var month = months[fullDate.getMonth()];
+      var date = fullDate.getDate();
+      var yr = fullDate.getFullYear();
+      var hour = hours[fullDate.getHours() % 12];
+      var min = fullDate.getMinutes();
+
+      if (min.toString().length === 1) {
+        min = '0' + min.toString();
+      }
+
+      ;
+      var combined = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(yr, ", ").concat(hour, ":").concat(min);
+      return combined;
+    }
+  }, {
     key: "render",
     value: function render() {
-      // debugger;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello");
+      var event = this.props.event;
+      if (!event) return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-head"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-aside"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Date and Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.starts), " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.ends), " PST"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, event.organizer.fname, " ", event.organizer.lname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Organizer of ", event.title)));
     }
   }]);
 
@@ -546,7 +575,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   return {
-    event: state.entities.events[parseInt(ownProps.match.params.eventId)]
+    event: state.entities.events[ownProps.match.params.eventId]
   };
 };
 

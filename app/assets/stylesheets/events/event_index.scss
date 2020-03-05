@@ -22,8 +22,12 @@
     width: 22%;
     min-width: 260px;
     height: 270px;
-    box-shadow: 1px 2px 8px rgb(233, 233, 233);
+    box-shadow: 1px 2px 12px rgb(233, 233, 233);
     margin-bottom: 25px;
+}
+
+.event-index-item:hover {
+    box-shadow: 1px 2px 10px rgb(187, 186, 186);
 }
 
 .event-index-item-text {
