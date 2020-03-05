@@ -25,17 +25,17 @@ const receiveErrors = errors => ({
     errors
 });
 
-export const requestEvents = () => (
+export const requestEvents = () => dispatch => (
     EventApiUtil.fetchEvents()
         .then(events => dispatch(receiveEvents(events)))
 );
 
-export const requestEvent = eventId => (
+export const requestEvent = eventId => dispatch => (
     EventApiUtil.fetchEvent(eventId)
         .then(event => dispatch(receiveEvent(event)))
 );
 
-export const createEvent = event => (
+export const createEvent = event => dispatch => (
     EventApiUtil.createEvent(event)
         .then(event => (
             dispatch(receiveEvent(event))
@@ -44,7 +44,7 @@ export const createEvent = event => (
         ))
 );
 
-export const updateEvent = event => (
+export const updateEvent = event => dispatch => (
     EventApiUtil.updateEvent(event)
         .then(event => (
             dispatch(receiveEvent(event))
@@ -53,7 +53,7 @@ export const updateEvent = event => (
         ))
 );
 
-export const deleteEvent = eventId => (
+export const deleteEvent = eventId => dispatch => (
     EventApiUtil.deleteEvent(eventId)
         .then(() => dispatch(removeEvent(eventId)))
 );

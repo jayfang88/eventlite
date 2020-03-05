@@ -75,9 +75,9 @@ class SessionForm extends React.Component {
                     <button className='signin-button' onClick={this.handleSubmit}>{this.props.formType}</button>
                 </form>
                 {this.props.history.location.pathname === '/signup' ? (
-                    <div id='below-submit'><Link to='/login'>Log In Instead</Link></div>
+                    <div className='below-submit'><Link className='below-link' to='/login'>Log In Instead</Link></div>
                 ) : (
-                        <div id='below-submit'><Link to='/forgotpassword'>Forgot Password</Link></div>
+                        <div className='below-submit'><Link className='below-link' to='/forgotpassword'>Forgot Password</Link></div>
                 )}
             </div>
         )

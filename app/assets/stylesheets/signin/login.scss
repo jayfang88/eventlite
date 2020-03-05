@@ -99,11 +99,14 @@ input:focus{
     border: rgb(122, 42, 13);
 }
 
-#below-submit {
-    text-decoration: none;
+.below-submit {
     margin-top: 15px;
-    color: blue;
     font-size: 14px;
+}
+
+.below-link {
+    text-decoration: none;
+    color: blue;
 }
 
 .login-icon {

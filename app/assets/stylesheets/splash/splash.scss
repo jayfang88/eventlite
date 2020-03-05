@@ -1,7 +1,6 @@
 #splash-container {
-    height: 100%;
     overflow: hidden;
-    margin-top: 1px;
+    // margin-bottom: 8vw; //TAKE THIS OUT once you input EventIndex
 }
 
 #splash-bg-image {
@@ -17,12 +16,10 @@
     margin: -5px -10px -10px -5px;
 }
 
-
 #splash-main {
     position: absolute;
-    width: 65vw;
-    max-width: 1000px;
-    max-height: 580px;
+    width: 65%;
+    height: 580px;
     object-fit: contain;
     top: 10%;
     left: 14%;
@@ -30,17 +27,17 @@
 }
 
 #splash-image {
-    max-width: 100%;
+    margin-top: -10px;
+    width: 100%;
     min-height: 580px;
-    object-fit: contain;
-    // text-align: center;
+    object-fit: cover;
 }
 
 #made-for {
     position: absolute;
     display: block;
-    top: 39%;
-    left: 8%;
+    top: 38%;
+    left: 6%;
     font-size: 24px;
     color: white;
     font-weight: 700;
@@ -50,8 +47,8 @@
 #those-who {
     position: absolute;
     display: block;
-    top: 45%;
-    left: 8%;
+    top: 44%;
+    left: 6%;
     font-size: 54px;
     color: white;
     font-weight: 700;

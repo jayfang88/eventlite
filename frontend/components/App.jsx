@@ -9,6 +9,7 @@ import { AuthRoute } from '../util/route_util';
 import NavBarContainer from '../components/navbar/navbar_container';
 import ForgotPassword from '../components/signin/forgot_password';
 import SplashContainer from '../components/splash/splash_container';
+import EventIndexContainer from './events/event_index_container';
 
 
 const App = () => (
