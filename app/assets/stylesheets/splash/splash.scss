@@ -1,5 +1,12 @@
 #splash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#splash {
     overflow: hidden;
+    width: 100%;
     // margin-bottom: 8vw; //TAKE THIS OUT once you input EventIndex
 }
 

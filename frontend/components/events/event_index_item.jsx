@@ -20,9 +20,11 @@ const EventIndexItem = ({ event }) => {
 
     return(
         <li className='event-index-item'>
-            <h4>{combinedDate}</h4>
-            <Link to={`/events/${event.id}`}><h3>{event.title}</h3></Link>
-            <p>{event.location}</p>
+            <div className='event-index-item-text'>
+                <h4>{combinedDate}</h4>
+                <Link to={`/events/${event.id}`}><h3>{event.title}</h3></Link>
+                <p>{event.location}</p>
+            </div>
         </li>
     )
 };

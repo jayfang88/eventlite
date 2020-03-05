@@ -447,9 +447,11 @@ var EventIndexItem = function EventIndexItem(_ref) {
   var combinedDate = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(hour, ":").concat(minutes);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "event-index-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "event-index-item-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, combinedDate), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/events/".concat(event.id)
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (EventIndexItem);
@@ -1089,8 +1091,10 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   _createClass(Splash, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "splash-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "splash"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "splash-bg-image"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1103,7 +1107,9 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         id: "made-for"
       }, "Made for"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "those-who"
-      }, "those who do"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, "those who do"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-index-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 
@@ -1321,7 +1327,6 @@ var eventsReducer = function eventsReducer() {
       return action.events;
 
     case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EVENT"]:
-      debugger;
       newState[action.event.id] = action.event;
       return newState;
 
