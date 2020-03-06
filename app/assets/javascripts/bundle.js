@@ -369,7 +369,13 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-index"
-      }, events);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-index-search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "event-index-search-text"
+      }, "Popular in", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "event-index-search-input"
+      }, "San Francisco"))), events);
     }
   }]);
 
@@ -451,11 +457,13 @@ var EventIndexItem = function EventIndexItem(_ref) {
   var combinedDate = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(hour, ":").concat(minutes);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "event-index-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/events/".concat(event.id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "event-index-img",
     src: event.photoUrl
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "event-index-item-text"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "event-index-item-textbox"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, combinedDate), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/events/".concat(event.id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)));

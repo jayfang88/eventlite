@@ -16,6 +16,11 @@ class EventIndex extends React.Component {
         ))
         return (
             <div id='event-index'>
+                <div id='event-index-search'>
+                    <h1 id='event-index-search-text'>Popular in
+                        <span id='event-index-search-input'>San Francisco</span>
+                    </h1>
+                </div>
                 { events }
             </div>
         )
