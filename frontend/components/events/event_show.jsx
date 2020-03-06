@@ -34,6 +34,7 @@ class EventShow extends React.Component {
 
         return(
             <div>
+                <img src={event.photoUrl}/>
                 <div id='event-show-head'>
                     <h1>{event.title}</h1>
                     <p>{event.description}</p>

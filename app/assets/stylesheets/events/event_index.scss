@@ -11,7 +11,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    // align-items: flex-start;
     width: 100%;
 }
 
@@ -33,7 +32,6 @@
 .event-index-item-text {
     position: relative;
     margin: 10px 0px 5px 10px;
-    top: 60%; //REMOVE ONCE PICTURE IS ADDED
 }
 
 .event-index-item-text h4 {
@@ -55,4 +53,9 @@
     color: #6f7287;
     font-size: 14px;
     letter-spacing: 0.5px;
+}
+
+.event-index-img {
+    width: 100%;
+    height: auto;
 }

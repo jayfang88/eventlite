@@ -270,9 +270,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 /* harmony import */ var _components_signin_forgot_password__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/signin/forgot_password */ "./frontend/components/signin/forgot_password.jsx");
 /* harmony import */ var _components_splash_splash_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/splash/splash_container */ "./frontend/components/splash/splash_container.js");
-/* harmony import */ var _events_event_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./events/event_index_container */ "./frontend/components/events/event_index_container.js");
-/* harmony import */ var _events_event_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./events/event_show_container */ "./frontend/components/events/event_show_container.js");
-
+/* harmony import */ var _events_event_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./events/event_show_container */ "./frontend/components/events/event_show_container.js");
 
 
 
@@ -293,7 +291,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/events/:eventId",
-    component: _events_event_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+    component: _events_event_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     exact: true,
     path: "/login",
@@ -453,7 +451,10 @@ var EventIndexItem = function EventIndexItem(_ref) {
   var combinedDate = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(hour, ":").concat(minutes);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "event-index-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "event-index-img",
+    src: event.photoUrl
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "event-index-item-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, combinedDate), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/events/".concat(event.id)
@@ -539,7 +540,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var event = this.props.event;
       if (!event) return null;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: event.photoUrl
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-head"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-aside"

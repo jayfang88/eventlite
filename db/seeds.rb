@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
-User.delete_all
 Event.delete_all
+User.delete_all
 
 u1 = User.create!(
     email: 'jfang@test.com',
@@ -121,3 +122,10 @@ e8 = Event.create!(
     category: "Health & Wellness",
     ticket_type: "Free"
 )
+
+# file = open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/dunk1.jpg')
+# e1.photo.attach(io: File.open('/Users/jf/Documents/eventlite/dunk1.jpg'), filename: 'dunk')
+
+Event.all.each do |e|
+    e.photo.attach(io: File.open('/Users/jf/Documents/eventlite/dunk1.jpg'), filename: 'dunk')
+end

@@ -20,6 +20,7 @@ const EventIndexItem = ({ event }) => {
 
     return(
         <li className='event-index-item'>
+            <img className='event-index-img' src={event.photoUrl}/>
             <div className='event-index-item-text'>
                 <h4>{combinedDate}</h4>
                 <Link to={`/events/${event.id}`}><h3>{event.title}</h3></Link>
