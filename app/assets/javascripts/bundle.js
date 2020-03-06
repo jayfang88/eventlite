@@ -373,9 +373,11 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
         id: "event-index-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "event-index-search-text"
-      }, "Popular in", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "event-index-search-input"
-      }, "San Francisco"))), events);
+      }, "Popular in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        id: "event-index-search-input",
+        placeholder: "San Francisco"
+      })), events);
     }
   }]);
 
@@ -485,6 +487,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -506,20 +509,28 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var EventShow = /*#__PURE__*/function (_React$Component) {
   _inherits(EventShow, _React$Component);
 
-  function EventShow() {
+  function EventShow(props) {
+    var _this;
+
     _classCallCheck(this, EventShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EventShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventShow).call(this, props));
+    _this.state = _this.props.event;
+    return _this;
   }
 
   _createClass(EventShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger;
-      this.props.requestEvent(this.props.match.params.eventId);
+      var _this2 = this;
+
+      this.props.requestEvent(this.props.match.params.eventId).then(function (action) {
+        return _this2.setState(action.event);
+      });
     }
   }, {
     key: "convertDate",
@@ -546,17 +557,62 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var event = this.props.event;
+      if (!this.state) return null;
+      var event = this.state.event;
       if (!event) return null;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      var date = new Date(event.starts);
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var mon = months[date.getMonth()];
+      var day = date.getDate();
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-bg-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "event-show-bg",
+        src: event.photoUrl
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-head"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "event-show-img",
         src: event.photoUrl
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "event-show-head"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-head-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "eshd"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        id: "eshdm"
+      }, mon.toUpperCase()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        id: "eshdd"
+      }, day)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "esht"
+      }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        id: "esho"
+      }, "by ", event.organizer.fname, " ", event.organizer.lname))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-save"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "es-likes-container"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tickets-button-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "tickets-button"
+      }, "Tickets"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-aside"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Date and Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.starts), " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.ends), " PST"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-show-aside-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Date and Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.starts), " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.ends), " PST")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-show-aside-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, event.organizer.fname, " ", event.organizer.lname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Organizer of ", event.title)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, event.organizer.fname, " ", event.organizer.lname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Organizer of ", event.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-show-page-footer"
+      }));
     }
   }]);
 
