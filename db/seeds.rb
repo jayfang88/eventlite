@@ -127,5 +127,5 @@ e8 = Event.create!(
 # e1.photo.attach(io: File.open('/Users/jf/Documents/eventlite/dunk1.jpg'), filename: 'dunk')
 
 Event.all.each do |e|
-    e.photo.attach(io: File.open('/Users/jf/Documents/eventlite/dunk1.jpg'), filename: 'dunk')
+    e.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/dunk1.jpg'), filename: 'dunk')
 end
