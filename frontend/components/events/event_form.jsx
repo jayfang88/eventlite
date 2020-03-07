@@ -45,110 +45,112 @@ class EventForm extends React.Component {
                     
                     <label>Starts
                         <br/>
-                        <input value={this.state.startdate} type="date"/>
-                        <select value={this.state.starttime} className="time-dropdown">
-                            <option value="12:00am">12:00am</option>
-                            <option value="12:30am">12:30am</option>
-                            <option value="1:00am">1:00am</option>
-                            <option value="1:30am">1:30am</option>
-                            <option value="2:00am">2:00am</option>
-                            <option value="2:00am">2:30am</option>
-                            <option value="3:00am">3:00am</option>
-                            <option value="3:30am">3:30am</option>
-                            <option value="4:00am">4:00am</option>
-                            <option value="4:30am">4:30am</option>
-                            <option value="5:00am">5:00am</option>
-                            <option value="5:30am">5:30am</option>
-                            <option value="6:00am">6:00am</option>
-                            <option value="6:30am">6:30am</option>
-                            <option value="7:00am">7:00am</option>
-                            <option value="7:30am">7:30am</option>
-                            <option value="8:00am">8:00am</option>
-                            <option value="8:30am">8:30am</option>
-                            <option value="9:00am">9:00am</option>
-                            <option value="9:30am">9:30am</option>
-                            <option value="10:00am">10:00am</option>
-                            <option value="10:30am">10:30am</option>
-                            <option value="11:00am">11:00am</option>
-                            <option value="11:30am">11:30am</option>
-                            <option value="12:00pm">12:00pm</option>
-                            <option value="12:30pm">12:30pm</option>
-                            <option value="1:00pm">1:00pm</option>
-                            <option value="1:30pm">1:30pm</option>
-                            <option value="2:00pm">2:00pm</option>
-                            <option value="2:00pm">2:30pm</option>
-                            <option value="3:00pm">3:00pm</option>
-                            <option value="3:30pm">3:30pm</option>
-                            <option value="4:00pm">4:00pm</option>
-                            <option value="4:30pm">4:30pm</option>
-                            <option value="5:00pm">5:00pm</option>
-                            <option value="5:30pm">5:30pm</option>
-                            <option value="6:00pm">6:00pm</option>
-                            <option value="6:30pm">6:30pm</option>
-                            <option value="7:00pm">7:00pm</option>
-                            <option value="7:30pm">7:30pm</option>
-                            <option value="8:00pm">8:00pm</option>
-                            <option value="8:30pm">8:30pm</option>
-                            <option value="9:00pm">9:00pm</option>
-                            <option value="9:30pm">9:30pm</option>
-                            <option value="10:00pm">10:00pm</option>
-                            <option value="10:30pm">10:30pm</option>
-                            <option value="11:00pm">11:00pm</option>
-                            <option value="11:30pm">11:30pm</option>
+                        <input value={this.state.startdate} type="date" onChange={this.update('startdate')}/>
+                        <select value={this.state.starttime} className="time-dropdown" onChange={this.update('starttime')}>
+                            <option value="default">--Select a start time--</option>
+                            <option value="12:00 AM">12:00 am</option>
+                            <option value="12:30 AM">12:30 am</option>
+                            <option value="1:00 AM">1:00 am</option>
+                            <option value="1:30 AM">1:30 am</option>
+                            <option value="2:00 AM">2:00 am</option>
+                            <option value="2:00 AM">2:30 am</option>
+                            <option value="3:00 AM">3:00 am</option>
+                            <option value="3:30 AM">3:30 am</option>
+                            <option value="4:00 AM">4:00 am</option>
+                            <option value="4:30 AM">4:30 am</option>
+                            <option value="5:00 AM">5:00 am</option>
+                            <option value="5:30 AM">5:30 am</option>
+                            <option value="6:00 AM">6:00 am</option>
+                            <option value="6:30 AM">6:30 am</option>
+                            <option value="7:00 AM">7:00 am</option>
+                            <option value="7:30 AM">7:30 am</option>
+                            <option value="8:00 AM">8:00 am</option>
+                            <option value="8:30 AM">8:30 am</option>
+                            <option value="9:00 AM">9:00 am</option>
+                            <option value="9:30 AM">9:30 am</option>
+                            <option value="10:00 AM">10:00 am</option>
+                            <option value="10:30 AM">10:30 am</option>
+                            <option value="11:00 AM">11:00 am</option>
+                            <option value="11:30 AM">11:30 am</option>
+                            <option value="12:00 PM">12:00 pm</option>
+                            <option value="12:30 PM">12:30 pm</option>
+                            <option value="1:00 PM">1:00 pm</option>
+                            <option value="1:30 PM">1:30 pm</option>
+                            <option value="2:00 PM">2:00 pm</option>
+                            <option value="2:00 PM">2:30 pm</option>
+                            <option value="3:00 PM">3:00 pm</option>
+                            <option value="3:30 PM">3:30 pm</option>
+                            <option value="4:00 PM">4:00 pm</option>
+                            <option value="4:30 PM">4:30 pm</option>
+                            <option value="5:00 PM">5:00 pm</option>
+                            <option value="5:30 PM">5:30 pm</option>
+                            <option value="6:00 PM">6:00 pm</option>
+                            <option value="6:30 PM">6:30 pm</option>
+                            <option value="7:00 PM">7:00 pm</option>
+                            <option value="7:30 PM">7:30 pm</option>
+                            <option value="8:00 PM">8:00 pm</option>
+                            <option value="8:30 PM">8:30 pm</option>
+                            <option value="9:00 PM">9:00 pm</option>
+                            <option value="9:30 PM">9:30 pm</option>
+                            <option value="10:00 PM">10:00 pm</option>
+                            <option value="10:30 PM">10:30 pm</option>
+                            <option value="11:00 PM">11:00 pm</option>
+                            <option value="11:30 PM">11:30 pm</option>
                         </select>
                     </label>
                     <label>Ends
                         <br/>
-                        <input value={this.state.enddate} type="date" />
-                        <select value={this.state.endtime} className="time-dropdown">
-                            <option value="12:00am">12:00am</option>
-                            <option value="12:30am">12:30am</option>
-                            <option value="1:00am">1:00am</option>
-                            <option value="1:30am">1:30am</option>
-                            <option value="2:00am">2:00am</option>
-                            <option value="2:00am">2:30am</option>
-                            <option value="3:00am">3:00am</option>
-                            <option value="3:30am">3:30am</option>
-                            <option value="4:00am">4:00am</option>
-                            <option value="4:30am">4:30am</option>
-                            <option value="5:00am">5:00am</option>
-                            <option value="5:30am">5:30am</option>
-                            <option value="6:00am">6:00am</option>
-                            <option value="6:30am">6:30am</option>
-                            <option value="7:00am">7:00am</option>
-                            <option value="7:30am">7:30am</option>
-                            <option value="8:00am">8:00am</option>
-                            <option value="8:30am">8:30am</option>
-                            <option value="9:00am">9:00am</option>
-                            <option value="9:30am">9:30am</option>
-                            <option value="10:00am">10:00am</option>
-                            <option value="10:30am">10:30am</option>
-                            <option value="11:00am">11:00am</option>
-                            <option value="11:30am">11:30am</option>
-                            <option value="12:00pm">12:00pm</option>
-                            <option value="12:30pm">12:30pm</option>
-                            <option value="1:00pm">1:00pm</option>
-                            <option value="1:30pm">1:30pm</option>
-                            <option value="2:00pm">2:00pm</option>
-                            <option value="2:00pm">2:30pm</option>
-                            <option value="3:00pm">3:00pm</option>
-                            <option value="3:30pm">3:30pm</option>
-                            <option value="4:00pm">4:00pm</option>
-                            <option value="4:30pm">4:30pm</option>
-                            <option value="5:00pm">5:00pm</option>
-                            <option value="5:30pm">5:30pm</option>
-                            <option value="6:00pm">6:00pm</option>
-                            <option value="6:30pm">6:30pm</option>
-                            <option value="7:00pm">7:00pm</option>
-                            <option value="7:30pm">7:30pm</option>
-                            <option value="8:00pm">8:00pm</option>
-                            <option value="8:30pm">8:30pm</option>
-                            <option value="9:00pm">9:00pm</option>
-                            <option value="9:30pm">9:30pm</option>
-                            <option value="10:00pm">10:00pm</option>
-                            <option value="10:30pm">10:30pm</option>
-                            <option value="11:00pm">11:00pm</option>
-                            <option value="11:30pm">11:30pm</option>
+                        <input value={this.state.enddate} type="date" onChange={this.update('enddate')}/>
+                        <select value={this.state.endtime} className="time-dropdown" onChange={this.update('endtime')}>
+                            <option value="default">--Select an end time--</option>
+                            <option value="12:00 AM">12:00 am</option>
+                            <option value="12:30 AM">12:30 am</option>
+                            <option value="1:00 AM">1:00 am</option>
+                            <option value="1:30 AM">1:30 am</option>
+                            <option value="2:00 AM">2:00 am</option>
+                            <option value="2:00 AM">2:30 am</option>
+                            <option value="3:00 AM">3:00 am</option>
+                            <option value="3:30 AM">3:30 am</option>
+                            <option value="4:00 AM">4:00 am</option>
+                            <option value="4:30 AM">4:30 am</option>
+                            <option value="5:00 AM">5:00 am</option>
+                            <option value="5:30 AM">5:30 am</option>
+                            <option value="6:00 AM">6:00 am</option>
+                            <option value="6:30 AM">6:30 am</option>
+                            <option value="7:00 AM">7:00 am</option>
+                            <option value="7:30 AM">7:30 am</option>
+                            <option value="8:00 AM">8:00 am</option>
+                            <option value="8:30 AM">8:30 am</option>
+                            <option value="9:00 AM">9:00 am</option>
+                            <option value="9:30 AM">9:30 am</option>
+                            <option value="10:00 AM">10:00 am</option>
+                            <option value="10:30 AM">10:30 am</option>
+                            <option value="11:00 AM">11:00 am</option>
+                            <option value="11:30 AM">11:30 am</option>
+                            <option value="12:00 PM">12:00 pm</option>
+                            <option value="12:30 PM">12:30 pm</option>
+                            <option value="1:00 PM">1:00 pm</option>
+                            <option value="1:30 PM">1:30 pm</option>
+                            <option value="2:00 PM">2:00 pm</option>
+                            <option value="2:00 PM">2:30 pm</option>
+                            <option value="3:00 PM">3:00 pm</option>
+                            <option value="3:30 PM">3:30 pm</option>
+                            <option value="4:00 PM">4:00 pm</option>
+                            <option value="4:30 PM">4:30 pm</option>
+                            <option value="5:00 PM">5:00 pm</option>
+                            <option value="5:30 PM">5:30 pm</option>
+                            <option value="6:00 PM">6:00 pm</option>
+                            <option value="6:30 PM">6:30 pm</option>
+                            <option value="7:00 PM">7:00 pm</option>
+                            <option value="7:30 PM">7:30 pm</option>
+                            <option value="8:00 PM">8:00 pm</option>
+                            <option value="8:30 PM">8:30 pm</option>
+                            <option value="9:00 PM">9:00 pm</option>
+                            <option value="9:30 PM">9:30 pm</option>
+                            <option value="10:00 PM">10:00 pm</option>
+                            <option value="10:30 PM">10:30 pm</option>
+                            <option value="11:00 PM">11:00 pm</option>
+                            <option value="11:30 PM">11:30 pm</option>
                         </select>
                     </label>
                     
@@ -172,6 +174,7 @@ class EventForm extends React.Component {
                     <h2>Additional Settings</h2>
                     <label>Event Topic
                         <select value={this.state.category} id="topic" onChange={this.update('category')}>
+                            <option value="default">--Choose a category--</option>
                             <option value="Business &amp; Professional">Business &amp; Professional</option>
                             <option value="Community &amp; Culture">Community &amp; Culture</option>
                             <option value="Family &amp; Education">Family &amp; Education</option>
