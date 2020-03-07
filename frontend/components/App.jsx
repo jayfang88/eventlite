@@ -10,6 +10,8 @@ import NavBarContainer from '../components/navbar/navbar_container';
 import ForgotPassword from '../components/signin/forgot_password';
 import SplashContainer from '../components/splash/splash_container';
 import EventShowContainer from './events/event_show_container';
+import CreateEventContainer from './events/create_event_container';
+import UpdateEventContainer from './events/update_event_container';
 
 
 const App = () => (
@@ -25,6 +27,8 @@ const App = () => (
             <AuthRoute exact path='/login' component={LoginFormContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
             <AuthRoute exact path='/forgotpassword' component={ForgotPassword} />
+            <Route exact path='/create' component={CreateEventContainer} />
+            {/* <Route exact path='/events/:eventId/edit' component={UpdateEventContainer} /> */}
         </Switch>
     </div>
 );

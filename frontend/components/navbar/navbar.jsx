@@ -15,8 +15,7 @@ class NavBar extends React.Component {
 
                 {/* LINK TO CREATE EVENT FORM,
                     anyone can view, but must be logged in to create */}
-                {/* <Link to='/events/create'>Create Event</Link> */}
-                <p id='create-event-link'>Create Event</p>
+                <p id='create-event-link'><Link id='create-link' to='/create'>Create Event</Link></p>
 
                 {this.props.currentUser ? (
                         <button onClick={() => this.props.logout()} className='nav-signout'>Log Out</button>

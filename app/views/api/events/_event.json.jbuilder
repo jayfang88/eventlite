@@ -1,1 +1,1 @@
-json.extract! event, :id, :title, :location, :starts, :ends, :description, :organizer_id, :category, :ticket_type, :organizer
+json.extract! event, :id, :title, :location, :startdate, :starttime, :enddate, :endtime, :description, :organizer_id, :category, :ticket_type, :organizer

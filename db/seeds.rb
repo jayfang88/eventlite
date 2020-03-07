@@ -38,8 +38,10 @@ u4 = User.create!(
 e1 = Event.create!(
     title: "Haight-Ashbury Community Potluck",
     location: "1685 Haight St, San Francisco, CA",
-    starts: "2020-04-04 12:30:00 GMT-0700",
-    ends: "2020-04-04 18:30:00 GMT-0700",
+    startdate: "2020-04-04",
+    starttime: "12:30 PM",
+    enddate: "2020-04-04",
+    endtime: "6:30 PM",
     description: "Join us in celebratign the diverse culture of San Francisco's
     own Haight-Ashbury district.",
     organizer_id: u1.id,
@@ -49,8 +51,10 @@ e1 = Event.create!(
 e2 = Event.create!(
     title: "Nathan's Birthday Bananza",
     location: "825 Battery St, San Francisco, CA",
-    starts: "2020-03-12 20:30:00 GMT-0700",
-    ends: "2020-03-12 23:59:00 GMT-0700",
+    startdate: "2020-03-12",
+    starttime: "8:30 PM",
+    enddate: "2020-03-13",
+    endtime: "3:00 AM",
     description: "Come celebrate Nathan's 18th bday! BYOB.",
     organizer_id: u2.id,
     category: "Community & Culture",
@@ -59,8 +63,10 @@ e2 = Event.create!(
 e3 = Event.create!(
     title: "Yoga at Golden Gate Park",
     location: "320 Bowling Green Dr, San Francisco, CA",
-    starts: "2020-04-19 11:00:00 GMT-0700",
-    ends: "2020-04-19 12:30:00 GMT-0700",
+    startdate: "2020-04-19",
+    starttime: "11:00 AM",
+    enddate: "2020-04-19",
+    endtime: "12:30 PM",
     description: "Join us in some refreshing yoga in beautiful GGP. Dogs allowed.",
     organizer_id: u1.id,
     category: "Sports & Fitness",
@@ -69,8 +75,10 @@ e3 = Event.create!(
 e4 = Event.create!(
     title: "Underwater Basket Weaving",
     location: "Stow Lake, San Francisco, CA",
-    starts: "2020-04-16 14:00:00 GMT-0700",
-    ends: "2020-04-16 16:00:00 GMT-0700",
+    startdate: "2020-04-16",
+    starttime: "2:00 PM",
+    enddate: "2020-04-16",
+    endtime: "4:00 PM",
     description: "Ever wanted to learn how to weave baskets under 
     immense pressure? Now you can with underwater basket weaving! Scuba gear will 
     not be provided.",
@@ -81,8 +89,10 @@ e4 = Event.create!(
 e5 = Event.create!(
     title: "Basketball Masterclass w/ Carlos Garcia",
     location: "Tha Streets",
-    starts: "2020-03-31 13:30:00 GMT-0700",
-    ends: "2020-03-31 15:30:00 GMT-0700",
+    startdate: "2020-03-31",
+    starttime: "1:30 PM",
+    enddate: "2020-03-31",
+    endtime: "3:30 PM",
     description: "Do you HOOP? No, you don't. Learn how to be a true baller with 
     this once in a lifetime opportunity to play with NBA Legend Carlos Garcia.",
     organizer_id: u3.id,
@@ -92,8 +102,10 @@ e5 = Event.create!(
 e6 = Event.create!(
     title: "Brownie Baking 101",
     location: "Ryan's Apartment",
-    starts: "2020-04-20 16:20:00 GMT-0700",
-    ends: "2020-04-20 16:21:00 GMT-0700",
+    startdate: "2020-04-20",
+    starttime: "4:20 PM",
+    enddate: "2020-04-20",
+    endtime: "4:21 PM",
     description: "Ryan Leung is hosting weekly brownie baking in your neighborhood this spring! 
     Lift your spirits with complimentary treats. Bring friends and family to what is guaranteed to be the high point of your week.",
     organizer_id: u1.id,
@@ -103,8 +115,10 @@ e6 = Event.create!(
 e7 = Event.create!(
     title: "DJ Danny Phan at Bill Graham",
     location: "Bill Graham Civic Auditorium, San Francisco, CA",
-    starts: "2020-03-27 22:00:00 GMT-0700",
-    ends: "2020-03-27 23:59:59 GMT-0700",
+    startdate: "2020-03-27",
+    starttime: "10:00 PM",
+    enddate: "2020-03-27",
+    endtime: "1:00 AM",
     description: "Experience sounds you have never heard before. Feel feels you 
     have never felt before.",
     organizer_id: u4.id,
@@ -114,8 +128,10 @@ e7 = Event.create!(
 e8 = Event.create!(
     title: "Nap Time @ Lunch",
     location: "App Academy SF, San Francisco, CA",
-    starts: "2020-04-01 12:20:00 GMT-0700",
-    ends: "2020-04-01 13:30:00 GMT-0700",
+    startdate: "2020-04-01",
+    starttime: "12:20 PM",
+    enddate: "2020-04-01",
+    endtime: "1:30 PM",
     description: "We all put in a lot of work into our projects. Let's reward 
     ourselves with a nap. Must be a currently enrolled student of a/A to participate.",
     organizer_id: u1.id,
