@@ -11,9 +11,10 @@ const mSTP = (state, ownProps) => ({
         enddate: '',
         endtime: '',
         description: '',
-        organizerId: state.session.id,
+        organizer_id: state.session.id,
         category: '',
-        ticketType: 'Free'
+        ticket_type: 'Free',
+        imageUrl: ''
     },
     errors: state.errors.event,
     formType: 'Create Event'

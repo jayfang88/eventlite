@@ -41,12 +41,12 @@ class EventShow extends React.Component {
         return(
             <div id='event-show'>
                 <div id='event-show-bg-container'>
-                    <img id='event-show-bg' src={event.photoUrl}/>
+                    <img id='event-show-bg' src={event.photoUrl} alt='event-img'/>
                 </div>
                 
                 <div id='event-show-main'>
                     <div id='event-show-head'>
-                        <img id='event-show-img' src={event.photoUrl} />
+                        <img id='event-show-img' src={event.photoUrl} alt='event-img'/>
                         <div id='event-show-head-text'>
                             <div id='eshd'>
                                 <p id='eshdm'>{mon}</p>

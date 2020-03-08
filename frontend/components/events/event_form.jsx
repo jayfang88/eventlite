@@ -14,10 +14,8 @@ class EventForm extends React.Component {
     }
 
     handleTicketChange() {
-        // debugger;
-        // event.preventDefault();
         this.setState({
-            ticketType: event.target.value
+            ticket_type: event.target.value
         })
     }
 
@@ -25,12 +23,26 @@ class EventForm extends React.Component {
         e.preventDefault();
         console.log(this.state);
         // this.props.submitEvent(this.state)
+        // this.props.history.push('/')
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li className='error-message' key={`error-${i}`}>
+                        {`*${error}`}
+                    </li>
+                ))}
+            </ul>
+        )
     }
 
     render() {
         return(
             <div id='event-form-page'>
                 <h1>{this.props.formType}</h1>
+                {this.renderErrors()}
                 <div>1</div>
                 <h2>Event Details</h2>
                 <form onSubmit={this.handleSubmit} id='event-form'>
@@ -162,12 +174,8 @@ class EventForm extends React.Component {
                     <div>2</div>
                     <h2>Create Tickets</h2>
                     <label>What type of ticket would you like to start with?
-                        <input type="radio" checked={this.state.ticketType === 'Free'} value='Free' onChange={this.handleTicketChange}/>Free
-                        <input type="radio" checked={this.state.ticketType === 'Paid'} value='Paid' onChange={this.handleTicketChange} />Paid
-                        {/* <select value={this.state.ticketType} id="ticket-type" onChange={this.update('ticketType')}>
-                            <option value="Free">Free</option>
-                            <option value="Paid">Paid</option>
-                        </select> */}
+                        <input type="radio" checked={this.state.ticket_type === 'Free'} value='Free' onChange={this.handleTicketChange}/>Free
+                        <input type="radio" checked={this.state.ticket_type === 'Paid'} value='Paid' onChange={this.handleTicketChange} />Paid
                     </label>
 
                     <div>3</div>
@@ -187,8 +195,13 @@ class EventForm extends React.Component {
                             <option value="Travel &amp; Outdoor">Travel &amp; Outdoor</option>
                         </select>
                         <br/>
-                        <input type="submit" value={this.props.formType}/>
                     </label>
+                    
+                    <label>Image URL
+                        <input value={this.state.imageUrl} type="text" onChange={this.update('imageUrl')}/>
+                    </label>
+
+                    <input type="submit" value={this.props.formType} />
                 </form>
             </div>
         )

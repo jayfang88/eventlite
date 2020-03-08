@@ -345,9 +345,10 @@ var mSTP = function mSTP(state, ownProps) {
       enddate: '',
       endtime: '',
       description: '',
-      organizerId: state.session.id,
+      organizer_id: state.session.id,
       category: '',
-      ticketType: 'Free'
+      ticket_type: 'Free',
+      imageUrl: ''
     },
     errors: state.errors.event,
     formType: 'Create Event'
@@ -426,10 +427,8 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleTicketChange",
     value: function handleTicketChange() {
-      // debugger;
-      // event.preventDefault();
       this.setState({
-        ticketType: event.target.value
+        ticket_type: event.target.value
       });
     }
   }, {
@@ -437,13 +436,24 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       console.log(this.state); // this.props.submitEvent(this.state)
+      // this.props.history.push('/')
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "error-message",
+          key: "error-".concat(i)
+        }, "*".concat(error));
+      }));
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-form-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Event Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Event Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         id: "event-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Event Title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -673,12 +683,12 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('description')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create Tickets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What type of ticket would you like to start with?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
-        checked: this.state.ticketType === 'Free',
+        checked: this.state.ticket_type === 'Free',
         value: "Free",
         onChange: this.handleTicketChange
       }), "Free", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
-        checked: this.state.ticketType === 'Paid',
+        checked: this.state.ticket_type === 'Paid',
         value: "Paid",
         onChange: this.handleTicketChange
       }), "Paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Additional Settings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Event Topic", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -707,10 +717,14 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         value: "Sports & Fitness"
       }, "Sports & Fitness"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "Travel & Outdoor"
-      }, "Travel & Outdoor")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Travel & Outdoor")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Image URL", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.state.imageUrl,
+        type: "text",
+        onChange: this.update('imageUrl')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: this.props.formType
-      }))));
+      })));
     }
   }]);
 
@@ -772,6 +786,7 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      if (!this.props.events) return null;
       var events = this.props.events.map(function (event, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_event_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
@@ -899,7 +914,8 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
         to: "/events/".concat(event.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "event-index-img",
-        src: event.photoUrl
+        src: event.photoUrl,
+        alt: "event-photo"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-index-item-textbox"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, this.combineDate(event.startdate, event.starttime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1002,14 +1018,16 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "event-show-bg-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "event-show-bg",
-        src: event.photoUrl
+        src: event.photoUrl,
+        alt: "event-img"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-head"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "event-show-img",
-        src: event.photoUrl
+        src: event.photoUrl,
+        alt: "event-img"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-head-text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1082,6 +1100,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     requestEvent: function requestEvent(eventId) {
       return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["requestEvent"])(eventId));
+    },
+    deleteEvent: function deleteEvent(eventId) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["deleteEvent"])(eventId));
     }
   };
 };
@@ -1997,7 +2018,7 @@ var eventsReducer = function eventsReducer() {
       return action.events;
 
     case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EVENT"]:
-      newState[action.event.id] = action.event;
+      newState[action.event.event.id] = action.event.event;
       return newState;
 
     case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_EVENT"]:
@@ -2165,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4__["default"]));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2__["logger"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);

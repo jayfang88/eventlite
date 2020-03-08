@@ -9,12 +9,9 @@ class NavBar extends React.Component {
         return(
             <div className='navbar'>
                 <Link to='/'><h1 id='logo-link'><span className='tilt-e'>e</span>v<span className='tilt-e'>e</span>ntlit<span className='tilt-e'>e</span></h1></Link>
-                {/* <div id='nav-search'>Search for events</div> */}
                 <FontAwesomeIcon id='search-icon' icon={faSearch} />
                 <input id='nav-search' type="text" placeholder='Search for events'/>
 
-                {/* LINK TO CREATE EVENT FORM,
-                    anyone can view, but must be logged in to create */}
                 <p id='create-event-link'><Link id='create-link' to='/create'>Create Event</Link></p>
 
                 {this.props.currentUser ? (
