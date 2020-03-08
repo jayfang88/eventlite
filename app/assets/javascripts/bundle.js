@@ -1880,9 +1880,6 @@ document.addEventListener('DOMContentLoaded', function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.requestEvents = _actions_event_actions__WEBPACK_IMPORTED_MODULE_4__["requestEvents"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
