@@ -23,7 +23,7 @@ class EventForm extends React.Component {
         e.preventDefault();
         console.log(this.state);
         this.props.submitEvent(this.state)
-        // this.props.history.push('/')
+        this.props.history.push('/')
     }
 
     renderErrors() {

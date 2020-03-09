@@ -439,7 +439,8 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       console.log(this.state);
-      this.props.submitEvent(this.state); // this.props.history.push('/')
+      this.props.submitEvent(this.state);
+      this.props.history.push('/');
     }
   }, {
     key: "renderErrors",
