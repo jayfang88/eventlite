@@ -5,7 +5,7 @@ import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './signin/signup_form_container';
 import LoginFormContainer from './signin/login_form_container';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NavBarContainer from '../components/navbar/navbar_container';
 import ForgotPassword from '../components/signin/forgot_password';
 import SplashContainer from '../components/splash/splash_container';
@@ -27,7 +27,7 @@ const App = () => (
             <AuthRoute exact path='/login' component={LoginFormContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
             <AuthRoute exact path='/forgotpassword' component={ForgotPassword} />
-            <Route exact path='/create' component={CreateEventContainer} />
+            <ProtectedRoute exact path='/create' component={CreateEventContainer} />
             {/* <Route exact path='/events/:eventId/edit' component={UpdateEventContainer} /> */}
             <Route exact path='/u/:userId' />
         </Switch>
