@@ -5,13 +5,10 @@ import { faThList } from '@fortawesome/free-solid-svg-icons';
 class EventShow extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = this.props.event
     }
 
     componentDidMount() {
         this.props.requestEvent(this.props.match.params.eventId)
-            .then(action => this.setState(action.event));
     }
 
     convertDate(eventDate) {
@@ -29,8 +26,7 @@ class EventShow extends React.Component {
     }
 
     render() {
-        if (!this.state) return null;
-        const {event} = this.state;
+        const {event} = this.props;
         if (!event) return null;
 
         let newDate = new Date(event.startdate);

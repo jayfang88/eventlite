@@ -6,6 +6,18 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
     attr_reader :password
 
+    has_many :tickets
+
+    has_many :attending_events,
+        through: :tickets,
+        source: :event
+
+    has_many :bookmarks
+
+    has_many :bookmarked_events,
+        through: :bookmarks,
+        source: :event
+
     def reset_session_token!
         self.session_token = SecureRandom::urlsafe_base64(16)
         self.save!

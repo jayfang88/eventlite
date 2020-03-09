@@ -435,8 +435,8 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      console.log(this.state); // this.props.submitEvent(this.state)
-      // this.props.history.push('/')
+      console.log(this.state);
+      this.props.submitEvent(this.state); // this.props.history.push('/')
     }
   }, {
     key: "renderErrors",
@@ -971,23 +971,15 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
   _inherits(EventShow, _React$Component);
 
   function EventShow(props) {
-    var _this;
-
     _classCallCheck(this, EventShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventShow).call(this, props));
-    _this.state = _this.props.event;
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(EventShow).call(this, props));
   }
 
   _createClass(EventShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      this.props.requestEvent(this.props.match.params.eventId).then(function (action) {
-        return _this2.setState(action.event);
-      });
+      this.props.requestEvent(this.props.match.params.eventId);
     }
   }, {
     key: "convertDate",
@@ -1005,8 +997,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!this.state) return null;
-      var event = this.state.event;
+      var event = this.props.event;
       if (!event) return null;
       var newDate = new Date(event.startdate);
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -2015,7 +2006,7 @@ var eventsReducer = function eventsReducer() {
       return action.events;
 
     case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EVENT"]:
-      newState[action.event.event.id] = action.event.event;
+      newState[action.event.id] = action.event;
       return newState;
 
     case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_EVENT"]:
