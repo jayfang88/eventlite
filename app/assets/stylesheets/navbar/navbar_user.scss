@@ -1,0 +1,75 @@
+.nav-user {
+    position: relative;
+    display: flex;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.nav-user:hover {
+    cursor: pointer;
+    background-color: #f8f7fa;
+}
+
+.user-icon {
+    font-size: 15px;
+}
+.user-icon-caret {
+    font-size: 14px;
+    margin: 2px 0px 0px 10px;
+}
+
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 230px;
+    height: 220px;
+    z-index: 1;
+    top: 58px;
+    right: 1px;
+    border-radius: 2px;
+    box-shadow: 4px 4px 16px 0px rgba(36, 36, 36, 0.2);
+}
+
+.nav-user:hover .nav-dropdown{
+    display: block;
+}
+
+.dropdown-item {
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    padding: 10px 0px;
+    border: none;
+    color: #6f7287;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    cursor: pointer;
+    background-color: #f8f7fa;
+}
+
+.nav-dropdown button:focus {
+    outline: none;
+    // border: none;
+}
+
+#user-link {
+    border-bottom: 1px solid #dddcdf;
+    height: 60px;
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+}
+
+#user-link-email {
+    color: #6f7287;
+    font-weight: 400;
+}
+
+#logout-link {
+    border-top: 1px solid #dddcdf;
+}

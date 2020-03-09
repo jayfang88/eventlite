@@ -12,7 +12,7 @@ class Splash extends React.Component {
                 <div id='splash'>
                     <div id='splash-bg-image'></div>
                     <div id='splash-main'>
-                        <img id='splash-image' src="https://images.unsplash.com/photo-1508973379184-7517410fb0bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80" alt="splash-image"/>
+                        <img id='splash-image' src="/assets/concert.jpg" alt="splash-image"/>
                         <div id='made-for'>Made for</div>
                         <div id='those-who'>those who do</div>
                     </div>   

@@ -23,12 +23,13 @@ const App = () => (
 
         <Switch>
             <Route exact path='/' component={SplashContainer} />
-            <Route exact path='/events/:eventId' component={EventShowContainer} />
+            <Route exact path='/e/:eventId' component={EventShowContainer} />
             <AuthRoute exact path='/login' component={LoginFormContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
             <AuthRoute exact path='/forgotpassword' component={ForgotPassword} />
             <Route exact path='/create' component={CreateEventContainer} />
             {/* <Route exact path='/events/:eventId/edit' component={UpdateEventContainer} /> */}
+            <Route exact path='/u/:userId' />
         </Switch>
     </div>
 );

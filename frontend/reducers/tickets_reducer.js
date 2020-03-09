@@ -8,6 +8,8 @@ const ticketsReducer = (state={}, action) => {
         case RECEIVE_TICKET:
             return action.ticket
         case REMOVE_TICKET:
-            
+            return state
+        default:
+            return state
     }
-}
+};

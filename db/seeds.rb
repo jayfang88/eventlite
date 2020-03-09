@@ -34,6 +34,12 @@ u4 = User.create!(
     lname: 'Phan',
     password: 'password'
 )
+u5 = User.create!(
+    email: 'nmendes@test.com',
+    fname: 'Nathan',
+    lname: 'Mendes',
+    password: 'password'
+)
 
 e1 = Event.create!(
     title: "Haight-Ashbury Community Potluck",
@@ -56,7 +62,7 @@ e2 = Event.create!(
     enddate: "2020-03-13",
     endtime: "3:00 AM",
     description: "Come celebrate Nathan's 18th bday! BYOB.",
-    organizer_id: u2.id,
+    organizer_id: u5.id,
     category: "Community & Culture",
     ticket_type: "Paid"
 )

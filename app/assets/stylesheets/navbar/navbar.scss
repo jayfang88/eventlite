@@ -7,16 +7,16 @@
 
 #logo-link {
     color: #f05537;
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 650;
-    margin: 20px 25px;
-    letter-spacing: -0.5px;
-    width: 90px;
+    margin: 18px 25px;
+    letter-spacing: -0.4px;
+    width: 95px;
 }
 
 .tilt-e {
     display: inline-block;
-    -webkit-transform: rotate(-25deg);
+    -webkit-transform: rotate(-15deg);
 }
 
 
@@ -57,7 +57,7 @@
 #create-event-link {
     display: flex;
     width: 120px;
-    margin: 20px 5px;
+    padding: 20px 5px;
     font-size: 13px;
     text-align: center;
     justify-content: center;
@@ -66,14 +66,4 @@
 
 #create-link {
     color: blue;
-}
-
-.nav-signout {
-    text-decoration: none;
-    width: 100px;
-    margin: 20px 5px;
-    font-size: 13px;
-    border: none;
-    color: #6f7287;
-    cursor: pointer;
 }
