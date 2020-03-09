@@ -11,7 +11,8 @@ import ForgotPassword from '../components/signin/forgot_password';
 import SplashContainer from '../components/splash/splash_container';
 import EventShowContainer from './events/event_show_container';
 import CreateEventContainer from './events/create_event_container';
-import UpdateEventContainer from './events/update_event_container';
+import UpdateEventFormContainer from './events/update_event_container';
+import UserShowContainer from './user/user_show_container';
 
 
 const App = () => (
@@ -28,8 +29,8 @@ const App = () => (
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
             <AuthRoute exact path='/forgotpassword' component={ForgotPassword} />
             <ProtectedRoute exact path='/create' component={CreateEventContainer} />
-            {/* <Route exact path='/events/:eventId/edit' component={UpdateEventContainer} /> */}
-            <Route exact path='/u/:userId' />
+            <Route exact path='/e/:eventId/edit' component={UpdateEventFormContainer} />
+            <Route exact path='/u/:userId' component={UserShowContainer} />
         </Switch>
     </div>
 );

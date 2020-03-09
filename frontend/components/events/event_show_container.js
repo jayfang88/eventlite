@@ -4,7 +4,8 @@ import EventShow from './event_show';
 
 const mSTP = (state, ownProps) => {
     return{
-    event: state.entities.events[ownProps.match.params.eventId]
+    event: state.entities.events[ownProps.match.params.eventId],
+    currentUserId: state.session.id
     }
 };
 

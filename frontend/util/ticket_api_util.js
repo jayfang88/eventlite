@@ -1,3 +1,10 @@
+export const fetchTickets = () => (
+    $.ajax({
+        method: 'GET',
+        url: '/api/tickets'
+    })
+);
+
 export const createTicket = ticket => (
     $.ajax ({
         method: 'POST',

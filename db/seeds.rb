@@ -48,7 +48,7 @@ e1 = Event.create!(
     starttime: "12:30 PM",
     enddate: "2020-04-04",
     endtime: "6:30 PM",
-    description: "Join us in celebratign the diverse culture of San Francisco's
+    description: "Join us in celebrating the diverse culture of San Francisco's
     own Haight-Ashbury district.",
     organizer_id: u1.id,
     category: "Food & Drink",
@@ -100,7 +100,7 @@ e5 = Event.create!(
     enddate: "2020-03-31",
     endtime: "3:30 PM",
     description: "Do you HOOP? No, you don't. Learn how to be a true baller with 
-    this once in a lifetime opportunity to play with NBA Legend Carlos Garcia.",
+    this once in a lifetime opportunity to play with App Academy Legend Carlos Garcia.",
     organizer_id: u3.id,
     category: "Sports & Fitness",
     ticket_type: "Paid"

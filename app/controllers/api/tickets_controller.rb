@@ -1,4 +1,8 @@
 class Api::TicketsController < ApplicationController
+    def index
+        @tickets = current_user.tickets
+    end
+    
     def create
         @ticket = Ticket.new(ticket_params)
         @ticket.user_id = current_user.id
@@ -12,7 +16,7 @@ class Api::TicketsController < ApplicationController
 
     def destroy
         @ticket = Ticket.find_by(id: params[:id])
-        
+
         if @ticket
             @ticket.destroy
         end

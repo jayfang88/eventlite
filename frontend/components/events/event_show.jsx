@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { faThList } from '@fortawesome/free-solid-svg-icons';
+// import { faThList } from '@fortawesome/free-solid-svg-icons';
 
 class EventShow extends React.Component {
     constructor(props) {
@@ -26,6 +26,7 @@ class EventShow extends React.Component {
     }
 
     render() {
+        // debugger;
         const {event} = this.props;
         if (!event) return null;
 
@@ -49,12 +50,15 @@ class EventShow extends React.Component {
                                 <p id='eshdd'>{date}</p>
                             </div>
                             <h2 id='esht'>{event.title}</h2>
-                            <p id='esho'>by {event.organizer.fname} {event.organizer.lname}</p>
+                            <p id='esho'>by {event.organizer.fname} {event.organizer.lname}
+                                {(this.props.currentUserId === event.organizer.id) ? (<span id='edit-event-link'><Link to={`/e/${event.id}/edit`}>Edit Your Event</Link></span>) : ''}
+                            </p>
                         </div>
                     </div>
 
                     <div id='event-show-save'>
                         <div id='es-likes-container'>
+                            {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
                             {/* things to bookmark and purchase ticket for event */}
                         </div>
                         <div id='tickets-button-container'><button id='tickets-button'>Tickets</button></div>
