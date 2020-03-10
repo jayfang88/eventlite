@@ -9,7 +9,8 @@ class Api::TicketsController < ApplicationController
         if @ticket.save
             render json: @ticket
         else
-            render json: @ticket.errors.full_messages, status: 422
+            @ticket = Ticket.new
+            render json: ['You already have a ticket'], status: 422
         end
     end
 

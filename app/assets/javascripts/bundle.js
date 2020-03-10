@@ -320,7 +320,7 @@ var signup = function signup(user) {
 /*!********************************************!*\
   !*** ./frontend/actions/ticket_actions.js ***!
   \********************************************/
-/*! exports provided: RECEIVE_TICKETS, RECEIVE_TICKET, REMOVE_TICKET, fetchTickets, createTicket, deleteTicket */
+/*! exports provided: RECEIVE_TICKETS, RECEIVE_TICKET, REMOVE_TICKET, RECEIVE_TICKET_ERRORS, fetchTickets, createTicket, deleteTicket */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -328,6 +328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TICKETS", function() { return RECEIVE_TICKETS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TICKET", function() { return RECEIVE_TICKET; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_TICKET", function() { return REMOVE_TICKET; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TICKET_ERRORS", function() { return RECEIVE_TICKET_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTickets", function() { return fetchTickets; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTicket", function() { return createTicket; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTicket", function() { return deleteTicket; });
@@ -336,6 +337,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_TICKETS = 'RECEIVE_TICKETS';
 var RECEIVE_TICKET = 'RECEIVE_TICKET';
 var REMOVE_TICKET = 'REMOVE_TICKET';
+var RECEIVE_TICKET_ERRORS = 'RECEIVE_TICKET_ERRORS';
 
 var receiveTickets = function receiveTickets(tickets) {
   return {
@@ -358,6 +360,13 @@ var removeTicket = function removeTicket(ticketId) {
   };
 };
 
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_TICKET_ERRORS,
+    errors: errors
+  };
+};
+
 var fetchTickets = function fetchTickets() {
   return function (dispatch) {
     return _util_ticket_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTickets"]().then(function (tickets) {
@@ -369,6 +378,8 @@ var createTicket = function createTicket(ticket) {
   return function (dispatch) {
     return _util_ticket_api_util__WEBPACK_IMPORTED_MODULE_0__["createTicket"](ticket).then(function (ticket) {
       return dispatch(receiveTicket(ticket));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -490,7 +501,7 @@ var mSTP = function mSTP(state, ownProps) {
       organizer_id: state.session.id,
       category: '',
       ticket_type: 'Free',
-      imageUrl: ''
+      photoFile: null
     },
     errors: state.errors.event,
     formType: 'Create Event'
@@ -574,12 +585,32 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      this.setState({
+        photoFile: e.currentTarget.files[0]
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      console.log(this.state);
-      this.props.submitEvent(this.state);
-      this.props.history.push('/');
+      var formData = new FormData();
+      formData.append('event[title]', this.state.title);
+      formData.append('event[location]', this.state.location);
+      formData.append('event[startdate]', this.state.startdate);
+      formData.append('event[starttime]', this.state.starttime);
+      formData.append('event[enddate]', this.state.enddate);
+      formData.append('event[endtime]', this.state.endtime);
+      formData.append('event[photo]', this.state.photoFile);
+      formData.append('event[description]', this.state.description);
+      formData.append('event[organizer_id]', this.state.organizer_id);
+      formData.append('event[category]', this.state.category);
+      formData.append('event[ticket_type]', this.state.ticket_type);
+      debugger;
+      this.props.submitEvent(formData).then(function (res) {
+        return console.log(res);
+      }); // this.props.history.push('/')
     }
   }, {
     key: "renderErrors",
@@ -596,19 +627,47 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-form-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Event Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "form-type"
+      }, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-form-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-form-section"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "num-boxes"
+      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Event Details")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         id: "event-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Event Title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Event Title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Give it a short distinct name",
         value: this.state.title,
         onChange: this.update('title')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Location", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        placeholder: "Search for a venue or address.",
         value: this.state.location,
         onChange: this.update('location')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Starts", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "starts-ends-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-starts-ends"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Starts", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-time-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-date",
         value: this.state.startdate,
         type: "date",
         onChange: this.update('startdate')
@@ -714,7 +773,16 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         value: "11:00 PM"
       }, "11:00 pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "11:30 PM"
-      }, "11:30 pm"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Ends", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "11:30 pm")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-starts-ends"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Ends", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-time-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-date",
         value: this.state.enddate,
         type: "date",
         onChange: this.update('enddate')
@@ -820,11 +888,34 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         value: "11:00 PM"
       }, "11:00 pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "11:30 PM"
-      }, "11:30 pm"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
+      }, "11:30 pm"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Event Image", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "form-choose-pic",
+        type: "file",
+        onChange: this.handleFile.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Event Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        id: "form-description",
         value: this.state.description,
         onChange: this.update('description')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create Tickets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What type of ticket would you like to start with?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-form-section"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "num-boxes"
+      }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create Tickets")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label",
+        id: "ticket-label"
+      }, "What type of ticket would you like to start with?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "form-ticket-type"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         checked: this.state.ticket_type === 'Free',
         value: "Free",
@@ -834,7 +925,15 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         checked: this.state.ticket_type === 'Paid',
         value: "Paid",
         onChange: this.handleTicketChange
-      }), "Paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Additional Settings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Event Topic", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }), "Paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-form-section"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "num-boxes"
+      }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Additional Settings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "form-label"
+      }, "Event Topic", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         value: this.state.category,
         id: "topic",
         onChange: this.update('category')
@@ -860,14 +959,11 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         value: "Sports & Fitness"
       }, "Sports & Fitness"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "Travel & Outdoor"
-      }, "Travel & Outdoor")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Image URL", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        value: this.state.imageUrl,
-        type: "text",
-        onChange: this.update('imageUrl')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Travel & Outdoor")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "form-submit",
         type: "submit",
         value: this.props.formType
-      })));
+      }))));
     }
   }]);
 
@@ -1136,6 +1232,17 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       return combined;
     }
   }, {
+    key: "renderTicketErrors",
+    value: function renderTicketErrors() {
+      // debugger;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.ticketErrors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "error-message",
+          key: "error-".concat(i)
+        }, "*".concat(error));
+      }));
+    }
+  }, {
     key: "handleRegistration",
     value: function handleRegistration() {
       if (this.props.currentUserId) {
@@ -1201,7 +1308,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this.handleRegistration();
         }
-      }, "Tickets"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tickets")), this.renderTicketErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-body"
@@ -1248,7 +1355,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, ownProps) {
   return {
     event: state.entities.events[ownProps.match.params.eventId],
-    currentUserId: state.session.id
+    currentUserId: state.session.id,
+    ticketErrors: state.errors.ticket
   };
 };
 
@@ -1319,7 +1427,7 @@ var UpdateEventForm = /*#__PURE__*/function (_React$Component) {
   _createClass(UpdateEventForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestEvent(this.props.event.id);
+      this.props.requestEvent(this.props.match.params.eventId);
     }
   }, {
     key: "render",
@@ -2364,12 +2472,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _event_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event_errors_reducer */ "./frontend/reducers/event_errors_reducer.js");
+/* harmony import */ var _ticket_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ticket_errors_reducer */ "./frontend/reducers/ticket_errors_reducer.js");
+
 
 
 
 var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  event: _event_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  event: _event_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  ticket: _ticket_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
 
@@ -2542,6 +2653,38 @@ var sessionReducer = function sessionReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/ticket_errors_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/ticket_errors_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
+
+
+var ticketErrorsReducer = function ticketErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TICKET"]:
+      return [];
+
+    case _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TICKET_ERRORS"]:
+      return action.errors;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ticketErrorsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/tickets_reducer.js":
 /*!**********************************************!*\
   !*** ./frontend/reducers/tickets_reducer.js ***!
@@ -2707,9 +2850,9 @@ var createEvent = function createEvent(event) {
   return $.ajax({
     method: 'POST',
     url: '/api/events',
-    data: {
-      event: event
-    }
+    data: event,
+    contentType: false,
+    processData: false
   });
 };
 var updateEvent = function updateEvent(event) {

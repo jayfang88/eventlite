@@ -1,5 +1,6 @@
 class Ticket < ApplicationRecord
     validates :user_id, :event_id, presence: true
+    # validates :user_id, uniqueness: true, on: :event_id
 
     belongs_to :user
     belongs_to :event   

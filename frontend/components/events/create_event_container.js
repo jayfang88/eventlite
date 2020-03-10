@@ -14,7 +14,7 @@ const mSTP = (state, ownProps) => ({
         organizer_id: state.session.id,
         category: '',
         ticket_type: 'Free',
-        imageUrl: ''
+        photoFile: null
     },
     errors: state.errors.event,
     formType: 'Create Event'

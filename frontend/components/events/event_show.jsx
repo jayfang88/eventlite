@@ -25,6 +25,19 @@ class EventShow extends React.Component {
         return combined;
     }
 
+    renderTicketErrors() {
+        // debugger;
+        return (
+            <ul>
+                {this.props.ticketErrors.map((error, i) => (
+                    <li className='error-message' key={`error-${i}`}>
+                        {`*${error}`}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
     handleRegistration() {
         if (this.props.currentUserId) {
             this.props.createTicket({
@@ -72,6 +85,7 @@ class EventShow extends React.Component {
                             {/* things to bookmark and purchase ticket for event */}
                         </div>
                         <div id='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>
+                        {this.renderTicketErrors()}
                     </div>
                     <div id='event-show-content'>
                         <div id='event-show-body'>

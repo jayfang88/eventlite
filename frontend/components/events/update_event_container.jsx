@@ -5,7 +5,7 @@ import EventForm from './event_form';
 
 class UpdateEventForm extends React.Component {
     componentDidMount() {
-        this.props.requestEvent(this.props.event.id)
+        this.props.requestEvent(this.props.match.params.eventId)
     }
 
     render() {
@@ -18,13 +18,11 @@ class UpdateEventForm extends React.Component {
     }
 }
 
-const mSTP = (state, ownProps) => {
-    return {
+const mSTP = (state, ownProps) => ({
     event: state.entities.events[ownProps.match.params.eventId],
     errors: state.errors.event,
     formType: 'Edit Event'
-    }
-};
+});
 
 const mDTP = dispatch => ({
     submitEvent: event => dispatch(updateEvent(event)),
