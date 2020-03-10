@@ -33,7 +33,7 @@ export const fetchTickets = () => dispatch => (
 export const createTicket = ticket => dispatch => (
     TicketApiUtil.createTicket(ticket).then(
         ticket => (dispatch(receiveTicket(ticket))),
-        err => (dispatch(receiveErrors(err.responseJSON)))
+        err => {dispatch(receiveErrors(err.responseJSON))}
     )
 );
 

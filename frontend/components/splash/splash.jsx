@@ -17,6 +17,9 @@ class Splash extends React.Component {
                         <div id='those-who'>those who do</div>
                     </div>   
                 </div>
+                <div id='search-box'>
+                    
+                </div>
                 <div id='event-index-container'>
                     <EventIndexContainer />
                 </div>

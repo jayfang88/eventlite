@@ -379,7 +379,7 @@ var createTicket = function createTicket(ticket) {
     return _util_ticket_api_util__WEBPACK_IMPORTED_MODULE_0__["createTicket"](ticket).then(function (ticket) {
       return dispatch(receiveTicket(ticket));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -602,12 +602,15 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
       formData.append('event[starttime]', this.state.starttime);
       formData.append('event[enddate]', this.state.enddate);
       formData.append('event[endtime]', this.state.endtime);
-      formData.append('event[photo]', this.state.photoFile);
+
+      if (this.state.photoFile) {
+        formData.append('event[photo]', this.state.photoFile);
+      }
+
       formData.append('event[description]', this.state.description);
       formData.append('event[organizer_id]', this.state.organizer_id);
       formData.append('event[category]', this.state.category);
       formData.append('event[ticket_type]', this.state.ticket_type);
-      debugger;
       this.props.submitEvent(formData).then(function (res) {
         return console.log(res);
       }); // this.props.history.push('/')
@@ -676,8 +679,6 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         className: "time-dropdown",
         onChange: this.update('starttime')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "default"
-      }, "--Select a start time--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "12:00 AM"
       }, "12:00 am"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "12:30 AM"
@@ -791,8 +792,6 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         className: "time-dropdown",
         onChange: this.update('endtime')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "default"
-      }, "--Select an end time--"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "12:00 AM"
       }, "12:00 am"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "12:30 AM"
@@ -2162,6 +2161,8 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       }, "Made for"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "those-who"
       }, "those who do"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "search-box"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
@@ -2255,23 +2256,36 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           user = _this$props.user,
-          tickets = _this$props.tickets;
-      if (!tickets) return null;
+          tickets = _this$props.tickets; // if (!tickets) return null;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "user-show-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "user-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "user-show-namebox"
+        id: "user-show-head"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user.fname, " ", user.lname)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "user-show-main"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "tickets-index"
+        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"],
+        id: "user-show-icon"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show-name"
+      }, user.fname, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "user-show-lname"
+      }, user.lname))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show-aside"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "user-show-label"
+      }, "Tickets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tickets-index"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "user-show-label"
+      }, "Bookmarks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bookmarks-index"
-      }))));
+      })))));
     }
   }]);
 
@@ -2356,9 +2370,9 @@ document.addEventListener('DOMContentLoaded', function () {
     delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  } // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  }
 
+  window.getState = store.getState; // window.dispatch = store.dispatch;
 
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store

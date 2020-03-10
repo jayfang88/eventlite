@@ -31,12 +31,14 @@ class EventForm extends React.Component {
         formData.append('event[starttime]', this.state.starttime)
         formData.append('event[enddate]', this.state.enddate)
         formData.append('event[endtime]', this.state.endtime)
-        formData.append('event[photo]', this.state.photoFile)
+        if (this.state.photoFile) {
+            formData.append('event[photo]', this.state.photoFile)
+        }
         formData.append('event[description]', this.state.description)
         formData.append('event[organizer_id]', this.state.organizer_id)
         formData.append('event[category]', this.state.category)
         formData.append('event[ticket_type]', this.state.ticket_type)
-        debugger;
+
         this.props.submitEvent(formData).then(res => console.log(res))
         // this.props.history.push('/')
     }
@@ -76,7 +78,6 @@ class EventForm extends React.Component {
                                 <div className='form-time-container'>
                                 <input className='form-date' value={this.state.startdate} type="date" onChange={this.update('startdate')}/>
                                 <select value={this.state.starttime} className="time-dropdown" onChange={this.update('starttime')}>
-                                    <option value="default">--Select a start time--</option>
                                     <option value="12:00 AM">12:00 am</option>
                                     <option value="12:30 AM">12:30 am</option>
                                     <option value="1:00 AM">1:00 am</option>
@@ -133,7 +134,6 @@ class EventForm extends React.Component {
                                 <div className='form-time-container'>
                                 <input className='form-date' value={this.state.enddate} type="date" onChange={this.update('enddate')}/>
                                 <select value={this.state.endtime} className="time-dropdown" onChange={this.update('endtime')}>
-                                    <option value="default">--Select an end time--</option>
                                     <option value="12:00 AM">12:00 am</option>
                                     <option value="12:30 AM">12:30 am</option>
                                     <option value="1:00 AM">1:00 am</option>
