@@ -972,7 +972,7 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(EventIndexItem, [{
     key: "combineDate",
     value: function combineDate(eventDate, eventTime) {
-      var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       var newDate = new Date(eventDate);
       var day = days[newDate.getDay()];
@@ -1059,7 +1059,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "convertDate",
     value: function convertDate(eventDate) {
-      var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       var fullDate = new Date(eventDate);
       var day = days[fullDate.getDay()];

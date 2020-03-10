@@ -12,7 +12,7 @@ User.delete_all
 
 u1 = User.create!(
     email: 'jfang@test.com',
-    fname: 'Jestan',
+    fname: 'Justin',
     lname: 'Fang',
     password: 'password'
 )
@@ -88,7 +88,7 @@ e4 = Event.create!(
     description: "Ever wanted to learn how to weave baskets under 
     immense pressure? Now you can with underwater basket weaving! Scuba gear will 
     not be provided.",
-    organizer_id: u2.id,
+    organizer_id: u1.id,
     category: "Hobbies & Special Interest",
     ticket_type: "Paid"
 )
@@ -148,6 +148,11 @@ e8 = Event.create!(
 # file = open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/dunk1.jpg')
 # e1.photo.attach(io: File.open('/Users/jf/Documents/eventlite/dunk1.jpg'), filename: 'dunk')
 
-Event.all.each do |e|
-    e.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/dunk1.jpg'), filename: 'dunk')
-end
+e1.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/haight-ashbury.jpg'), filename: 'haightasbhury')
+e2.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/birthday.jpg'), filename: 'birthday')
+e3.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/yoga.jpg'), filename: 'yoga')
+e4.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/underwater.jpg'), filename: 'underwater')
+e5.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/dunk1.jpg'), filename: 'dunk')
+e6.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/brownies.jpg'), filename: 'chefryan')
+e7.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/djdanny.jpg'), filename: 'djdanny')
+e8.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/nap.jpg'), filename: 'nappods')
