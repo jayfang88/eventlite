@@ -920,12 +920,14 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         checked: this.state.ticket_type === 'Free',
         value: "Free",
         onChange: this.handleTicketChange
-      }), "Free", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Free Ticket"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "space-between"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         checked: this.state.ticket_type === 'Paid',
         value: "Paid",
         onChange: this.handleTicketChange
-      }), "Paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Paid Ticket")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-form-section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "num-boxes"

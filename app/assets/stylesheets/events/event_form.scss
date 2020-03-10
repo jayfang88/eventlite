@@ -66,7 +66,6 @@
 
 #starts-ends-container {
     display: flex;
-    // justify-content: space-between;
     width: 600px;
 }
 
@@ -116,21 +115,41 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
+    margin-bottom: 20px;
 }
-
 #form-ticket-type {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
 }
+#space-between {
+    width: 30px;
+}
+
+// #form-ticket-type input[type=radio] {
+//     opacity: 0;
+//     position: fixed;
+//     width: 0;
+// }
+// #form-ticket-type label {
+//     display: inline-block;
+//     background-color: #ddd;
+//     padding: 10px 20px;
+//     font-size: 16px;
+//     border: 2px solid #444;
+//     border-radius: 4px;
+// }
+// #form-ticket-type input[type=radio]:checked + label {
+//     background-color: #bfb;
+//     border-color: #4c4;
+// }
 
 #topic {
     width: 400px;
     height: 40px;
     background-color: white;
-
     border: 1px solid rgb(221, 221, 221);
 }
 

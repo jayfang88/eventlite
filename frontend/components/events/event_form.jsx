@@ -200,8 +200,9 @@ class EventForm extends React.Component {
 
                         <label className='form-label' id='ticket-label'>What type of ticket would you like to start with?<span id='red-asterisk'>*</span></label>
                         <div id='form-ticket-type'>
-                            <input type="radio" checked={this.state.ticket_type === 'Free'} value='Free' onChange={this.handleTicketChange}/>Free
-                            <input type="radio" checked={this.state.ticket_type === 'Paid'} value='Paid' onChange={this.handleTicketChange} />Paid
+                            <input type="radio" checked={this.state.ticket_type === 'Free'} value='Free' onChange={this.handleTicketChange} /><label>Free Ticket</label>
+                            <div id='space-between'></div>
+                            <input type="radio" checked={this.state.ticket_type === 'Paid'} value='Paid' onChange={this.handleTicketChange} /><label>Paid Ticket</label>
                         </div>
 
                         <div className='event-form-section'>
