@@ -8,6 +8,7 @@ class EventShow extends React.Component {
 
     componentDidMount() {
         this.props.requestEvent(this.props.match.params.eventId)
+        
     }
 
     convertDate(eventDate) {

@@ -86,6 +86,72 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/bookmark_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/bookmark_actions.js ***!
+  \**********************************************/
+/*! exports provided: RECEIVE_BOOKMARKS, RECEIVE_BOOKMARK, REMOVE_BOOKMARK, fetchBookmarks, createBookmark, deleteBookmark */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BOOKMARKS", function() { return RECEIVE_BOOKMARKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BOOKMARK", function() { return RECEIVE_BOOKMARK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_BOOKMARK", function() { return REMOVE_BOOKMARK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBookmarks", function() { return fetchBookmarks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBookmark", function() { return createBookmark; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBookmark", function() { return deleteBookmark; });
+/* harmony import */ var _util_bookmark_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/bookmark_api_util */ "./frontend/util/bookmark_api_util.js");
+
+var RECEIVE_BOOKMARKS = 'RECEIVE_BOOKMARKS';
+var RECEIVE_BOOKMARK = 'RECEIVE_BOOKMARK';
+var REMOVE_BOOKMARK = 'REMOVE_BOOKMARK';
+
+var receiveBookmarks = function receiveBookmarks(bookmarks) {
+  return {
+    type: RECEIVE_BOOKMARKS,
+    bookmarks: bookmarks
+  };
+};
+
+var reciveBookmark = function reciveBookmark(bookmark) {
+  return {
+    type: RECEIVE_BOOKMARK,
+    bookmark: bookmark
+  };
+};
+
+var removeBookmark = function removeBookmark(bookmarkId) {
+  return {
+    type: REMOVE_BOOKMARK,
+    bookmarkId: bookmarkId
+  };
+};
+
+var fetchBookmarks = function fetchBookmarks() {
+  return function (dispatch) {
+    return _util_bookmark_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBookmarks"]().then(function (bookmarks) {
+      return dispatch(receiveBookmarks(bookmarks));
+    });
+  };
+};
+var createBookmark = function createBookmark(bookmark) {
+  return function (dispatch) {
+    return _util_bookmark_api_util__WEBPACK_IMPORTED_MODULE_0__["createBookmark"](bookmark).then(function (bookmark) {
+      return dispatch(receiveBookmark(bookmark));
+    });
+  };
+};
+var deleteBookmark = function deleteBookmark(bookmarkId) {
+  return function (dispatch) {
+    return _util_bookmark_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteBookmark"](bookmarkId).then(function () {
+      return dispatch(removeBookmark(bookmarkId));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/event_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/event_actions.js ***!
@@ -2157,11 +2223,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/event_actions */ "./frontend/actions/event_actions.js");
-/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
 
 
 
@@ -2184,11 +2246,10 @@ document.addEventListener('DOMContentLoaded', function () {
     delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  }
+  } // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.fetchTickets = _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_5__["fetchTickets"];
+
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
@@ -2223,6 +2284,45 @@ var thunkMiddleware = function thunkMiddleware(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/reducers/bookmarks_reducer.js":
+/*!************************************************!*\
+  !*** ./frontend/reducers/bookmarks_reducer.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
+
+
+var bookmarksReducer = function bookmarksReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOOKMARKS"]:
+      return action.bookmarks;
+
+    case _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOOKMARK"]:
+      newState[action.bookmark.id] = action.bookmark;
+      return newState;
+
+    case _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_BOOKMARK"]:
+      delete newState[action.bookmarkId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (bookmarksReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -2236,6 +2336,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _events_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./events_reducer */ "./frontend/reducers/events_reducer.js");
 /* harmony import */ var _tickets_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tickets_reducer */ "./frontend/reducers/tickets_reducer.js");
+/* harmony import */ var _bookmarks_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bookmarks_reducer */ "./frontend/reducers/bookmarks_reducer.js");
+
 
 
 
@@ -2243,7 +2345,8 @@ __webpack_require__.r(__webpack_exports__);
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   events: _events_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  tickets: _tickets_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  tickets: _tickets_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  bookmarks: _bookmarks_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2538,6 +2641,39 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/bookmark_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/bookmark_api_util.js ***!
+  \********************************************/
+/*! exports provided: fetchBookmarks, createBookmark, deleteBookmark */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBookmarks", function() { return fetchBookmarks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBookmark", function() { return createBookmark; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBookmark", function() { return deleteBookmark; });
+var fetchBookmarks = function fetchBookmarks() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/bookmarks'
+  });
+};
+var createBookmark = function createBookmark(bookmark) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/bookmarks'
+  });
+};
+var deleteBookmark = function deleteBookmark(bookmarkId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/bookmarks/".concat(bookmarkId)
+  });
+};
 
 /***/ }),
 

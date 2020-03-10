@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { requestEvents } from './actions/event_actions';
-import { fetchTickets } from './actions/ticket_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
@@ -22,9 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         store = configureStore();
     }
 
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
-    window.fetchTickets = fetchTickets;
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
     
     ReactDOM.render(<Root store={store} />, root);
 });
