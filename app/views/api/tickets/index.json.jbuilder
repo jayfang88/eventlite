@@ -1,5 +1,5 @@
-json.tickets do |ticket|
+@tickets.each do |ticket|
     json.set! ticket.id do
-        ticket.extract! ticket, :user_id, :event_id
+        json.extract! ticket, :id, :user_id, :event_id
     end
 end

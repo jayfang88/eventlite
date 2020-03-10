@@ -21,13 +21,15 @@ const removeTicket = ticketId => ({
 
 export const fetchTickets = () => dispatch => (
     TicketApiUtil.fetchTickets()
-        .then(tickets => dispatch(receiveTickets()))
+        .then(tickets => dispatch(receiveTickets(tickets)))
 );
 
-export const createTicket = ticket => dispatch => (
+export const createTicket = ticket => dispatch => {
+    return (
     TicketApiUtil.createTicket(ticket)
         .then(ticket => dispatch(receiveTicket(ticket)))
-);
+    )
+};
 
 export const deleteTicket = ticketId => dispatch => (
     TicketApiUtil.deleteTicket(ticketId)

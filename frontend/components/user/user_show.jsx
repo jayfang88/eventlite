@@ -9,17 +9,28 @@ class UserShow extends React.Component {
     }
 
     componentDidMount() {
-        // debugger;
         this.props.fetchTickets()
-        debugger;
     }
 
     render() {
-        const { user } = this.props
+        const { user, tickets } = this.props
+        if (!tickets) return null;
         return(
-            <div>
-                <FontAwesomeIcon icon={faUser} />
-                <div>{user.fname} {user.lname}</div>
+            <div id='user-show-page'>
+                <div id='user-show'>
+                    <div id='user-show-namebox'>
+                        <FontAwesomeIcon icon={faUser} />
+                        <div>{user.fname} {user.lname}</div>
+                    </div>
+                    <div id='user-show-main'>
+                        <div id='tickets-index'>
+                            {/* TICKETS INDEX or EVENTS INDEX */}
+                        </div>
+                        <div id='bookmarks-index'>
+                            {/* BOOKMARKS INDEX or EVENTS INDEX */}
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

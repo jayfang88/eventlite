@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { faThList } from '@fortawesome/free-solid-svg-icons';
 
 class EventShow extends React.Component {
     constructor(props) {
@@ -18,22 +17,32 @@ class EventShow extends React.Component {
         let fullDate = new Date(eventDate);
         let day = days[fullDate.getDay()];
         let month = months[fullDate.getMonth()];
-        let date = fullDate.getDate();
+        let date = fullDate.getDate()+1;
         let yr = fullDate.getFullYear();
 
         let combined = `${day}, ${month} ${date}, ${yr}`;
         return combined;
     }
 
+    handleRegistration() {
+        if (this.props.currentUserId) {
+            this.props.createTicket({
+                user_id: this.props.currentUserId,
+                event_id: this.props.event.id,
+            })
+        } else {
+            this.props.history.push('/login')
+        }
+    }
+
     render() {
-        // debugger;
         const {event} = this.props;
         if (!event) return null;
 
         let newDate = new Date(event.startdate);
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         let mon = months[newDate.getMonth()];
-        let date = newDate.getDate();
+        let date = newDate.getDate()+1;
 
         return(
             <div id='event-show'>
@@ -61,7 +70,7 @@ class EventShow extends React.Component {
                             {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
                             {/* things to bookmark and purchase ticket for event */}
                         </div>
-                        <div id='tickets-button-container'><button id='tickets-button'>Tickets</button></div>
+                        <div id='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>
                     </div>
                     <div id='event-show-content'>
                         <div id='event-show-body'>

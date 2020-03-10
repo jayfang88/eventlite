@@ -19,7 +19,6 @@ class UpdateEventForm extends React.Component {
 }
 
 const mSTP = (state, ownProps) => {
-    // debugger;
     return {
     event: state.entities.events[ownProps.match.params.eventId],
     errors: state.errors.event,

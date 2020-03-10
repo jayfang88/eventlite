@@ -295,7 +295,7 @@ var removeTicket = function removeTicket(ticketId) {
 var fetchTickets = function fetchTickets() {
   return function (dispatch) {
     return _util_ticket_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTickets"]().then(function (tickets) {
-      return dispatch(receiveTickets());
+      return dispatch(receiveTickets(tickets));
     });
   };
 };
@@ -384,7 +384,7 @@ var App = function App() {
     exact: true,
     path: "/e/:eventId/edit",
     component: _events_update_event_container__WEBPACK_IMPORTED_MODULE_12__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["ProtectedRoute"], {
     exact: true,
     path: "/u/:userId",
     component: _user_user_show_container__WEBPACK_IMPORTED_MODULE_13__["default"]
@@ -1040,7 +1040,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // import { faThList } from '@fortawesome/free-solid-svg-icons';
+
 
 var EventShow = /*#__PURE__*/function (_React$Component) {
   _inherits(EventShow, _React$Component);
@@ -1064,21 +1064,34 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       var fullDate = new Date(eventDate);
       var day = days[fullDate.getDay()];
       var month = months[fullDate.getMonth()];
-      var date = fullDate.getDate();
+      var date = fullDate.getDate() + 1;
       var yr = fullDate.getFullYear();
       var combined = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(yr);
       return combined;
     }
   }, {
+    key: "handleRegistration",
+    value: function handleRegistration() {
+      if (this.props.currentUserId) {
+        this.props.createTicket({
+          user_id: this.props.currentUserId,
+          event_id: this.props.event.id
+        });
+      } else {
+        this.props.history.push('/login');
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      // debugger;
+      var _this = this;
+
       var event = this.props.event;
       if (!event) return null;
       var newDate = new Date(event.startdate);
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       var mon = months[newDate.getMonth()];
-      var date = newDate.getDate();
+      var date = newDate.getDate() + 1;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1118,7 +1131,10 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tickets-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "tickets-button"
+        id: "tickets-button",
+        onClick: function onClick() {
+          return _this.handleRegistration();
+        }
       }, "Tickets"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1156,7 +1172,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
-/* harmony import */ var _event_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event_show */ "./frontend/components/events/event_show.jsx");
+/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
+/* harmony import */ var _event_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event_show */ "./frontend/components/events/event_show.jsx");
+
 
 
 
@@ -1175,11 +1193,14 @@ var mDTP = function mDTP(dispatch) {
     },
     deleteEvent: function deleteEvent(eventId) {
       return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["deleteEvent"])(eventId));
+    },
+    createTicket: function createTicket(ticket) {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["createTicket"])(ticket));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1256,7 +1277,6 @@ var UpdateEventForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mSTP = function mSTP(state, ownProps) {
-  // debugger;
   return {
     event: state.entities.events[ownProps.match.params.eventId],
     errors: state.errors.event,
@@ -2052,17 +2072,30 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   _createClass(UserShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger;
       this.props.fetchTickets();
-      debugger;
     }
   }, {
     key: "render",
     value: function render() {
-      var user = this.props.user;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+      var _this$props = this.props,
+          user = _this$props.user,
+          tickets = _this$props.tickets;
+      if (!tickets) return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show-page"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show-namebox"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user.fname, " ", user.lname));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user.fname, " ", user.lname)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "user-show-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "tickets-index"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bookmarks-index"
+      }))));
     }
   }]);
 
@@ -2092,14 +2125,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    tickets: state.entities.tickets
   };
 };
 
 var mDTP = function mDTP(dispatch) {
   return {
     fetchTickets: function fetchTickets() {
-      return dispatch(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__["fetchTickets"]);
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__["fetchTickets"])());
     }
   };
 };
@@ -2124,7 +2158,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/event_actions */ "./frontend/actions/event_actions.js");
+/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2151,6 +2187,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.fetchTickets = _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_5__["fetchTickets"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
