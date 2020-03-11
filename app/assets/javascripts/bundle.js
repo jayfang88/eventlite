@@ -2348,6 +2348,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var _this$props = this.props,
           user = _this$props.user,
           tickets = _this$props.tickets,

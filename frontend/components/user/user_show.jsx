@@ -14,6 +14,7 @@ class UserShow extends React.Component {
     }
 
     render() {
+        debugger;
         const { user, tickets, deleteTicket } = this.props
         if (Object.values(tickets).length === 0) return null;
 
