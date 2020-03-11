@@ -472,6 +472,64 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./frontend/components/bookmarks/bookmark_index_item.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/bookmarks/bookmark_index_item.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var BookmarkIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(BookmarkIndexItem, _React$Component);
+
+  function BookmarkIndexItem(props) {
+    _classCallCheck(this, BookmarkIndexItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BookmarkIndexItem).call(this, props));
+  }
+
+  _createClass(BookmarkIndexItem, [{
+    key: "render",
+    value: function render() {
+      var event = this.props.bookmark.event;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bookmark-item"
+      }, event.title);
+    }
+  }]);
+
+  return BookmarkIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (BookmarkIndexItem);
+
+/***/ }),
+
 /***/ "./frontend/components/events/create_event_container.js":
 /*!**************************************************************!*\
   !*** ./frontend/components/events/create_event_container.js ***!
@@ -2354,6 +2412,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
 /* harmony import */ var _tickets_ticket_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tickets/ticket_index_item */ "./frontend/components/tickets/ticket_index_item.jsx");
+/* harmony import */ var _bookmarks_bookmark_index_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../bookmarks/bookmark_index_item */ "./frontend/components/bookmarks/bookmark_index_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2377,6 +2436,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var UserShow = /*#__PURE__*/function (_React$Component) {
   _inherits(UserShow, _React$Component);
 
@@ -2390,19 +2450,20 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchTickets();
+      this.props.fetchBookmarks();
     }
   }, {
     key: "render",
     value: function render() {
-      // debugger;
       var _this$props = this.props,
           user = _this$props.user,
           tickets = _this$props.tickets,
-          deleteTicket = _this$props.deleteTicket;
-      var events;
+          deleteTicket = _this$props.deleteTicket,
+          bookmarks = _this$props.bookmarks;
+      var tix;
 
       if (tickets.events) {
-        events = Object.values(tickets.events).map(function (event, i) {
+        tix = Object.values(tickets.events).map(function (event, i) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tickets_ticket_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
             key: i,
             event: event
@@ -2410,7 +2471,28 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           ;
         });
       } else {
-        events = 'No Upcoming Events';
+        tix = 'No Upcoming Events';
+      } // let tix
+      // if (Object.values(tickets).length > 0) {
+      //     tix = Object.values(tickets).map((ticket, i) => (
+      //         <TicketIndexItem key={i} ticket={ticket} />
+      //     ))
+      // } else {
+      //     tix = 'No upcoming events.'
+      // }
+
+
+      var bookmx;
+
+      if (Object.values(bookmarks).length > 0) {
+        bookmx = Object.values(bookmarks).map(function (bookmark, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_bookmarks_bookmark_index_item__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            key: i,
+            bookmark: bookmark
+          });
+        });
+      } else {
+        bookmx = 'No Bookmarks';
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2436,13 +2518,13 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-label"
       }, "Tickets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tickets-index"
-      }, events), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, tix), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "border-bottom"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "user-show-label"
       }, "Bookmarks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bookmarks-index"
-      })))));
+      }, bookmx)))));
     }
   }]);
 
@@ -2465,7 +2547,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
-/* harmony import */ var _user_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_show */ "./frontend/components/user/user_show.jsx");
+/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
+/* harmony import */ var _user_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user_show */ "./frontend/components/user/user_show.jsx");
+
 
 
 
@@ -2473,7 +2557,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     user: state.entities.users[state.session.id],
-    tickets: state.entities.tickets
+    tickets: state.entities.tickets,
+    bookmarks: state.entities.bookmarks
   };
 };
 
@@ -2484,11 +2569,14 @@ var mDTP = function mDTP(dispatch) {
     },
     deleteTicket: function deleteTicket(ticketId) {
       return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__["deleteTicket"])(ticketId));
+    },
+    fetchBookmarks: function fetchBookmarks() {
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["fetchBookmarks"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_user_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_user_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 

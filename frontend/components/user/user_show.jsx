@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import TicketIndexItem from '../tickets/ticket_index_item';
+import BookmarkIndexItem from '../bookmarks/bookmark_index_item';
 
 
 class UserShow extends React.Component {
@@ -11,20 +12,37 @@ class UserShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchTickets()
+        this.props.fetchBookmarks()
     }
 
     render() {
-        // debugger;
-        const { user, tickets, deleteTicket } = this.props
+        const { user, tickets, deleteTicket, bookmarks } = this.props
 
-        let events
+        let tix
         if (tickets.events) {
-            events = Object.values(tickets.events).map((event, i) => (
+            tix = Object.values(tickets.events).map((event, i) => (
                 <TicketIndexItem key={i} event={event} />
                 // BUTTON TO DELETE TICKET?
             ))
         } else {
-            events = 'No Upcoming Events'
+            tix = 'No Upcoming Events'
+        }
+        // let tix
+        // if (Object.values(tickets).length > 0) {
+        //     tix = Object.values(tickets).map((ticket, i) => (
+        //         <TicketIndexItem key={i} ticket={ticket} />
+        //     ))
+        // } else {
+        //     tix = 'No upcoming events.'
+        // }
+
+        let bookmx
+        if (Object.values(bookmarks).length > 0) {
+            bookmx = Object.values(bookmarks).map((bookmark, i) => (
+                <BookmarkIndexItem key={i} bookmark={bookmark} />
+            ))
+        } else {
+            bookmx = 'No Bookmarks'
         }
 
         return(
@@ -41,12 +59,12 @@ class UserShow extends React.Component {
                         <div id='user-show-main'>
                             <h2 className='user-show-label'>Tickets</h2>
                             <div id='tickets-index'>
-                                { events }
+                                { tix }
                             </div>
                             <div id='border-bottom'></div>
                             <h2 className='user-show-label'>Bookmarks</h2>
                             <div id='bookmarks-index'>
-                                {/* { bookmarks } */}
+                                { bookmx }
                             </div>
                         </div>
                     </div>
