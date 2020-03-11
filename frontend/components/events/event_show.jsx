@@ -40,6 +40,19 @@ class EventShow extends React.Component {
         )
     }
 
+    handleBookmark() {
+        if (this.props.currentUserId) {
+            if (!this.props.event.current_user_bookmarked) {
+                this.props.createBookmark({
+                    user_id: this.props.currentUserId,
+                    event_id: this.props.event.id
+                })
+            } else {
+                this.props.deleteBookmark(this.props.event.bookmark.id)
+            }
+        }
+    }
+
     handleRegistration() {
         if (this.props.currentUserId) {
             this.props.createTicket({
@@ -52,6 +65,7 @@ class EventShow extends React.Component {
     }
 
     render() {
+        // debugger;
         const {event} = this.props;
         if (!event) return null;
 
@@ -83,10 +97,9 @@ class EventShow extends React.Component {
 
                     <div id='event-show-save'>
                         <div id='es-likes-container'>
-                            <button className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmark-icon' /></button>
+                            <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmark-icon' /></button>
                             <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
                             {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
-                            {/* things to bookmark and purchase ticket for event */}
                         </div>
                         <div id='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>
                         {this.renderTicketErrors()}

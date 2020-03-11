@@ -3,6 +3,7 @@ import { RECEIVE_BOOKMARKS, RECEIVE_BOOKMARK, REMOVE_BOOKMARK } from '../actions
 const bookmarksReducer = (state = {}, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
+    
     switch (action.type) {
         case RECEIVE_BOOKMARKS:
             return action.bookmarks

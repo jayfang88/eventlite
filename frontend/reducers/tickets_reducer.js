@@ -3,6 +3,7 @@ import { RECEIVE_TICKETS, RECEIVE_TICKET, REMOVE_TICKET } from '../actions/ticke
 const ticketsReducer = (state={}, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
+    
     switch (action.type) {
         case RECEIVE_TICKETS:
             return action.tickets

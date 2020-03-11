@@ -14,7 +14,7 @@ class UserShow extends React.Component {
     }
 
     render() {
-        debugger;
+        // debugger;
         const { user, tickets, deleteTicket } = this.props
 
         let events

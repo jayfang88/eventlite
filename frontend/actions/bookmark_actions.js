@@ -9,7 +9,7 @@ const receiveBookmarks = bookmarks => ({
     bookmarks
 });
 
-const reciveBookmark = bookmark => ({
+const receiveBookmark = bookmark => ({
     type: RECEIVE_BOOKMARK,
     bookmark
 });

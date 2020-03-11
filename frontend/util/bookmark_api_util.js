@@ -8,7 +8,8 @@ export const fetchBookmarks = () => (
 export const createBookmark = bookmark => (
     $.ajax({
         method: 'POST',
-        url: '/api/bookmarks'
+        url: '/api/bookmarks',
+        data: { bookmark }
     })
 );
 

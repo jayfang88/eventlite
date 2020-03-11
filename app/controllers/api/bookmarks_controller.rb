@@ -9,15 +9,16 @@ class Api::BookmarksController < ApplicationController
         if @bookmark.save
             render json: @bookmark
         else
+            @bookmark = Bookmark.new
             render json: @bookmark.errors.full_messages, status: 422
         end
     end
 
     def destroy
-        @bookmark = Bookmar.find_by(id: params[:id])
+        @bookmark = Bookmark.find_by(id: params[:id])
 
         if @bookmark
-            @bookmar.destroye
+            @bookmark.destroy
         end
     end
 
