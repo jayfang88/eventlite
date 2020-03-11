@@ -2202,10 +2202,10 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/user/user_show.jsx":
-/*!************************************************!*\
-  !*** ./frontend/components/user/user_show.jsx ***!
-  \************************************************/
+/***/ "./frontend/components/tickets/ticket_index_item.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/tickets/ticket_index_item.jsx ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2213,8 +2213,7 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2232,6 +2231,93 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(TicketIndexItem, _React$Component);
+
+  function TicketIndexItem(props) {
+    _classCallCheck(this, TicketIndexItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TicketIndexItem).call(this, props));
+  }
+
+  _createClass(TicketIndexItem, [{
+    key: "combineDate",
+    value: function combineDate(eventDate, eventTime) {
+      var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var newDate = new Date(eventDate);
+      var day = days[newDate.getDay()];
+      var month = months[newDate.getMonth()];
+      var date = newDate.getDate() + 1;
+      var time = eventTime.split(' ').join('').toLowerCase();
+      return "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(time);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var event = this.props.event;
+      var newDate = new Date(event.startdate);
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var mon = months[newDate.getMonth()];
+      var date = newDate.getDate() + 1;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-item-date"
+      }, mon, " ", date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/e/".concat(event.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "ticket-img",
+        src: event.photoUrl,
+        alt: "ticket-photo"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.combineDate(event.startdate, event.starttime)));
+    }
+  }]);
+
+  return TicketIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (TicketIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/user/user_show.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/user/user_show.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var _tickets_ticket_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tickets/ticket_index_item */ "./frontend/components/tickets/ticket_index_item.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2256,8 +2342,16 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           user = _this$props.user,
-          tickets = _this$props.tickets; // if (!tickets) return null;
-
+          tickets = _this$props.tickets,
+          deleteTicket = _this$props.deleteTicket;
+      if (Object.values(tickets).length === 0) return null;
+      var events = Object.values(tickets.events).map(function (event, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tickets_ticket_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: i,
+          event: event
+        }) // <button>I don't wanna go anymore</button>
+        ;
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "user-show-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2281,7 +2375,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-label"
       }, "Tickets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tickets-index"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, events), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "user-show-label"
       }, "Bookmarks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bookmarks-index"
@@ -2324,6 +2418,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     fetchTickets: function fetchTickets() {
       return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__["fetchTickets"])());
+    },
+    deleteTicket: function deleteTicket(ticketId) {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__["deleteTicket"])(ticketId));
     }
   };
 };

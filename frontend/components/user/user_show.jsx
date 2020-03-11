@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import TicketIndexItem from '../tickets/ticket_index_item';
 
 
 class UserShow extends React.Component {
@@ -13,8 +14,14 @@ class UserShow extends React.Component {
     }
 
     render() {
-        const { user, tickets } = this.props
-        // if (!tickets) return null;
+        const { user, tickets, deleteTicket } = this.props
+        if (Object.values(tickets).length === 0) return null;
+
+        let events = Object.values(tickets.events).map((event, i) => (
+            <TicketIndexItem key={i} event={event} />
+            // <button>I don't wanna go anymore</button>
+        ))
+
         return(
             <div id='user-show-page'>
                 <div id='user-show'>
@@ -29,11 +36,11 @@ class UserShow extends React.Component {
                         <div id='user-show-main'>
                             <h2 className='user-show-label'>Tickets</h2>
                             <div id='tickets-index'>
-                                {/* TICKETS INDEX or EVENTS INDEX */}
+                                { events }
                             </div>
                             <h2 className='user-show-label'>Bookmarks</h2>
                             <div id='bookmarks-index'>
-                                {/* BOOKMARKS INDEX or EVENTS INDEX */}
+                                {/* { bookmarks } */}
                             </div>
                         </div>
                     </div>
