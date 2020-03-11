@@ -27,19 +27,11 @@ class UserShow extends React.Component {
         } else {
             tix = 'No Upcoming Events'
         }
-        // let tix
-        // if (Object.values(tickets).length > 0) {
-        //     tix = Object.values(tickets).map((ticket, i) => (
-        //         <TicketIndexItem key={i} ticket={ticket} />
-        //     ))
-        // } else {
-        //     tix = 'No upcoming events.'
-        // }
 
         let bookmx
-        if (Object.values(bookmarks).length > 0) {
-            bookmx = Object.values(bookmarks).map((bookmark, i) => (
-                <BookmarkIndexItem key={i} bookmark={bookmark} />
+        if (bookmarks.events) {
+            bookmx = Object.values(bookmarks.events).map((event, i) => (
+                <BookmarkIndexItem key={i} event={event} />
             ))
         } else {
             bookmx = 'No Bookmarks'

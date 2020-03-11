@@ -11,4 +11,4 @@ end
 json.partial! 'api/events/event', event: @event
 json.current_user_attending (tickets.length > 0)
 json.current_user_bookmarked (bookmarks.length > 0)
-json.bookmark bookmark
+json.bookmarkId bookmark.id if bookmark

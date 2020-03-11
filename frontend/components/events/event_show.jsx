@@ -46,27 +46,30 @@ class EventShow extends React.Component {
                 this.props.createBookmark({
                     user_id: this.props.currentUserId,
                     event_id: this.props.event.id
-                })
+                }, this.props.event.id)
             } else {
-                this.props.deleteBookmark(this.props.event.bookmark.id)
+                this.props.deleteBookmark(this.props.event.bookmarkId, this.props.event.id)
             }
         }
     }
 
     handleRegistration() {
         if (this.props.currentUserId) {
-            this.props.createTicket({
-                user_id: this.props.currentUserId,
-                event_id: this.props.event.id,
-            })
+            if (!this.props.event.current_user_attending) {
+                this.props.createTicket({
+                    user_id: this.props.currentUserId,
+                    event_id: this.props.event.id,
+                })
+            } else {
+                this.props.deleteTicket(this.props.event.ticket.id)
+            }
         } else {
             this.props.history.push('/login')
         }
     }
 
     render() {
-        // debugger;
-        const {event} = this.props;
+        const {event, bookmarked} = this.props;
         if (!event) return null;
 
         let newDate = new Date(event.startdate);
@@ -97,7 +100,11 @@ class EventShow extends React.Component {
 
                     <div id='event-show-save'>
                         <div id='es-likes-container'>
-                            <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmark-icon' /></button>
+                            {!bookmarked ? (
+                                <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmark-icon' /></button>
+                            ) : (
+                                <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmarked-icon' /></button>
+                            )}
                             <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
                             {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
                         </div>

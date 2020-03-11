@@ -40,10 +40,9 @@ class EventForm extends React.Component {
         formData.append('event[organizer_id]', this.state.organizer_id)
         formData.append('event[category]', this.state.category)
         formData.append('event[ticket_type]', this.state.ticket_type)
-        // debugger;
-        this.props.submitEvent(formData).then(res => (
-            this.props.history.push(`/e/${res.event.id}`)
-        ))
+
+        this.props.submitEvent(formData)
+            .then(res => (this.props.history.push(`/e/${res.event.id}`)))
     }
 
     renderErrors() {

@@ -12,8 +12,10 @@ class UpdateEventForm extends React.Component {
         const {event, errors, formType, submitEvent } = this.props;
 
         if (!event) return null
+
+        const { history } = this.props
         return (
-            <EventForm event={event} errors={errors} formType={formType} submitEvent={submitEvent} />
+            <EventForm history={history} event={event} errors={errors} formType={formType} submitEvent={submitEvent} />
         )
     }
 }

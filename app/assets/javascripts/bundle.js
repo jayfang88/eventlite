@@ -114,17 +114,19 @@ var receiveBookmarks = function receiveBookmarks(bookmarks) {
   };
 };
 
-var receiveBookmark = function receiveBookmark(bookmark) {
+var receiveBookmark = function receiveBookmark(bookmark, eventId) {
   return {
     type: RECEIVE_BOOKMARK,
-    bookmark: bookmark
+    bookmark: bookmark,
+    eventId: eventId
   };
 };
 
-var removeBookmark = function removeBookmark(bookmarkId) {
+var removeBookmark = function removeBookmark(bookmarkId, eventId) {
   return {
     type: REMOVE_BOOKMARK,
-    bookmarkId: bookmarkId
+    bookmarkId: bookmarkId,
+    eventId: eventId
   };
 };
 
@@ -135,17 +137,17 @@ var fetchBookmarks = function fetchBookmarks() {
     });
   };
 };
-var createBookmark = function createBookmark(bookmark) {
+var createBookmark = function createBookmark(bookmark, eventId) {
   return function (dispatch) {
     return _util_bookmark_api_util__WEBPACK_IMPORTED_MODULE_0__["createBookmark"](bookmark).then(function (bookmark) {
-      return dispatch(receiveBookmark(bookmark));
+      return dispatch(receiveBookmark(bookmark, eventId));
     });
   };
 };
-var deleteBookmark = function deleteBookmark(bookmarkId) {
+var deleteBookmark = function deleteBookmark(bookmarkId, eventId) {
   return function (dispatch) {
     return _util_bookmark_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteBookmark"](bookmarkId).then(function () {
-      return dispatch(removeBookmark(bookmarkId));
+      return dispatch(removeBookmark(bookmarkId, eventId));
     });
   };
 };
@@ -515,7 +517,7 @@ var BookmarkIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(BookmarkIndexItem, [{
     key: "render",
     value: function render() {
-      var event = this.props.bookmark.event;
+      var event = this.props.event;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bookmark-item"
       }, event.title);
@@ -673,8 +675,7 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
       formData.append('event[description]', this.state.description);
       formData.append('event[organizer_id]', this.state.organizer_id);
       formData.append('event[category]', this.state.category);
-      formData.append('event[ticket_type]', this.state.ticket_type); // debugger;
-
+      formData.append('event[ticket_type]', this.state.ticket_type);
       this.props.submitEvent(formData).then(function (res) {
         return _this3.props.history.push("/e/".concat(res.event.id));
       });
@@ -1319,9 +1320,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
           this.props.createBookmark({
             user_id: this.props.currentUserId,
             event_id: this.props.event.id
-          });
+          }, this.props.event.id);
         } else {
-          this.props.deleteBookmark(this.props.event.bookmark.id);
+          this.props.deleteBookmark(this.props.event.bookmarkId, this.props.event.id);
         }
       }
     }
@@ -1329,10 +1330,14 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     key: "handleRegistration",
     value: function handleRegistration() {
       if (this.props.currentUserId) {
-        this.props.createTicket({
-          user_id: this.props.currentUserId,
-          event_id: this.props.event.id
-        });
+        if (!this.props.event.current_user_attending) {
+          this.props.createTicket({
+            user_id: this.props.currentUserId,
+            event_id: this.props.event.id
+          });
+        } else {
+          this.props.deleteTicket(this.props.event.ticket.id);
+        }
       } else {
         this.props.history.push('/login');
       }
@@ -1342,8 +1347,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      // debugger;
-      var event = this.props.event;
+      var _this$props = this.props,
+          event = _this$props.event,
+          bookmarked = _this$props.bookmarked;
       if (!event) return null;
       var newDate = new Date(event.startdate);
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -1385,7 +1391,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "event-show-save"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "es-likes-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, !bookmarked ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this.handleBookmark();
         },
@@ -1393,6 +1399,14 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
         id: "bookmark-icon"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this.handleBookmark();
+        },
+        className: "es-icon-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
+        id: "bookmarked-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "es-icon-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
@@ -1452,10 +1466,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  var event = state.entities.events[ownProps.match.params.eventId];
   return {
-    event: state.entities.events[ownProps.match.params.eventId],
+    event: event,
     currentUserId: state.session.id,
-    ticketErrors: state.errors.ticket
+    ticketErrors: state.errors.ticket,
+    bookmarked: event ? event.current_user_bookmarked : null
   };
 };
 
@@ -1470,11 +1486,14 @@ var mDTP = function mDTP(dispatch) {
     createTicket: function createTicket(ticket) {
       return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["createTicket"])(ticket));
     },
-    createBookmark: function createBookmark(bookmark) {
-      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["createBookmark"])(bookmark));
+    deleteTicket: function deleteTicket(ticketId) {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["deleteTicket"])(ticketId));
     },
-    deleteBookmark: function deleteBookmark(bookmarkId) {
-      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["deleteBookmark"])(bookmarkId));
+    createBookmark: function createBookmark(bookmark, eventId) {
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["createBookmark"])(bookmark, eventId));
+    },
+    deleteBookmark: function deleteBookmark(bookmarkId, eventId) {
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["deleteBookmark"])(bookmarkId, eventId));
     }
   };
 };
@@ -1543,7 +1562,9 @@ var UpdateEventForm = /*#__PURE__*/function (_React$Component) {
           formType = _this$props.formType,
           submitEvent = _this$props.submitEvent;
       if (!event) return null;
+      var history = this.props.history;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_event_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        history: history,
         event: event,
         errors: errors,
         formType: formType,
@@ -2472,23 +2493,15 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         });
       } else {
         tix = 'No Upcoming Events';
-      } // let tix
-      // if (Object.values(tickets).length > 0) {
-      //     tix = Object.values(tickets).map((ticket, i) => (
-      //         <TicketIndexItem key={i} ticket={ticket} />
-      //     ))
-      // } else {
-      //     tix = 'No upcoming events.'
-      // }
-
+      }
 
       var bookmx;
 
-      if (Object.values(bookmarks).length > 0) {
-        bookmx = Object.values(bookmarks).map(function (bookmark, i) {
+      if (bookmarks.events) {
+        bookmx = Object.values(bookmarks.events).map(function (event, i) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_bookmarks_bookmark_index_item__WEBPACK_IMPORTED_MODULE_4__["default"], {
             key: i,
-            bookmark: bookmark
+            event: event
           });
         });
       } else {
@@ -2792,6 +2805,9 @@ var eventErrorsReducer = function eventErrorsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/event_actions */ "./frontend/actions/event_actions.js");
+/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
+ // import remove bookmark
+
 
 
 var eventsReducer = function eventsReducer() {
@@ -2810,6 +2826,16 @@ var eventsReducer = function eventsReducer() {
 
     case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_EVENT"]:
       delete newState[action.eventId];
+      return newState;
+
+    case _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_BOOKMARK"]:
+      newState[action.eventId].current_user_bookmarked = false;
+      newState[action.eventId].bookmarkId = null;
+      return newState;
+
+    case _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BOOKMARK"]:
+      newState[action.eventId].current_user_bookmarked = true;
+      newState[action.eventId].bookmarkId = action.bookmark.id;
       return newState;
 
     default:

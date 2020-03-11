@@ -9,14 +9,16 @@ const receiveBookmarks = bookmarks => ({
     bookmarks
 });
 
-const receiveBookmark = bookmark => ({
+const receiveBookmark = (bookmark, eventId) => ({
     type: RECEIVE_BOOKMARK,
-    bookmark
+    bookmark,
+    eventId
 });
 
-const removeBookmark = bookmarkId => ({
+const removeBookmark = (bookmarkId, eventId) => ({
     type: REMOVE_BOOKMARK,
-    bookmarkId
+    bookmarkId,
+    eventId
 });
 
 export const fetchBookmarks = () => dispatch => (
@@ -24,14 +26,14 @@ export const fetchBookmarks = () => dispatch => (
         .then(bookmarks => dispatch(receiveBookmarks(bookmarks)))
 );
 
-export const createBookmark = bookmark => dispatch => {
+export const createBookmark = (bookmark, eventId) => dispatch => {
     return (
         BookmarkApiUtil.createBookmark(bookmark)
-            .then(bookmark => dispatch(receiveBookmark(bookmark)))
+            .then(bookmark => dispatch(receiveBookmark(bookmark, eventId)))
     )
 };
 
-export const deleteBookmark = bookmarkId => dispatch => (
+export const deleteBookmark = (bookmarkId, eventId) => dispatch => (
     BookmarkApiUtil.deleteBookmark(bookmarkId)
-        .then(() => dispatch(removeBookmark(bookmarkId)))
+        .then(() => dispatch(removeBookmark(bookmarkId, eventId)))
 );

@@ -6,7 +6,7 @@ class BookmarkIndexItem extends React.Component {
     }
 
     render() {
-        const { event } = this.props.bookmark
+        const { event } = this.props
         return(
             <div id='bookmark-item'>
                 {event.title}
