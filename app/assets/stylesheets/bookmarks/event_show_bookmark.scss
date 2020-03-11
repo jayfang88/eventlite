@@ -1,0 +1,32 @@
+.es-icon-container {
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 47px;
+    height: 47px;
+    margin-left: 5px;
+}
+
+.es-icon-container:hover {
+    cursor: pointer;
+    background-color: rgba(209, 209, 209, 0.384);
+}
+
+.es-icon-container:focus {
+    outline: none;
+}
+
+#bookmark-icon {
+    font-size: 24px;
+    // height: 50px;
+}
+
+#bookmark-icon:hover {
+    color: gold;
+}
+
+#like-icon {
+    font-size: 24px;
+}
+#like-icon:hover {
+    color: red;
+}

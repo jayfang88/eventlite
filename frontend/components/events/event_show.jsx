@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 class EventShow extends React.Component {
     constructor(props) {
@@ -80,7 +83,9 @@ class EventShow extends React.Component {
 
                     <div id='event-show-save'>
                         <div id='es-likes-container'>
-                            <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button>
+                            <button className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmark-icon' /></button>
+                            <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
+                            {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
                             {/* things to bookmark and purchase ticket for event */}
                         </div>
                         <div id='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>

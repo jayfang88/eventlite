@@ -100,8 +100,11 @@
 }
 
 #es-likes-container {
+    display: flex;
+    align-items: center;
     width: 67%;
     height: 100%;
+    padding-left: 10px;
 }
 
 #tickets-button-container {

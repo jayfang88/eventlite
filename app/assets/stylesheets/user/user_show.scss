@@ -20,7 +20,6 @@
 #user-show-icon {
     width: 44px;
     height: auto;
-    // color: rgb(185, 185, 185);
     color: #f76029;
 }
 #user-show-name {
@@ -57,18 +56,17 @@
 }
 
 #tickets-index {
-    min-height: 400px;
+    min-height: 350px;
     margin-bottom: 50px;
 }
 
 #border-bottom {
     width: 680px;
     border-top: 2px solid lightgray;
-    // position: absolute;
     margin-bottom: 30px;
 }
 
 #bookmarks-index {
-    min-height: 400px;
+    min-height: 350px;
     padding-bottom: 30px
 }
