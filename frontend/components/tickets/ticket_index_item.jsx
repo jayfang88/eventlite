@@ -24,15 +24,17 @@ class TicketIndexItem extends React.Component {
 
         let newDate = new Date(event.startdate);
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        let mon = months[newDate.getMonth()];
+        let mon = months[newDate.getMonth()].toUpperCase();
         let date = newDate.getDate() + 1;
         
         return(
             <div id='ticket-item'>
-                <div id='ticket-item-date'>{mon} {date}</div>
+                <div id='ticket-item-date'><h5>{mon}</h5> <p>{date}</p></div>
                 <Link to={`/e/${event.id}`}><img className='ticket-img' src={event.photoUrl} alt='ticket-photo'/></Link>
-                <div>{event.title}</div>
-                <div>{this.combineDate(event.startdate, event.starttime)}</div>
+                <div id='ticket-item-info'>
+                    <Link to={`/e/${event.id}`}><div id='ticket-item-title'>{event.title}</div></Link>
+                    <div id='ticket-item-infodate'>{this.combineDate(event.startdate, event.starttime)}</div>
+                </div>
             </div>
         )
     }

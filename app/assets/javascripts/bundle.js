@@ -2262,19 +2262,27 @@ var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
       var event = this.props.event;
       var newDate = new Date(event.startdate);
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      var mon = months[newDate.getMonth()];
+      var mon = months[newDate.getMonth()].toUpperCase();
       var date = newDate.getDate() + 1;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-item-date"
-      }, mon, " ", date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, mon), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/e/".concat(event.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "ticket-img",
         src: event.photoUrl,
         alt: "ticket-photo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.combineDate(event.startdate, event.starttime)));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-item-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/e/".concat(event.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-item-title"
+      }, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-item-infodate"
+      }, this.combineDate(event.startdate, event.starttime))));
     }
   }]);
 
@@ -2375,7 +2383,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-label"
       }, "Tickets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tickets-index"
-      }, events), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, events), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "border-bottom"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "user-show-label"
       }, "Bookmarks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bookmarks-index"

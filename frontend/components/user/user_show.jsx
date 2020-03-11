@@ -38,6 +38,7 @@ class UserShow extends React.Component {
                             <div id='tickets-index'>
                                 { events }
                             </div>
+                            <div id='border-bottom'></div>
                             <h2 className='user-show-label'>Bookmarks</h2>
                             <div id='bookmarks-index'>
                                 {/* { bookmarks } */}
