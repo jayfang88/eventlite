@@ -504,7 +504,7 @@ var mSTP = function mSTP(state, ownProps) {
       photoFile: null
     },
     errors: state.errors.event,
-    formType: 'Create Event'
+    formType: 'Create An Event'
   };
 };
 
