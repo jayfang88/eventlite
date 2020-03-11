@@ -25,6 +25,7 @@ class EventForm extends React.Component {
         e.preventDefault();
 
         const formData = new FormData();
+        formData.append('event[id]', this.state.id)
         formData.append('event[title]', this.state.title)
         formData.append('event[location]', this.state.location)
         formData.append('event[startdate]', this.state.startdate)
@@ -38,9 +39,8 @@ class EventForm extends React.Component {
         formData.append('event[organizer_id]', this.state.organizer_id)
         formData.append('event[category]', this.state.category)
         formData.append('event[ticket_type]', this.state.ticket_type)
-
-        this.props.submitEvent(formData).then(res => console.log(res))
-        // this.props.history.push('/')
+        // debugger;
+        this.props.submitEvent(formData).then(res => this.props.history.push(`/e/${res.event.id}`))
     }
 
     renderErrors() {

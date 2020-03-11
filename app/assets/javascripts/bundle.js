@@ -594,8 +594,11 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var formData = new FormData();
+      formData.append('event[id]', this.state.id);
       formData.append('event[title]', this.state.title);
       formData.append('event[location]', this.state.location);
       formData.append('event[startdate]', this.state.startdate);
@@ -610,10 +613,11 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
       formData.append('event[description]', this.state.description);
       formData.append('event[organizer_id]', this.state.organizer_id);
       formData.append('event[category]', this.state.category);
-      formData.append('event[ticket_type]', this.state.ticket_type);
+      formData.append('event[ticket_type]', this.state.ticket_type); // debugger;
+
       this.props.submitEvent(formData).then(function (res) {
-        return console.log(res);
-      }); // this.props.history.push('/')
+        return _this3.props.history.push("/e/".concat(res.event.id));
+      });
     }
   }, {
     key: "renderErrors",
@@ -1235,7 +1239,6 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderTicketErrors",
     value: function renderTicketErrors() {
-      // debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.ticketErrors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "error-message",
@@ -1302,7 +1305,11 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "event-show-save"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "es-likes-container"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this.props.deleteEvent(event.id);
+        }
+      }, "Delete Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tickets-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "tickets-button",
@@ -2348,7 +2355,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       var _this$props = this.props,
           user = _this$props.user,
           tickets = _this$props.tickets,
@@ -2358,7 +2365,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tickets_ticket_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: i,
           event: event
-        }) // <button>I don't wanna go anymore</button>
+        }) // BUTTON TO DELETE TICKET?
         ;
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2983,9 +2990,9 @@ var updateEvent = function updateEvent(event) {
   return $.ajax({
     method: 'PATCH',
     url: "/api/events/".concat(event.id),
-    data: {
-      event: event
-    }
+    data: event,
+    contentType: false,
+    processData: false
   });
 };
 var deleteEvent = function deleteEvent(eventId) {

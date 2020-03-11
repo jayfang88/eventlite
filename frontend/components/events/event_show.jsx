@@ -26,7 +26,6 @@ class EventShow extends React.Component {
     }
 
     renderTicketErrors() {
-        // debugger;
         return (
             <ul>
                 {this.props.ticketErrors.map((error, i) => (
@@ -81,7 +80,7 @@ class EventShow extends React.Component {
 
                     <div id='event-show-save'>
                         <div id='es-likes-container'>
-                            {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
+                            <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button>
                             {/* things to bookmark and purchase ticket for event */}
                         </div>
                         <div id='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>

@@ -14,13 +14,13 @@ class UserShow extends React.Component {
     }
 
     render() {
-        debugger;
+        // debugger;
         const { user, tickets, deleteTicket } = this.props
         if (Object.values(tickets).length === 0) return null;
 
         let events = Object.values(tickets.events).map((event, i) => (
             <TicketIndexItem key={i} event={event} />
-            // <button>I don't wanna go anymore</button>
+            // BUTTON TO DELETE TICKET?
         ))
 
         return(
