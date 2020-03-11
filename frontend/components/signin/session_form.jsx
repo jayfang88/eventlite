@@ -15,10 +15,18 @@ class SessionForm extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDemo = this.handleDemo.bind(this)
     }
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value })
+    }
+
+    handleDemo() {
+        this.props.login({
+            email: 'demo@user.com',
+            password: 'password'
+        })
     }
 
     handleSubmit(e) {
@@ -79,6 +87,8 @@ class SessionForm extends React.Component {
                 ) : (
                         <div className='below-submit'><Link className='below-link' to='/forgotpassword'>Forgot Password</Link></div>
                 )}
+
+                <button id='demo-login' onClick={() => this.handleDemo()}>Demo User Login</button>
             </div>
         )
     }

@@ -40,6 +40,12 @@ u5 = User.create!(
     lname: 'Mendes',
     password: 'password'
 )
+u6 = User.create!(
+    email: 'demo@user.com',
+    fname: 'Demo',
+    lname: 'User',
+    password: 'password'
+)
 
 e1 = Event.create!(
     title: "Haight-Ashbury Community Potluck",

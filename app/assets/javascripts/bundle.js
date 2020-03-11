@@ -1952,38 +1952,14 @@ var mDTP = function mDTP(dispatch) {
   return {
     action: function action(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_session_form__WEBPACK_IMPORTED_MODULE_2__["default"])); // class LoginForm extends React.Component {
-//     render() {
-//         return(
-//             <div className='signin-form-container'>
-//                 <FontAwesomeIcon className='login-icon' icon={faUser} />
-//                 <h2 className='signin-welcome'>Welcome back</h2>
-//                 <br/>
-//                 <p className='signin-message'>Please enter your password to log in.</p>
-//                 <br/>
-//                 {this.renderErrors()}
-//                 <br/>
-//                 <form className='signin-form-box'>
-//                     <label>Email address
-//                         <br/>
-//                         <input className='signin-input' type="text" value={this.state.email} onChange={this.update('email')} />
-//                     </label>
-//                     <br/>
-//                     <label>Password
-//                         <br/>
-//                         <input className='signin-input' type="password" value={this.state.password} onChange={this.update('password')} />
-//                     </label>
-//                     <br/>
-//                     <button className='signin-button' onClick={this.handleSubmit}>Log In</button>
-//                 </form>
-//             </div>
-//         )
-//     }
-// };
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_session_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -2042,6 +2018,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2053,6 +2030,14 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
+    }
+  }, {
+    key: "handleDemo",
+    value: function handleDemo() {
+      this.props.login({
+        email: 'demo@user.com',
+        password: 'password'
+      });
     }
   }, {
     key: "handleSubmit",
@@ -2073,6 +2058,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signin-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
@@ -2135,7 +2122,12 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "below-link",
         to: "/forgotpassword"
-      }, "Forgot Password")));
+      }, "Forgot Password")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "demo-login",
+        onClick: function onClick() {
+          return _this3.handleDemo();
+        }
+      }, "Demo User Login"));
     }
   }]);
 
@@ -2176,51 +2168,14 @@ var mDTP = function mDTP(dispatch) {
   return {
     action: function action(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["signup"])(user));
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_session_form__WEBPACK_IMPORTED_MODULE_2__["default"])); // class SignupForm extends React.Component {
-//     render() {
-//         return(
-//             <div className='signin-form-container'>
-//                 <FontAwesomeIcon className='login-icon' icon={faUser} />
-//                 <h2 className='signin-welcome'>Welcome</h2>
-//                 <br/>
-//                 <p className='signin-message'>Create an account.</p>
-//                 <br/>
-//                 {this.renderErrors()}
-//                 <br/>
-//                 <form className='signin-form-box'>
-//                     <label>Email address
-//                         <br/>
-//                         <input className='signin-input' type="text" value={this.state.email} onChange={this.update('email')} />
-//                     </label>
-//                     <br/>
-//                     <div className='signin-input-names'>
-//                         <label>First Name
-//                             <br/>
-//                             <input className='signin-input-name' type="text" value={this.state.fname} onChange={this.update('fname')} />
-//                         </label>
-//                         <br/>
-//                         <label>Last Name
-//                             <br/>
-//                             <input className='signin-input-name' type="text" value={this.state.lname} onChange={this.update('lname')} />
-//                         </label>
-//                     </div>
-//                     <br/>
-//                     <label>Password
-//                         <br/>
-//                         <input className='signin-input' type="password" value={this.state.password} onChange={this.update('password')} />
-//                     </label>
-//                     <br/>
-//                     <button className='signin-button' onClick={this.handleSubmit}>Sign Up</button>
-//                 </form>
-//                 <div id='login-instead'><Link to='/login'>Log In Instead</Link></div>
-//             </div>
-//         )
-//     }
-// };
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_session_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
