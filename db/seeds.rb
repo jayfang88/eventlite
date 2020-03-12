@@ -221,5 +221,5 @@ e7.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/d
 e8.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/nap.jpg'), filename: 'nappods')
 e9.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/cheese-grating.jpg'), filename: 'cheese')
 e10.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/boba.jpg'), filename: 'boba')
-e11.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/choco.jpeg'), filename: 'choco')
+e11.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/choco.jpg'), filename: 'choco')
 e12.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/ukelele.jpg'), filename: 'uke')

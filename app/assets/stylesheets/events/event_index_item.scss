@@ -48,10 +48,10 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    object-fit: contain;
 }
 
 .event-index-img {
+    object-fit: cover;
     width: 100%;
     min-height: 160px;
 }
