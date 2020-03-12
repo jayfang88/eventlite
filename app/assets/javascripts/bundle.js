@@ -249,6 +249,35 @@ var deleteEvent = function deleteEvent(eventId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/modal_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/modal_actions.js ***!
+  \*******************************************/
+/*! exports provided: OPEN_MODAL, CLOSE_MODAL, openModal, closeModal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_MODAL", function() { return OPEN_MODAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_MODAL", function() { return CLOSE_MODAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openModal", function() { return openModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeModal", function() { return closeModal; });
+var OPEN_MODAL = 'OPEN_MODAL';
+var CLOSE_MODAL = 'CLOSE-MODAL';
+var openModal = function openModal(modal) {
+  return {
+    type: OPEN_MODAL,
+    modal: modal
+  };
+};
+var closeModal = function closeModal() {
+  return {
+    type: CLOSE_MODAL
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -421,6 +450,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events_create_event_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./events/create_event_container */ "./frontend/components/events/create_event_container.js");
 /* harmony import */ var _events_update_event_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./events/update_event_container */ "./frontend/components/events/update_event_container.jsx");
 /* harmony import */ var _user_user_show_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./user/user_show_container */ "./frontend/components/user/user_show_container.js");
+/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
+
 
 
 
@@ -437,7 +468,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_7__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_14__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_7__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
     component: _components_splash_splash_container__WEBPACK_IMPORTED_MODULE_9__["default"]
@@ -1365,22 +1396,6 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
-    key: "handleRegistration",
-    value: function handleRegistration() {
-      if (this.props.currentUserId) {
-        if (!this.props.event.current_user_attending) {
-          this.props.createTicket({
-            user_id: this.props.currentUserId,
-            event_id: this.props.event.id
-          }, this.props.event.id);
-        } else {
-          this.props.deleteTicket(this.props.event.ticketId, this.props.event.id);
-        }
-      } else {
-        this.props.history.push('/login');
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -1451,21 +1466,14 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faHeart"],
         id: "like-icon"
-      }))), !attending ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tickets-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "tickets-button",
         onClick: function onClick() {
-          return _this.handleRegistration();
+          return _this.props.openModal();
         }
-      }, "Tickets")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tickets-button-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sell-ticket",
-        onClick: function onClick() {
-          return _this.handleRegistration();
-        }
-      }, "Cancel Order")), this.renderTicketErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tickets")), this.renderTicketErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-body"
@@ -1519,6 +1527,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
 /* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
 /* harmony import */ var _event_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./event_show */ "./frontend/components/events/event_show.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -1544,17 +1554,19 @@ var mDTP = function mDTP(dispatch) {
     deleteEvent: function deleteEvent(eventId) {
       return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["deleteEvent"])(eventId));
     },
-    createTicket: function createTicket(ticket, eventId) {
-      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["createTicket"])(ticket, eventId));
-    },
-    deleteTicket: function deleteTicket(ticketId, eventId) {
-      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["deleteTicket"])(ticketId, eventId));
-    },
+    // createTicket: (ticket, eventId) => dispatch(createTicket(ticket, eventId)),
+    // deleteTicket: (ticketId, eventId) => dispatch(deleteTicket(ticketId, eventId)),
     createBookmark: function createBookmark(bookmark, eventId) {
       return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["createBookmark"])(bookmark, eventId));
     },
     deleteBookmark: function deleteBookmark(bookmarkId, eventId) {
       return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["deleteBookmark"])(bookmarkId, eventId));
+    },
+    openModal: function openModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])('purchase'));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());
     }
   };
 };
@@ -1758,6 +1770,75 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_greeting__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/modal/modal.jsx":
+/*!*********************************************!*\
+  !*** ./frontend/components/modal/modal.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _tickets_ticket_purchase_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tickets/ticket_purchase_container */ "./frontend/components/tickets/ticket_purchase_container.js");
+
+
+
+
+
+function Modal(_ref) {
+  var modal = _ref.modal,
+      closeModal = _ref.closeModal;
+
+  if (!modal) {
+    return null;
+  }
+
+  var component;
+
+  switch (modal) {
+    case 'purchase':
+      component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_tickets_ticket_purchase_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      break;
+
+    default:
+      return null;
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "modal-background",
+    onClick: closeModal
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "modal-child",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, component));
+}
+
+;
+
+var mSTP = function mSTP(state) {
+  return {
+    modal: state.ui.modal
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(Modal));
 
 /***/ }),
 
@@ -2496,6 +2577,186 @@ var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/tickets/ticket_purchase.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/tickets/ticket_purchase.jsx ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var TicketPurchase = /*#__PURE__*/function (_React$Component) {
+  _inherits(TicketPurchase, _React$Component);
+
+  function TicketPurchase(props) {
+    _classCallCheck(this, TicketPurchase);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TicketPurchase).call(this, props));
+  }
+
+  _createClass(TicketPurchase, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {// debugger;
+      // this.props.requestEvent(this.props.match.params.eventId)
+    }
+  }, {
+    key: "convertDate",
+    value: function convertDate(eventDate, eventTime) {
+      var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var fullDate = new Date(eventDate);
+      var day = days[fullDate.getDay()];
+      var month = months[fullDate.getMonth()];
+      var date = fullDate.getDate() + 1;
+      var yr = fullDate.getFullYear();
+      var combined = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(yr, " ").concat(eventTime);
+      return combined;
+    }
+  }, {
+    key: "handleRegistration",
+    value: function handleRegistration() {
+      if (this.props.currentUserId) {
+        if (!this.props.event.current_user_attending) {
+          this.props.createTicket({
+            user_id: this.props.currentUserId,
+            event_id: this.props.event.id
+          }, this.props.event.id);
+        } else {
+          this.props.deleteTicket(this.props.event.ticketId, this.props.event.id);
+        }
+      } else {
+        this.props.history.push('/login');
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var _this$props = this.props,
+          event = _this$props.event,
+          attending = _this$props.attending; // if (!event) return null;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-head"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-title"
+      }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-time"
+      }, this.convertDate(event.startdate, event.starttime), " - ", this.convertDate(event.enddate, event.endtime), " PT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-body"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-footer"
+      }, !attending ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ticket-modal-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "checkout",
+        onClick: function onClick() {
+          return _this.handleRegistration();
+        }
+      }, "Check Out")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ticket-modal-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "sell-ticket",
+        onClick: function onClick() {
+          return _this.handleRegistration();
+        }
+      }, "Cancel Order")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ticket-purchase-img-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "ticket-purchase-img",
+        src: event.photoUrl,
+        alt: "event-photo"
+      }))));
+    }
+  }]);
+
+  return TicketPurchase;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (TicketPurchase);
+
+/***/ }),
+
+/***/ "./frontend/components/tickets/ticket_purchase_container.js":
+/*!******************************************************************!*\
+  !*** ./frontend/components/tickets/ticket_purchase_container.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _ticket_purchase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ticket_purchase */ "./frontend/components/tickets/ticket_purchase.jsx");
+/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
+/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+var mSTP = function mSTP(state, ownProps) {
+  var path = ownProps.location.pathname.split('/');
+  var eventId = parseInt(path[path.length - 1]);
+  var event = state.entities.events[eventId];
+  return {
+    event: event,
+    currentUserId: state.session.id,
+    attending: event ? event.current_user_attending : null
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    createTicket: function createTicket(ticket, eventId) {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_3__["createTicket"])(ticket, eventId));
+    },
+    deleteTicket: function deleteTicket(ticketId, eventId) {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_3__["deleteTicket"])(ticketId, eventId));
+    },
+    requestEvent: function requestEvent(eventId) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["requestEvent"])(eventId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_ticket_purchase__WEBPACK_IMPORTED_MODULE_1__["default"])));
+
+/***/ }),
+
 /***/ "./frontend/components/user/user_show.jsx":
 /*!************************************************!*\
   !*** ./frontend/components/user/user_show.jsx ***!
@@ -2935,6 +3196,38 @@ var eventsReducer = function eventsReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/modal_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/modal_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
+
+var modalReducer = function modalReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
+      return action.modal;
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL"]:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (modalReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/root_reducer.js":
 /*!*******************************************!*\
   !*** ./frontend/reducers/root_reducer.js ***!
@@ -2948,6 +3241,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
+
 
 
 
@@ -2955,7 +3250,8 @@ __webpack_require__.r(__webpack_exports__);
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -3099,6 +3395,26 @@ var ticketsReducer = function ticketsReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ticketsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
+
+
+var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 
 /***/ }),
 

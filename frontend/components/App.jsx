@@ -14,9 +14,12 @@ import CreateEventContainer from './events/create_event_container';
 import UpdateEventFormContainer from './events/update_event_container';
 import UserShowContainer from './user/user_show_container';
 
+import Modal from './modal/modal';
+
 
 const App = () => (
     <div>
+        <Modal />
         <header>
             <NavBarContainer />
             {/* <GreetingContainer /> */}

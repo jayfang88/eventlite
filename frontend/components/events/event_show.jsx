@@ -53,21 +53,6 @@ class EventShow extends React.Component {
         }
     }
 
-    handleRegistration() {
-        if (this.props.currentUserId) {
-            if (!this.props.event.current_user_attending) {
-                this.props.createTicket({
-                    user_id: this.props.currentUserId,
-                    event_id: this.props.event.id,
-                }, this.props.event.id)
-            } else {
-                this.props.deleteTicket(this.props.event.ticketId, this.props.event.id)
-            }
-        } else {
-            this.props.history.push('/login')
-        }
-    }
-
     render() {
         const {event, bookmarked, attending} = this.props;
         if (!event) return null;
@@ -108,11 +93,7 @@ class EventShow extends React.Component {
                             <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
                             {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
                         </div>
-                        {!attending ? (
-                            <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>
-                        ) : (
-                            <div className='tickets-button-container'><button id='sell-ticket' onClick={() => this.handleRegistration()}>Cancel Order</button></div>
-                        )}
+                        <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.props.openModal()}>Tickets</button></div>
                         {this.renderTicketErrors()}
                     </div>
                     <div id='event-show-content'>
