@@ -23,7 +23,9 @@ class EventIndexItem extends React.Component {
         const {event} = this.props
         return(
             <li className='event-index-item'>
-                <Link to={`/e/${event.id}`}><img className='event-index-img' src={event.photoUrl} alt='event-photo'/></Link>
+                <div id='event-index-img-container'>
+                    <Link to={`/e/${event.id}`}><img className='event-index-img' src={event.photoUrl} alt='event-photo'/></Link>
+                </div>
                 <div className='event-index-item-textbox'>
                     <h4>{this.combineDate(event.startdate, event.starttime)}</h4>
                     <Link to={`/e/${event.id}`}><h3>{event.title}</h3></Link>

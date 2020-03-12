@@ -1284,13 +1284,15 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
       var event = this.props.event;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "event-index-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "event-index-img-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/e/".concat(event.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "event-index-img",
         src: event.photoUrl,
         alt: "event-photo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-index-item-textbox"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, this.combineDate(event.startdate, event.starttime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/e/".concat(event.id)
@@ -2380,7 +2382,7 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         id: "splash-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "splash-image",
-        src: "/assets/concert.jpg",
+        src: "https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/concert.jpg",
         alt: "splash-image"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "made-for"
