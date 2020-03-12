@@ -117,18 +117,19 @@ class EventShow extends React.Component {
                     </div>
                     <div id='event-show-content'>
                         <div id='event-show-body'>
+                            <h2 className='event-show-label'>Description</h2>
                             <p id='event-show-description'>{event.description}</p>
                         </div>
 
                         <div id='event-show-aside'>
                             <div className='event-show-aside-container'>
-                                <h2>Date and Time</h2>
-                                <p>{this.convertDate(event.startdate)}, {event.starttime} - </p>
-                                <p>{this.convertDate(event.enddate)}, {event.endtime} PST</p>
+                                <h2 className='event-show-label'>Date and Time</h2>
+                                <p className='event-show-deets'>{this.convertDate(event.startdate)}, {event.starttime} - </p>
+                                <p className='event-show-deets'>{this.convertDate(event.enddate)}, {event.endtime} PST</p>
                             </div>
                             <div className='event-show-aside-container'>
-                                <h2>Location</h2>
-                                <p>{event.location}</p>
+                                <h2 className='event-show-label'>Location</h2>
+                                <p className='event-show-deets'>{event.location}</p>
                             </div>
                         </div>
                     </div>

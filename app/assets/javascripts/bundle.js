@@ -1469,15 +1469,27 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "event-show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "event-show-label"
+      }, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "event-show-description"
       }, event.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-aside"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-show-aside-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Date and Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.startdate), ", ", event.starttime, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.convertDate(event.enddate), ", ", event.endtime, " PST")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "event-show-label"
+      }, "Date and Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-show-deets"
+      }, this.convertDate(event.startdate), ", ", event.starttime, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-show-deets"
+      }, this.convertDate(event.enddate), ", ", event.endtime, " PST")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-show-aside-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "event-show-label"
+      }, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-show-deets"
+      }, event.location)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-footer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, event.organizerFname, " ", event.organizerLname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Organizer of ", event.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-page-footer"
@@ -2240,6 +2252,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _events_event_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../events/event_index_container */ "./frontend/components/events/event_index_container.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2257,6 +2271,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -2291,7 +2307,64 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         id: "those-who"
       }, "those who do"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "search-box"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "searchbox-label"
+      }, "I want to go out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "searchbox-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "any date"
+      }, "Any Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "today"
+      }, "Today"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "tomorrow"
+      }, "Tomorrow"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "this weekend"
+      }, "This Weekend"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "this week"
+      }, "This Week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "next week"
+      }, "Next Week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "this month"
+      }, "This Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "next month"
+      }, "Next Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "pick date"
+      }, "Pick a date...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "searchbox-label"
+      }, "In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "searchbox-input",
+        type: "text",
+        placeholder: "Search City"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "searchbox-label"
+      }, "And I'm in the mood for"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "searchbox-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "anything"
+      }, "Anything"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Business & Professional"
+      }, "Business & Professional"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Community & Culture"
+      }, "Community & Culture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Family & Education"
+      }, "Family & Education"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Food & Drink"
+      }, "Food & Drink"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Health & Wellness"
+      }, "Health & Wellness"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Hobbies & Special Interest"
+      }, "Hobbies & Special Interest"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Music"
+      }, "Music"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Other"
+      }, "Other"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Sports & Fitness"
+      }, "Sports & Fitness"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Travel & Outdoor"
+      }, "Travel & Outdoor")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        className: "searchbox-arrow",
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faArrowAltCircleRight"]
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
