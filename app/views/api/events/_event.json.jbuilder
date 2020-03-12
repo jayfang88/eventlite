@@ -5,5 +5,5 @@ json.organizerLname event.organizer.lname
 if (event.photo.attached?)
     json.photoUrl url_for(event.photo)
 else
-    json.photoUrl 'https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/stock.jpg'
+    json.photoUrl 'https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/default-pic.jpg'
 end

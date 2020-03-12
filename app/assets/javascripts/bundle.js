@@ -1469,7 +1469,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "event-show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        id: "event-show-description"
+      }, event.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-aside"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-show-aside-container"
