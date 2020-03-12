@@ -34,8 +34,6 @@ class TicketPurchase extends React.Component {
             } else {
                 this.props.deleteTicket(this.props.event.ticketId, this.props.event.id)
             }
-        } else {
-            this.props.history.push('/login')
         }
     }
 

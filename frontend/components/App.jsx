@@ -32,7 +32,7 @@ const App = () => (
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
             <AuthRoute exact path='/forgotpassword' component={ForgotPassword} />
             <ProtectedRoute exact path='/create' component={CreateEventContainer} />
-            <Route exact path='/e/:eventId/edit' component={UpdateEventFormContainer} />
+            <ProtectedRoute exact path='/e/:eventId/edit' component={UpdateEventFormContainer} />
             <ProtectedRoute exact path='/u/:userId' component={UserShowContainer} />
         </Switch>
     </div>

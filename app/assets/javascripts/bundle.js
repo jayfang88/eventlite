@@ -492,7 +492,7 @@ var App = function App() {
     exact: true,
     path: "/create",
     component: _events_create_event_container__WEBPACK_IMPORTED_MODULE_11__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["ProtectedRoute"], {
     exact: true,
     path: "/e/:eventId/edit",
     component: _events_update_event_container__WEBPACK_IMPORTED_MODULE_12__["default"]
@@ -1384,6 +1384,15 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
+    key: "handleTicketButton",
+    value: function handleTicketButton() {
+      if (this.props.currentUserId) {
+        this.props.openModal();
+      } else {
+        this.props.history.push('/login');
+      }
+    }
+  }, {
     key: "handleBookmark",
     value: function handleBookmark() {
       if (this.props.currentUserId) {
@@ -1395,6 +1404,8 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         } else {
           this.props.deleteBookmark(this.props.event.bookmarkId, this.props.event.id);
         }
+      } else {
+        this.props.history.push('/login');
       }
     }
   }, {
@@ -1479,7 +1490,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "tickets-button",
         onClick: function onClick() {
-          return _this.props.openModal();
+          return _this.handleTicketButton();
         }
       }, "Tickets")), this.renderTicketErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-content"
@@ -2655,8 +2666,6 @@ var TicketPurchase = /*#__PURE__*/function (_React$Component) {
         } else {
           this.props.deleteTicket(this.props.event.ticketId, this.props.event.id);
         }
-      } else {
-        this.props.history.push('/login');
       }
     }
   }, {

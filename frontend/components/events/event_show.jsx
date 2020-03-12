@@ -40,6 +40,14 @@ class EventShow extends React.Component {
         )
     }
 
+    handleTicketButton() {
+        if (this.props.currentUserId) {
+            this.props.openModal()
+        } else {
+            this.props.history.push('/login')
+        }
+    }
+
     handleBookmark() {
         if (this.props.currentUserId) {
             if (!this.props.event.current_user_bookmarked) {
@@ -50,6 +58,8 @@ class EventShow extends React.Component {
             } else {
                 this.props.deleteBookmark(this.props.event.bookmarkId, this.props.event.id)
             }
+        } else {
+            this.props.history.push('/login')
         }
     }
 
@@ -93,7 +103,7 @@ class EventShow extends React.Component {
                             )}
                             <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
                         </div>
-                        <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.props.openModal()}>Tickets</button></div>
+                        <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.handleTicketButton()}>Tickets</button></div>
                         {this.renderTicketErrors()}
                     </div>
                     <div id='event-show-content'>
