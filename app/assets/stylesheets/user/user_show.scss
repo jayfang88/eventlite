@@ -67,6 +67,9 @@
 }
 
 #bookmarks-index {
+    display: flex;
+    flex-wrap: wrap;
     min-height: 350px;
-    padding-bottom: 30px
+    padding-bottom: 30px;
+    padding-right: 30px;
 }

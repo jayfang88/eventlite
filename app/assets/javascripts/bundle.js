@@ -485,6 +485,7 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -505,6 +506,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BookmarkIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(BookmarkIndexItem, _React$Component);
 
@@ -515,12 +517,46 @@ var BookmarkIndexItem = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(BookmarkIndexItem, [{
+    key: "combineDate",
+    value: function combineDate(eventDate, eventTime) {
+      var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var newDate = new Date(eventDate);
+      var day = days[newDate.getDay()];
+      var month = months[newDate.getMonth()];
+      var date = newDate.getDate() + 1;
+      var time = eventTime.split(' ').join('').toLowerCase();
+      return "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(time);
+    }
+  }, {
     key: "render",
     value: function render() {
       var event = this.props.event;
+      var newDate = new Date(event.startdate);
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var mon = months[newDate.getMonth()].toUpperCase();
+      var date = newDate.getDate() + 1;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bookmark-item"
-      }, event.title);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/e/".concat(event.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "bookmark-img",
+        src: event.photoUrl,
+        alt: "bookmark-photo"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bookmark-item-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bookmark-item-date"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, mon), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bookmark-item-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/e/".concat(event.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bookmark-item-title"
+      }, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bookmark-item-infodate"
+      }, this.combineDate(event.startdate, event.starttime)))));
     }
   }]);
 
