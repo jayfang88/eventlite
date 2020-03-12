@@ -107,7 +107,7 @@
     padding-left: 10px;
 }
 
-#tickets-button-container {
+.tickets-button-container {
     width: 33%;
     display: flex;
     justify-content: center;
@@ -122,13 +122,28 @@
     border-radius: 4px;
     font-size: 15px;
 }
-
 #tickets-button:hover {
     background-color: #179c55;
     cursor: pointer;
 }
-
 #tickets-button:focus {
+    outline: none;
+}
+
+#sell-ticket {
+    width: 90%;
+    height: 50px;
+    background-color: #eb4141;
+    color: white;
+    border-radius: 4px;
+    font-size: 15px;
+}
+#sell-ticket:hover {
+    // background-color: #f84a4a;
+    background-color: rgb(170, 170, 170);
+    cursor: pointer;
+}
+#sell-ticket:focus {
     outline: none;
 }
 

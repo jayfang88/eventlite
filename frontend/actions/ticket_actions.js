@@ -10,14 +10,16 @@ const receiveTickets = tickets => ({
     tickets
 })
 
-const receiveTicket = ticket => ({
+const receiveTicket = (ticket, eventId) => ({
     type: RECEIVE_TICKET,
-    ticket
+    ticket,
+    eventId
 });
 
-const removeTicket = ticketId => ({
+const removeTicket = (ticketId, eventId) => ({
     type: REMOVE_TICKET,
-    ticketId
+    ticketId,
+    eventId
 });
 
 const receiveErrors = errors => ({
@@ -30,14 +32,14 @@ export const fetchTickets = () => dispatch => (
         .then(tickets => dispatch(receiveTickets(tickets)))
 );
 
-export const createTicket = ticket => dispatch => (
+export const createTicket = (ticket, eventId) => dispatch => (
     TicketApiUtil.createTicket(ticket).then(
-        ticket => (dispatch(receiveTicket(ticket))),
+        ticket => (dispatch(receiveTicket(ticket, eventId))),
         err => {dispatch(receiveErrors(err.responseJSON))}
     )
 );
 
-export const deleteTicket = ticketId => dispatch => (
+export const deleteTicket = (ticketId, eventId) => dispatch => (
     TicketApiUtil.deleteTicket(ticketId)
-        .then(() => dispatch(removeTicket(ticketId)))
+        .then(() => dispatch(removeTicket(ticketId, eventId)))
 );

@@ -10,15 +10,16 @@ const mSTP = (state, ownProps) => {
     event: event,
     currentUserId: state.session.id,
     ticketErrors: state.errors.ticket,
-    bookmarked: event ? event.current_user_bookmarked : null
+    bookmarked: event ? event.current_user_bookmarked : null,
+    attending: event ? event.current_user_attending : null
     }
 };
 
 const mDTP = dispatch => ({
     requestEvent: eventId => dispatch(requestEvent(eventId)),
     deleteEvent: eventId => dispatch(deleteEvent(eventId)),
-    createTicket: ticket => dispatch(createTicket(ticket)),
-    deleteTicket: ticketId => dispatch(deleteTicket(ticketId)),
+    createTicket: (ticket, eventId) => dispatch(createTicket(ticket, eventId)),
+    deleteTicket: (ticketId, eventId) => dispatch(deleteTicket(ticketId, eventId)),
     createBookmark: (bookmark, eventId) => dispatch(createBookmark(bookmark, eventId)),
     deleteBookmark: (bookmarkId, eventId) => dispatch(deleteBookmark(bookmarkId, eventId))
 });

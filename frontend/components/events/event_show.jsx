@@ -59,9 +59,9 @@ class EventShow extends React.Component {
                 this.props.createTicket({
                     user_id: this.props.currentUserId,
                     event_id: this.props.event.id,
-                })
+                }, this.props.event.id)
             } else {
-                this.props.deleteTicket(this.props.event.ticket.id)
+                this.props.deleteTicket(this.props.event.ticketId, this.props.event.id)
             }
         } else {
             this.props.history.push('/login')
@@ -69,7 +69,7 @@ class EventShow extends React.Component {
     }
 
     render() {
-        const {event, bookmarked} = this.props;
+        const {event, bookmarked, attending} = this.props;
         if (!event) return null;
 
         let newDate = new Date(event.startdate);
@@ -92,8 +92,8 @@ class EventShow extends React.Component {
                                 <p id='eshdd'>{date}</p>
                             </div>
                             <h2 id='esht'>{event.title}</h2>
-                            <p id='esho'>by {event.organizer.fname} {event.organizer.lname}
-                                {(this.props.currentUserId === event.organizer.id) ? (<span id='edit-event-link'><Link to={`/e/${event.id}/edit`}>Edit Your Event</Link></span>) : ''}
+                            <p id='esho'>by {event.organizerFname} {event.organizerLname}
+                                {(this.props.currentUserId === event.organizer_id) ? (<span id='edit-event-link'><Link to={`/e/${event.id}/edit`}>Edit Your Event</Link></span>) : ''}
                             </p>
                         </div>
                     </div>
@@ -108,7 +108,11 @@ class EventShow extends React.Component {
                             <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
                             {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
                         </div>
-                        <div id='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>
+                        {!attending ? (
+                            <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.handleRegistration()}>Tickets</button></div>
+                        ) : (
+                            <div className='tickets-button-container'><button id='sell-ticket' onClick={() => this.handleRegistration()}>Cancel Order</button></div>
+                        )}
                         {this.renderTicketErrors()}
                     </div>
                     <div id='event-show-content'>
@@ -130,7 +134,7 @@ class EventShow extends React.Component {
                     </div>
                     
                     <div id='event-show-footer'>
-                        <h4>{event.organizer.fname} {event.organizer.lname}</h4>
+                        <h4>{event.organizerFname} {event.organizerLname}</h4>
                         <p>Organizer of {event.title}</p>
                     </div>
                 </div>

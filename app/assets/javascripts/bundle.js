@@ -348,17 +348,19 @@ var receiveTickets = function receiveTickets(tickets) {
   };
 };
 
-var receiveTicket = function receiveTicket(ticket) {
+var receiveTicket = function receiveTicket(ticket, eventId) {
   return {
     type: RECEIVE_TICKET,
-    ticket: ticket
+    ticket: ticket,
+    eventId: eventId
   };
 };
 
-var removeTicket = function removeTicket(ticketId) {
+var removeTicket = function removeTicket(ticketId, eventId) {
   return {
     type: REMOVE_TICKET,
-    ticketId: ticketId
+    ticketId: ticketId,
+    eventId: eventId
   };
 };
 
@@ -376,19 +378,19 @@ var fetchTickets = function fetchTickets() {
     });
   };
 };
-var createTicket = function createTicket(ticket) {
+var createTicket = function createTicket(ticket, eventId) {
   return function (dispatch) {
     return _util_ticket_api_util__WEBPACK_IMPORTED_MODULE_0__["createTicket"](ticket).then(function (ticket) {
-      return dispatch(receiveTicket(ticket));
+      return dispatch(receiveTicket(ticket, eventId));
     }, function (err) {
       dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
-var deleteTicket = function deleteTicket(ticketId) {
+var deleteTicket = function deleteTicket(ticketId, eventId) {
   return function (dispatch) {
     return _util_ticket_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteTicket"](ticketId).then(function () {
-      return dispatch(removeTicket(ticketId));
+      return dispatch(removeTicket(ticketId, eventId));
     });
   };
 };
@@ -1370,9 +1372,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
           this.props.createTicket({
             user_id: this.props.currentUserId,
             event_id: this.props.event.id
-          });
+          }, this.props.event.id);
         } else {
-          this.props.deleteTicket(this.props.event.ticket.id);
+          this.props.deleteTicket(this.props.event.ticketId, this.props.event.id);
         }
       } else {
         this.props.history.push('/login');
@@ -1385,7 +1387,8 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
 
       var _this$props = this.props,
           event = _this$props.event,
-          bookmarked = _this$props.bookmarked;
+          bookmarked = _this$props.bookmarked,
+          attending = _this$props.attending;
       if (!event) return null;
       var newDate = new Date(event.startdate);
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -1419,7 +1422,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "esht"
       }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "esho"
-      }, "by ", event.organizer.fname, " ", event.organizer.lname, this.props.currentUserId === event.organizer.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "by ", event.organizerFname, " ", event.organizerLname, this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "edit-event-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/e/".concat(event.id, "/edit")
@@ -1448,14 +1451,21 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faHeart"],
         id: "like-icon"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "tickets-button-container"
+      }))), !attending ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tickets-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "tickets-button",
         onClick: function onClick() {
           return _this.handleRegistration();
         }
-      }, "Tickets")), this.renderTicketErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Tickets")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tickets-button-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "sell-ticket",
+        onClick: function onClick() {
+          return _this.handleRegistration();
+        }
+      }, "Cancel Order")), this.renderTicketErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-body"
@@ -1467,7 +1477,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         className: "event-show-aside-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, event.organizer.fname, " ", event.organizer.lname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Organizer of ", event.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, event.organizerFname, " ", event.organizerLname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Organizer of ", event.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-page-footer"
       }));
     }
@@ -1507,7 +1517,8 @@ var mSTP = function mSTP(state, ownProps) {
     event: event,
     currentUserId: state.session.id,
     ticketErrors: state.errors.ticket,
-    bookmarked: event ? event.current_user_bookmarked : null
+    bookmarked: event ? event.current_user_bookmarked : null,
+    attending: event ? event.current_user_attending : null
   };
 };
 
@@ -1519,11 +1530,11 @@ var mDTP = function mDTP(dispatch) {
     deleteEvent: function deleteEvent(eventId) {
       return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["deleteEvent"])(eventId));
     },
-    createTicket: function createTicket(ticket) {
-      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["createTicket"])(ticket));
+    createTicket: function createTicket(ticket, eventId) {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["createTicket"])(ticket, eventId));
     },
-    deleteTicket: function deleteTicket(ticketId) {
-      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["deleteTicket"])(ticketId));
+    deleteTicket: function deleteTicket(ticketId, eventId) {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["deleteTicket"])(ticketId, eventId));
     },
     createBookmark: function createBookmark(bookmark, eventId) {
       return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["createBookmark"])(bookmark, eventId));
@@ -2797,7 +2808,8 @@ var eventErrorsReducer = function eventErrorsReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/event_actions */ "./frontend/actions/event_actions.js");
 /* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
- // import remove bookmark
+/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
+
 
 
 
@@ -2827,6 +2839,16 @@ var eventsReducer = function eventsReducer() {
     case _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BOOKMARK"]:
       newState[action.eventId].current_user_bookmarked = true;
       newState[action.eventId].bookmarkId = action.bookmark.id;
+      return newState;
+
+    case _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_TICKET"]:
+      newState[action.eventId].current_user_attending = true;
+      newState[action.eventId].ticketId = action.ticket.id;
+      return newState;
+
+    case _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["REMOVE_TICKET"]:
+      newState[action.eventId].current_user_attending = false;
+      newState[action.eventId].ticketId = null;
       return newState;
 
     default:
