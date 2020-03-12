@@ -90,6 +90,8 @@
 
 #esho {
     color: #39364f;
+    display: flex;
+    justify-content: space-between;
 }
 
 #event-show-save {
@@ -184,7 +186,35 @@
     font-size: 14px;
 }
 
-#edit-event-link {
+#event-show-edit-event {
     font-size: 13px;
-    margin: 5px 0px 0px 50px;
+    height: 20px;
+    margin-top: 3px;
+}
+
+#edit-event-link {
+    height: 30px;
+    background-color: darkgray;
+    color: white;
+    font-weight: 500;
+    border-radius: 2px;
+    padding: 3px 7px;
+}
+
+#event-show-delete-event {
+    height: 20px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: 500;
+    font-size: 12px;
+    color: red;
+}
+
+#event-show-delete-event:hover {
+    cursor: pointer;
+}
+
+#event-show-delete-event:focus {
+    outline: none;
 }

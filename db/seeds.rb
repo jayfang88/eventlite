@@ -18,7 +18,7 @@ u1 = User.create!(
 )
 u2 = User.create!(
     email: 'vyan@test.com',
-    fname: 'Vargenio',
+    fname: 'Virg',
     lname: 'Yan',
     password: 'password'
 )
@@ -150,6 +150,63 @@ e8 = Event.create!(
     category: "Health & Wellness",
     ticket_type: "Free"
 )
+e9 = Event.create!(
+    title: 'Cheese Grating w/ the Cheese Masters',
+    location: 'Cheese Academy SF',
+    startdate: '2020-03-21',
+    starttime: '4:00 PM',
+    enddate: '2020-03-21',
+    endtime: '6:00 PM',
+    description: 'Come learn the correct way to grate cheese with the Cheese Masters. 
+    Earn your degree in just 4 quick months!',
+    organizer_id: u2.id,
+    category: 'Food & Drink',
+    ticket_type: 'Paid'
+)
+e10 = Event.create!(
+    title: 'Boba Time',
+    location: 'Boba Time SF',
+    startdate: '2020-05-13',
+    starttime: '12:45 PM',
+    enddate: '2020-05-13',
+    endtime: '2:00 PM',
+    description: 'Boba run with Wilson and Justin and Andy',
+    organizer_id: u1.id,
+    category: 'Food & Drink',
+    ticket_type: 'Free'
+)
+e11 = Event.create!(
+    title: 'San Francisco CHOCOLATE CON 2020',
+    location: 'San Francisco County Fair Building',
+    startdate: '2020-05-17',
+    starttime: '10:00 AM',
+    enddate: '2020-05-17',
+    endtime: '5:30 PM',
+    description: 'Chocolate lovers, get ready for a world of premium chocolate! 
+    The original and premier artisan chocolate show on the West Coast takes place 
+    this Spritn at the 14th Annual San Francisco International CHOCOLATE CON, in 
+    San Francisco. Chocolate aficionados, fanatics, buyers, and journalists can 
+    experience the finest in artisan, gourmet, and premium chocolate in one of 
+    the worlds great culinary metropolitan areas',
+    organizer_id: u1.id,
+    category: 'Food & Dining',
+    ticket_type: 'Paid'
+)
+e12 = Event.create!(
+    title: 'Ansons Ukelele Recital',
+    location: 'The Fillmore San Francisco',
+    startdate: '2020-06-12',
+    starttime: '5:30 PM',
+    enddate: '2020-06-12',
+    endtime: '8:00 PM',
+    description: 'Anson Chong is an Island Reggae Artist based out of Hong Kong. 
+    Starting off his debut album in 2009 with a band of loyal high school friends, 
+    Anson soon went solo and began performing across the world. Join us at The 
+    Fillmore San Francisco this June 12th to witness Anson live in action!',
+    organizer_id: u1.id,
+    category: 'Music',
+    ticket_type: 'Paid'
+)
 
 # file = open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/dunk1.jpg')
 # e1.photo.attach(io: File.open('/Users/jf/Documents/eventlite/dunk1.jpg'), filename: 'dunk')
@@ -162,3 +219,7 @@ e5.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/d
 e6.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/brownies.jpg'), filename: 'chefryan')
 e7.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/djdanny.jpg'), filename: 'djdanny')
 e8.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/nap.jpg'), filename: 'nappods')
+e9.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/cheese-grating.jpg'), filename: 'cheese')
+e10.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/boba.jpg'), filename: 'boba')
+e11.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/choco.jpeg'), filename: 'choco')
+e12.photo.attach(io: open('https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/ukelele.jpg'), filename: 'uke')

@@ -78,7 +78,8 @@ class EventShow extends React.Component {
                             </div>
                             <h2 id='esht'>{event.title}</h2>
                             <p id='esho'>by {event.organizerFname} {event.organizerLname}
-                                {(this.props.currentUserId === event.organizer_id) ? (<span id='edit-event-link'><Link to={`/e/${event.id}/edit`}>Edit Your Event</Link></span>) : ''}
+                                {(this.props.currentUserId === event.organizer_id) ? (<span id='event-show-edit-event'><Link id='edit-event-link' to={`/e/${event.id}/edit`}>Edit Event</Link></span>) : ''}
+                                {(this.props.currentUserId === event.organizer_id) ? (<button id='event-show-delete-event' onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button>) : ''}
                             </p>
                         </div>
                     </div>
@@ -91,7 +92,6 @@ class EventShow extends React.Component {
                                 <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmarked-icon' /></button>
                             )}
                             <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
-                            {/* <button onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button> */}
                         </div>
                         <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.props.openModal()}>Tickets</button></div>
                         {this.renderTicketErrors()}

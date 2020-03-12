@@ -1440,10 +1440,16 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "esho"
       }, "by ", event.organizerFname, " ", event.organizerLname, this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "edit-event-link"
+        id: "event-show-edit-event"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        id: "edit-event-link",
         to: "/e/".concat(event.id, "/edit")
-      }, "Edit Your Event")) : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Edit Event")) : '', this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "event-show-delete-event",
+        onClick: function onClick() {
+          return _this.props.deleteEvent(event.id);
+        }
+      }, "Delete Event") : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-save"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "es-likes-container"
