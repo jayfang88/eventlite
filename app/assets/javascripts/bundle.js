@@ -1914,9 +1914,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Greeting = function Greeting() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome to Eventlite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Are you 18 or older?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "greeting-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "greeting-title"
+  }, "Welcome to Eventlite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "greeting-question"
+  }, "Are you 18 or older?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "greeting-buttons-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/events/all"
-  }, "Yes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "greeting-button",
+    id: "greeting-enter"
+  }, "Yes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "greeting-button",
+    id: "greeting-no"
+  }, "No")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Greeting);
