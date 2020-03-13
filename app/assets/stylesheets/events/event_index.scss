@@ -62,10 +62,7 @@
 .event-index {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    // align-items: flex-end;
-    // width: 100%;
-    // height: 100px;
-    padding-bottom: 50px;
+    justify-content: space-between;
+    padding-bottom: 20px;
     margin-bottom: 15px;
 }
