@@ -1,24 +1,16 @@
-# README
+# Eventlite
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+Eventlite, an Eventbrite clone, is an event discovery and planning application. The app allows users to find, create, and register for events that can be viewed and bookmarked by other users. It was created with Ruby on Rails backend, PostgreSQL database, and React/Redux frontend.
 
-* System dependencies
+[Eventlite](https://eventlite-fsp.herokuapp.com)
 
-* Configuration
 
-* Database creation
+## Key Features
+- User authentication
+- Create/Read/Update/Delete events
+- Event Registrations and Bookmarks
+- Uploading images via AWS
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Landing Page
