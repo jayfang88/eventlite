@@ -60,3 +60,12 @@
     font-weight: 700;
     letter-spacing: 1.1px;
 }
+
+#splash-body {
+    display: flex;
+    margin-top: 50px;
+    width: 65%;
+    height: 1000px;
+    align-items: flex-start;
+    justify-content: center;
+}

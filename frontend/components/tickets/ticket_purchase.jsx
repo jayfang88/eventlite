@@ -5,11 +5,6 @@ class TicketPurchase extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
-        // debugger;
-        // this.props.requestEvent(this.props.match.params.eventId)
-    }
-
     convertDate(eventDate, eventTime) {
         const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -39,7 +34,6 @@ class TicketPurchase extends React.Component {
 
     render() {
         const { event, attending } = this.props
-        // if (!event) return null;
 
         return(
             <div id='ticket-purchase'>

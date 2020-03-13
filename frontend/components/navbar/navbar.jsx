@@ -11,7 +11,7 @@ class NavBar extends React.Component {
         let currentUser = this.props.currentUser;
         return(
             <div className='navbar'>
-                <Link to='/'><h1 id='logo-link'><span className='tilt-e'>e</span>v<span className='tilt-e'>e</span>ntlit<span className='tilt-e'>e</span></h1></Link>
+                <Link to='/events/all'><h1 id='logo-link'><span className='tilt-e'>e</span>v<span className='tilt-e'>e</span>ntlit<span className='tilt-e'>e</span></h1></Link>
                 <FontAwesomeIcon id='search-icon' icon={faSearch} />
                 <input id='nav-search' type="text" placeholder='Search for events'/>
 

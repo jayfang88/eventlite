@@ -1,29 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Greeting extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+const Greeting = () => {
 
-    render() {
-        return this.props.currentUser ? (
-            (
-                <div>
-                    <h1>Hello {this.props.currentUser.email}</h1>
-                    <button onClick={() => this.props.logout()}>Log out</button>
-                </div>
-            )
-        ) : (
-                (
-                    <div>
-                        <Link to='/signup'>Sign Up</Link>
-                        <br />
-                        <Link to='/login'>Log In</Link>
-                    </div>
-                )
-            )
-    }
+    return (
+        <div>
+            <h1>Welcome to Eventlite</h1>
+            <h3>Are you 18 or older?</h3>
+            <div><Link to='/events/all'>Yes</Link></div>
+            <div>No</div>
+        </div>
+    )
 
 };
 
