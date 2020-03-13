@@ -11,7 +11,7 @@ class EventShow extends React.Component {
 
     componentDidMount() {
         this.props.requestEvent(this.props.match.params.eventId)
-        
+        window.scrollTo(0, 0);
     }
 
     convertDate(eventDate) {

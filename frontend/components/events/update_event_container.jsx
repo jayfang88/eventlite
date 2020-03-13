@@ -5,7 +5,8 @@ import EventForm from './event_form';
 
 class UpdateEventForm extends React.Component {
     componentDidMount() {
-        this.props.requestEvent(this.props.match.params.eventId)
+        this.props.requestEvent(this.props.match.params.eventId);
+        window.scrollTo(0, 0);
     }
 
     render() {

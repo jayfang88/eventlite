@@ -1570,6 +1570,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestEvent(this.props.match.params.eventId);
+      window.scrollTo(0, 0);
     }
   }, {
     key: "convertDate",
@@ -1851,6 +1852,7 @@ var UpdateEventForm = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestEvent(this.props.match.params.eventId);
+      window.scrollTo(0, 0);
     }
   }, {
     key: "render",
