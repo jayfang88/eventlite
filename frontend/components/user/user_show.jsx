@@ -25,7 +25,7 @@ class UserShow extends React.Component {
                 // BUTTON TO DELETE TICKET?
             ))
         } else {
-            tix = 'No Upcoming Events'
+            tix = <div className='user-show-nothing'>No Upcoming Events</div>
         }
 
         let bookmx
@@ -34,7 +34,7 @@ class UserShow extends React.Component {
                 <BookmarkIndexItem key={i} event={event} />
             ))
         } else {
-            bookmx = 'No Bookmarks'
+            bookmx = <div className='user-show-nothing'>No Bookmarks</div>
         }
 
         return(

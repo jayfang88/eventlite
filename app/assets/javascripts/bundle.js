@@ -2986,7 +2986,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           ;
         });
       } else {
-        tix = 'No Upcoming Events';
+        tix = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-show-nothing"
+        }, "No Upcoming Events");
       }
 
       var bookmx;
@@ -2999,7 +3001,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           });
         });
       } else {
-        bookmx = 'No Bookmarks';
+        bookmx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-show-nothing"
+        }, "No Bookmarks");
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
