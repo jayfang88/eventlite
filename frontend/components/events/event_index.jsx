@@ -64,7 +64,6 @@ class EventIndex extends React.Component {
                 <Route exact path='/events/music' component={EventIndexFilterContainer} />
                 <Route exact path='/events/food-drink' component={EventIndexFilterContainer} />
                 <Route exact path='/events/sports-fitness' component={EventIndexFilterContainer} />
-                {/* { events } */}
             </div>
         )
     }
