@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import Splash from './splash';
+import Greeting from './greeting';
 
 const mSTP = (state, ownProps) => ({
-    path: ownProps.location.pathname
+
 });
 
 const mDTP = dispatch => ({
 
 });
 
-export default connect(mSTP, mDTP)(Splash);
+export default connect(mSTP, mDTP)(Greeting)

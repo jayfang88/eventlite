@@ -51,7 +51,7 @@ class Splash extends React.Component {
                     <FontAwesomeIcon className='searchbox-arrow' icon={faArrowAltCircleRight} />
                 </div>
                 <div id='splash-body'>
-                    <EventIndexContainer />
+                    <EventIndexContainer path={this.props.path}/>
                 </div>
             </div>
         )

@@ -449,7 +449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events_create_event_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./events/create_event_container */ "./frontend/components/events/create_event_container.js");
 /* harmony import */ var _events_update_event_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./events/update_event_container */ "./frontend/components/events/update_event_container.jsx");
 /* harmony import */ var _user_user_show_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user/user_show_container */ "./frontend/components/user/user_show_container.js");
-/* harmony import */ var _greeting_greeting__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! .//greeting/greeting */ "./frontend/components/greeting/greeting.jsx");
+/* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! .//greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
 
 
@@ -471,7 +471,7 @@ var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_14__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_6__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
-    component: _greeting_greeting__WEBPACK_IMPORTED_MODULE_13__["default"]
+    component: _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_13__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/events",
     component: _components_splash_splash_container__WEBPACK_IMPORTED_MODULE_8__["default"]
@@ -1416,7 +1416,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state) {
+var mSTP = function mSTP(state, ownProps) {
   return {
     events: Object.values(state.entities.events),
     errors: state.errors.event
@@ -1910,30 +1910,95 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
-var Greeting = function Greeting() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "greeting-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "greeting-title"
-  }, "Welcome to Eventlite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "greeting-question"
-  }, "Are you 18 or older?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "greeting-buttons-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/events/all"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "greeting-button",
-    id: "greeting-enter"
-  }, "Yes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "greeting-button",
-    id: "greeting-no"
-  }, "No")));
+
+var Greeting = /*#__PURE__*/function (_React$Component) {
+  _inherits(Greeting, _React$Component);
+
+  function Greeting() {
+    _classCallCheck(this, Greeting);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Greeting).apply(this, arguments));
+  }
+
+  _createClass(Greeting, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.history.push('/events/all');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "greeting-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "greeting-title"
+      }, "Welcome to Eventlite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "greeting-question"
+      }, "Are you 18 or older?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "greeting-buttons-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/events/all"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "greeting-button",
+        id: "greeting-enter"
+      }, "Yes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "greeting-button",
+        id: "greeting-no"
+      }, "No")));
+    }
+  }]);
+
+  return Greeting;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Greeting);
+
+/***/ }),
+
+/***/ "./frontend/components/greeting/greeting_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/greeting/greeting_container.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _greeting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./greeting */ "./frontend/components/greeting/greeting.jsx");
+
+
+
+var mSTP = function mSTP(state, ownProps) {
+  return {};
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Greeting);
+var mDTP = function mDTP(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_greeting__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -2611,7 +2676,9 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faArrowAltCircleRight"]
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "splash-body"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        path: this.props.path
+      })));
     }
   }]);
 
@@ -2637,8 +2704,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state) {
-  return {};
+var mSTP = function mSTP(state, ownProps) {
+  return {
+    path: ownProps.location.pathname
+  };
 };
 
 var mDTP = function mDTP(dispatch) {

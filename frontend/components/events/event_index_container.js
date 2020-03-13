@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { requestEvents } from '../../actions/event_actions';
 import EventIndex from './event_index';
 
-const mSTP = (state) => ({
+const mSTP = (state, ownProps) => ({
     events: Object.values(state.entities.events),
     errors: state.errors.event
 });

@@ -12,7 +12,7 @@ import EventShowContainer from './events/event_show_container';
 import CreateEventContainer from './events/create_event_container';
 import UpdateEventFormContainer from './events/update_event_container';
 import UserShowContainer from './user/user_show_container';
-import Greeting from './/greeting/greeting';
+import GreetingContainer from './/greeting/greeting_container';
 
 import Modal from './modal/modal';
 
@@ -25,7 +25,7 @@ const App = () => (
         </header>
 
         <Switch>
-            <Route exact path='/' component={Greeting} />
+            <Route exact path='/' component={GreetingContainer} />
             <Route path='/events' component={SplashContainer} />
             <Route exact path='/e/:eventId' component={EventShowContainer} />
             <AuthRoute exact path='/login' component={LoginFormContainer} />
