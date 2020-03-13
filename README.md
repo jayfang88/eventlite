@@ -14,3 +14,19 @@ Eventlite, an Eventbrite clone, is an event discovery and planning application. 
 - Uploading images via AWS
 
 ## Landing Page
+
+The landing page features the Event Index with tabs to selectively display events by their respective category/ticket type.
+
+## Events
+
+Users can create new events with this form, with the option to upload an event photo. If no image is uploaded, a default is set.
+
+
+Each Event Show page contains functions to Register for or Bookmark an event.
+
+
+Registered and bookmarked events appear in the user's profile page.
+
+### Future Implementations
+- search bar/function to look up events by title
+- implement Google Maps api for each Event Show
