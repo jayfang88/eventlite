@@ -14,18 +14,22 @@ Eventlite, an Eventbrite clone, is an event discovery and planning application. 
 - Uploading images via AWS
 
 ## Landing Page
-
+<img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-landing.png' />
 The landing page features the Event Index with tabs to selectively display events by their respective category/ticket type.
 
 ## Events
 
+<img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/reedme-eventform.png' />
 Users can create new events with this form, with the option to upload an event photo. If no image is uploaded, a default is set.
 
 
-Each Event Show page contains functions to Register for or Bookmark an event.
+<img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-eventshow.png' />
+Each Event Show page contains functions to Register for, or Bookmark an event.
 
 
+<img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-usershow.png' />
 Registered and bookmarked events appear in the user's profile page.
+
 
 ### Future Implementations
 - search bar/function to look up events by title
