@@ -12,7 +12,7 @@ class NavBar extends React.Component {
         return(
             <div className='navbar'>
                 <Link to='/events/all'><h1 id='logo-link'><span className='tilt-e'>e</span>v<span className='tilt-e'>e</span>ntlit<span className='tilt-e'>e</span></h1></Link>
-                <FontAwesomeIcon id='search-icon' icon={faSearch} />
+                <FontAwesomeIcon id='search-icon' icon                                                                                                                        ={faSearch} />
                 <input id='nav-search' type="text" placeholder='Search for events'/>
 
                 <p id='create-event-link'><Link id='create-link' to='/create'>Create Event</Link></p>

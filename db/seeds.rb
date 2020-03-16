@@ -114,10 +114,10 @@ e5 = Event.create!(
 e6 = Event.create!(
     title: "Brownie Baking 101",
     location: "Ryan's Apartment",
-    startdate: "2020-04-20",
-    starttime: "4:20 PM",
-    enddate: "2020-04-20",
-    endtime: "4:21 PM",
+    startdate: "2020-05-21",
+    starttime: "6:00 PM",
+    enddate: "2020-05-21",
+    endtime: "8:00 PM",
     description: "Ryan Leung is hosting weekly brownie baking in your neighborhood this spring! 
     Lift your spirits with complimentary treats. Bring friends and family to what is guaranteed to be the high point of your week.",
     organizer_id: u1.id,
