@@ -11,12 +11,12 @@ class EventIndexFiltered extends React.Component {
     }
 
     render() {
-        const { indexPath, events } = this.props
-
+        const { indexPath, events } = this.props;
         if (!events) return null;
         
-        
-        let filteredEvents
+        //Match current path with desired criteria such as ticket type or category
+        //to filter and display events.
+        let filteredEvents;
         switch (indexPath) {
             case 'free':
                 filteredEvents = events.filter(e => e.ticket_type === 'Free')
