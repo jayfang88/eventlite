@@ -4,8 +4,18 @@
 
 Eventlite, an Eventbrite clone, is an event discovery and planning application. The app allows users to find, create, and register for events that can be viewed and bookmarked by other users. It was created with Ruby on Rails backend, PostgreSQL database, and React/Redux frontend.
 
-[Eventlite](https://eventlite-fsp.herokuapp.com)
+[Eventlite Live Link](https://eventlite-fsp.herokuapp.com)
 
+## Technologies Used
+- Front-end:
+  - React
+  - Redux
+- Back-end:
+  - Ruby on Rails
+  - PostgreSQL
+- Cloud:
+  - AWS S3
+  - Heroku
 
 ## Key Features
 - User authentication
@@ -18,9 +28,42 @@ Eventlite, an Eventbrite clone, is an event discovery and planning application. 
 The landing page features the Event Index with tabs to selectively display events by their respective category/ticket type.
 <img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-landing.png' />
 
+```javascript
+//Match current path with desired criteria such as ticket type or category
+//to filter and display events.
+let filteredEvents;
+switch (indexPath) {
+    case 'free':
+        filteredEvents = events.filter(e => e.ticket_type === 'Free')
+        break;
+    case 'music':
+        filteredEvents = events.filter(e => e.category === 'Music')
+        break;
+    case 'food-drink':
+        filteredEvents = events.filter(e => e.category === 'Food & Drink')
+        break;
+    case 'sports-fitness':
+        filteredEvents = events.filter(e => e.category === 'Sports & Fitness')
+        break;
+    default:
+        filteredEvents = events
+        break;
+}
+
+filteredEvents = filteredEvents.map((event, i) => (
+    <EventIndexItem key={i} event={event} />
+))
+
+return(
+    <div className='event-index'>
+        { filteredEvents }
+    </div>
+)
+```
+
 ## Events
 
-Users can create new events with this form, with the option to upload an event photo. If no image is uploaded, a default is set.
+Users can create new events using a form, with the option to upload an event photo. Photo is saved to AWS S3, and if no image is uploaded, a default is set.
 
 <img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/reedme-eventform.png' />
 
@@ -36,5 +79,6 @@ Registered and bookmarked events appear in the user's profile page.
 
 
 ### Future Implementations
-- search bar/function to look up events by title
-- implement Google Maps api for each Event Show
+- Search function to look up events by title
+- Implement Google Maps API to show map for each event
+- Use Google Maps Places Autocomplete API to autocomplete addresses on input during event creation
