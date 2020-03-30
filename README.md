@@ -26,7 +26,7 @@ Eventlite, an Eventbrite clone, is an event discovery and planning application. 
 ## Landing Page
 
 The landing page features the Event Index with tabs to selectively display events by their respective category/ticket type.
-<img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-landing.png' />
+![Event Index demo](app/assets/images/eventlite-index.gif)
 
 ```javascript
 //Match current path with desired criteria such as ticket type or category
