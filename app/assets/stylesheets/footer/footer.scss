@@ -1,0 +1,20 @@
+.footer {
+    position: fixed;
+    bottom: 0px;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e0a3c;
+    color: white;
+}
+
+#github {
+    width: 40px;
+    margin-right: 150px;
+}
+
+#linkedin {
+    width: 40px;
+}

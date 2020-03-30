@@ -13,7 +13,7 @@ import CreateEventContainer from './events/create_event_container';
 import UpdateEventFormContainer from './events/update_event_container';
 import UserShowContainer from './user/user_show_container';
 import GreetingContainer from './/greeting/greeting_container';
-
+import Footer from './footer';
 import Modal from './modal/modal';
 
 
@@ -35,6 +35,10 @@ const App = () => (
             <ProtectedRoute exact path='/e/:eventId/edit' component={UpdateEventFormContainer} />
             <ProtectedRoute exact path='/u/:userId' component={UserShowContainer} />
         </Switch>
+
+        {/* <footer> */}
+            <Footer />
+        {/* </footer> */}
     </div>
 );
 
