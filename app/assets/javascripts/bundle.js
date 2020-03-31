@@ -1922,21 +1922,19 @@ __webpack_require__.r(__webpack_exports__);
 function Footer() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "personal-links-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://github.com/jayfang88/eventlite"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: window.githubURL,
     alt: "github",
-    className: "personal-link"
+    id: "github"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://linkedin.com/in/justinjfang"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: window.linkedinURL,
     alt: "linkedin",
-    className: "personal-link"
-  }))));
+    id: "linkedin"
+  })));
 }
 ;
 
