@@ -10,11 +10,12 @@
     color: white;
 }
 
-#github {
-    width: 40px;
-    margin-right: 150px;
+.personal-links-container {
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
 }
 
-#linkedin {
-    width: 40px;
+.personal-link {
+    width: 38px;
 }
