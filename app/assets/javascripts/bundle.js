@@ -86,6 +86,19 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./config/keys_places.js":
+/*!*******************************!*\
+  !*** ./config/keys_places.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  key: 'AIzaSyDsGMoUwaDuVAoiYUH7edAUr2i_adeeH-s'
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/bookmark_actions.js":
 /*!**********************************************!*\
   !*** ./frontend/actions/bookmark_actions.js ***!
@@ -666,6 +679,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _config_keys_places__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../config/keys_places */ "./config/keys_places.js");
+/* harmony import */ var _config_keys_places__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config_keys_places__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -689,6 +704,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var EventForm = /*#__PURE__*/function (_React$Component) {
   _inherits(EventForm, _React$Component);
 
@@ -705,6 +721,20 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(EventForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.useScript();
+    }
+  }, {
+    key: "useScript",
+    value: function useScript() {
+      var script = document.createElement('script');
+      script.className = 'autocomplete';
+      script.src = "https://maps.googleapis.com/maps/api/js?key=".concat(_config_keys_places__WEBPACK_IMPORTED_MODULE_2___default.a.key, "&libraries=places");
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;

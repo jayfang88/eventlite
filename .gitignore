@@ -31,3 +31,5 @@ bundle.js.map
 .DS_Store
 
 npm-debug.log
+
+/config/keys_places.js

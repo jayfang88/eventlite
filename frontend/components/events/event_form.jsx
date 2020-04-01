@@ -1,5 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+
+import keys from '../../../config/keys_places';
 
 class EventForm extends React.Component {
     constructor(props) {
@@ -8,6 +10,18 @@ class EventForm extends React.Component {
         this.state = this.props.event
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleTicketChange = this.handleTicketChange.bind(this)
+    }
+
+    componentDidMount() {
+        this.useScript();
+    }
+
+    useScript() {
+        const script = document.createElement('script');
+        script.className = 'autocomplete';
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${keys.key}&libraries=places`;
+        script.async = true;
+        document.body.appendChild(script);
     }
 
     update(field) {
