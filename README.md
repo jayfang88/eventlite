@@ -4,6 +4,8 @@
 
 Eventlite, an Eventbrite clone, is an event discovery and planning application. The app allows users to find, create, and register for events that can be viewed and bookmarked by other users. It was created with Ruby on Rails backend, PostgreSQL database, and React/Redux frontend.
 
+<img src="app/assets/images/eventlite-landing.png"/>
+
 ## Technologies Used
 - Front-end:
   - React
@@ -24,8 +26,6 @@ Eventlite, an Eventbrite clone, is an event discovery and planning application. 
 ## Landing Page
 
 The landing page features the Event Index with tabs to selectively display events by their respective category/ticket type.
-<img src="app/assets/images/eventlite-landing.png"/>
-
 ![Event Index demo](app/assets/images/eventlite-index.gif)
 
 ```javascript
