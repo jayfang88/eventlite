@@ -78,7 +78,7 @@ Registered and bookmarked events appear in the user's profile page.
 <img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-usershow.png' />
 
 
-### Future Implementations
-- Search function to look up events by title
-- Implement Google Maps API to show map for each event
-- Use Google Maps Places Autocomplete API to autocomplete addresses on input during event creation
+### Future Features
+- Search capabilities to find and look up events by title
+- Implement Google Maps API to show a map with location marker for each event
+- Use Google Maps Places Autocomplete API to provide address suggestions upon user input (during event creation)
