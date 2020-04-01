@@ -90,6 +90,10 @@
     border-radius: 3px;
     letter-spacing: 1px;
 }
+.form-date:focus {
+    border: 1px solid blue;
+}
+
 .time-dropdown {
     -webkit-appearance: none;
     width: 135px;
@@ -100,6 +104,10 @@
     padding-left: 15px;
     border-radius: 3px;
     letter-spacing: 1px;
+}
+.time-dropdown:focus {
+    outline: none;
+    border: 1px solid blue;
 }
 
 #form-choose-pic {
@@ -119,6 +127,7 @@
 }
 #form-description:focus {
     outline: none;
+    border: 1px solid blue;
 }
 
 #ticket-label {
@@ -146,6 +155,10 @@
     border: 1px solid rgb(221, 221, 221);
     font-size: 14px;
     letter-spacing: 0.8px;
+}
+#topic:focus {
+    outline: none;
+    border: 1px solid blue;
 }
 
 #form-submit {
