@@ -2,7 +2,7 @@
 
 [Eventlite Live Link](https://eventlite-fsp.herokuapp.com)
 
-Eventlite, an Eventbrite clone, is an event discovery and planning application. The app allows users to find, create, and register for events that can be viewed and bookmarked by other users. It was created with Ruby on Rails backend, PostgreSQL database, and React/Redux frontend.
+Eventlite, an Eventbrite clone, is a full stack event discovery and planning web application. The app allows users to perform all CRUD actions including finding, creating, and registering for events that can be viewed and bookmarked by other users. It was developed using Ruby on Rails backend, PostgreSQL database, and React/Redux frontend.
 
 <img src="app/assets/images/eventlite-landing.png"/>
 
