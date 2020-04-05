@@ -2,8 +2,6 @@ import React from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Redirect } from 'react-router-dom';
 
-import keys from '../../../config/keys_places';
-
 class EventForm extends React.Component {
     constructor(props) {
         super(props)
@@ -12,23 +10,7 @@ class EventForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleTicketChange = this.handleTicketChange.bind(this)
     }
-
-    componentDidMount() {
-        this.useScript();
-    }
-
-    useScript() {
-        let autocompletes = document.getElementsByClassName('autocomplete');
-
-        if (autocompletes.length < 1) {
-            const script = document.createElement('script');
-            script.className = 'autocomplete';
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${keys.key}&libraries=places`;
-            script.async = true;
-            document.body.appendChild(script);
-        };
-    }
-
+    
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value })
     }

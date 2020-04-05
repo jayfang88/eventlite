@@ -10,9 +10,15 @@
     color: white;
 }
 
+.personal-links-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 92px;
+}
+
 #github {
     width: 34px;
-    margin-right: 20px;
     filter: brightness(70%);
 }
 
@@ -25,5 +31,5 @@
 }
 
 #github:hover, #linkedin:hover {
-    filter: brightness(120%);
+    filter: brightness(110%);
 }

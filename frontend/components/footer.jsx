@@ -5,12 +5,14 @@ import React from 'react';
 export default function Footer() {
     return (
         <div className='footer'>
-            <a href="https://github.com/jayfang88/eventlite">
-                <img src={window.githubURL} alt='github' id='github' />
-            </a>
-            <a href="https://linkedin.com/in/justinjfang">
-                <img src={window.linkedinURL} alt='linkedin' id='linkedin' />
-            </a>
+            <div className='personal-links-container'>
+                <a href="https://github.com/jayfang88/eventlite">
+                    <img src={window.githubURL} alt='github' id='github' />
+                </a>
+                <a href="https://linkedin.com/in/justinjfang">
+                    <img src={window.linkedinURL} alt='linkedin' id='linkedin' />
+                </a>
+            </div>
         </div>
     )
 };
