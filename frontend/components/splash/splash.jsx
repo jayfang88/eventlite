@@ -3,28 +3,11 @@ import EventIndexContainer from '../events/event_index_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 
-import keys from '../../../config/keys_places';
 
 class Splash extends React.Component {
     constructor(props) {
         super(props)
     };
-
-    componentDidMount() {
-        this.useScript();
-    }
-
-    useScript() {
-        let autocompletes = document.getElementsByClassName('autocomplete');
-
-        if (autocompletes.length < 1) {
-            const script = document.createElement('script');
-            script.className = 'autocomplete';
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${keys.key}&libraries=places`;
-            script.async = true;
-            document.body.appendChild(script);
-        };
-    }
 
     render() {
         return(
