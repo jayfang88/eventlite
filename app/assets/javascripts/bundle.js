@@ -728,11 +728,17 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "useScript",
     value: function useScript() {
-      var script = document.createElement('script');
-      script.className = 'autocomplete';
-      script.src = "https://maps.googleapis.com/maps/api/js?key=".concat(_config_keys_places__WEBPACK_IMPORTED_MODULE_2___default.a.key, "&libraries=places");
-      script.async = true;
-      document.body.appendChild(script);
+      var autocompletes = document.getElementsByClassName('autocomplete');
+
+      if (autocompletes.length < 1) {
+        var script = document.createElement('script');
+        script.className = 'autocomplete';
+        script.src = "https://maps.googleapis.com/maps/api/js?key=".concat(_config_keys_places__WEBPACK_IMPORTED_MODULE_2___default.a.key, "&libraries=places");
+        script.async = true;
+        document.body.appendChild(script);
+      }
+
+      ;
     }
   }, {
     key: "update",

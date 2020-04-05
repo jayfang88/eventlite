@@ -17,11 +17,15 @@ class EventForm extends React.Component {
     }
 
     useScript() {
-        const script = document.createElement('script');
-        script.className = 'autocomplete';
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${keys.key}&libraries=places`;
-        script.async = true;
-        document.body.appendChild(script);
+        let autocompletes = document.getElementsByClassName('autocomplete');
+
+        if (autocompletes.length < 1) {
+            const script = document.createElement('script');
+            script.className = 'autocomplete';
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${keys.key}&libraries=places`;
+            script.async = true;
+            document.body.appendChild(script);
+        };
     }
 
     update(field) {
