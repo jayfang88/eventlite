@@ -65,6 +65,35 @@
     font-size: 15px;
 }
 
+.suggestion-container {
+    position: absolute;
+    background-color: white;
+    color: rgb(126, 126, 126);
+    padding: 10px 15px 5px 15px;
+    border-radius: 3px;
+    width: auto;
+}
+
+.suggestion {
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(145, 145, 145, 0.411);
+}
+
+.suggestion:hover {
+    color: #0d2cac;
+    cursor: pointer;
+}
+
+.event-form-loader {
+    position: absolute;
+    font-size: 14px;
+    color: rgb(143, 143, 143);
+    font-weight: 400;
+}
+
 #starts-ends-container {
     display: flex;
     width: 680px;

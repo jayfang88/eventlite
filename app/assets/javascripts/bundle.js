@@ -678,9 +678,11 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _config_keys_places__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../config/keys_places */ "./config/keys_places.js");
-/* harmony import */ var _config_keys_places__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config_keys_places__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-google-places-autocomplete */ "./node_modules/react-google-places-autocomplete/dist/index.js");
+/* harmony import */ var react_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _config_keys_places__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../config/keys_places */ "./config/keys_places.js");
+/* harmony import */ var _config_keys_places__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_config_keys_places__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -700,6 +702,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -733,7 +736,7 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
       if (autocompletes.length < 1) {
         var script = document.createElement('script');
         script.className = 'autocomplete';
-        script.src = "https://maps.googleapis.com/maps/api/js?key=".concat(_config_keys_places__WEBPACK_IMPORTED_MODULE_2___default.a.key, "&libraries=places");
+        script.src = "https://maps.googleapis.com/maps/api/js?key=".concat(_config_keys_places__WEBPACK_IMPORTED_MODULE_3___default.a.key, "&libraries=places");
         script.async = true;
         document.body.appendChild(script);
       }
@@ -803,6 +806,8 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-form-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -829,11 +834,26 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
         className: "form-label"
       }, "Location", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "red-asterisk"
-      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        autocompletionRequest: {
+          componentRestrictions: {
+            country: ['us']
+          }
+        },
         placeholder: "Search for a venue or address.",
-        value: this.state.location,
-        onChange: this.update('location')
+        onSelect: function onSelect(_ref) {
+          var description = _ref.description;
+          return _this4.setState({
+            location: description
+          });
+        },
+        suggestionsClassNames: {
+          container: 'suggestion-container',
+          suggestion: 'suggestion'
+        },
+        loader: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "event-form-loader"
+        }, "Loading...")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "starts-ends-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -42662,6 +42682,686 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/react-google-places-autocomplete/dist/GooglePlacesAutocomplete/index.js":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/react-google-places-autocomplete/dist/GooglePlacesAutocomplete/index.js ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _autocompletionRequestBuilder = __webpack_require__(/*! ../utils/autocompletionRequestBuilder */ "./node_modules/react-google-places-autocomplete/dist/utils/autocompletionRequestBuilder.js");
+
+var _autocompletionRequestBuilder2 = _interopRequireDefault(_autocompletionRequestBuilder);
+
+var _debounce = __webpack_require__(/*! ../utils/debounce */ "./node_modules/react-google-places-autocomplete/dist/utils/debounce.js");
+
+var _debounce2 = _interopRequireDefault(_debounce);
+
+var _customPropTypes = __webpack_require__(/*! ../utils/customPropTypes */ "./node_modules/react-google-places-autocomplete/dist/utils/customPropTypes.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var GooglePlacesAutocomplete = function (_Component) {
+  _inherits(GooglePlacesAutocomplete, _Component);
+
+  // eslint-disable-line react/destructuring-assignment
+
+  function GooglePlacesAutocomplete(props) {
+    _classCallCheck(this, GooglePlacesAutocomplete);
+
+    var _this = _possibleConstructorReturn(this, (GooglePlacesAutocomplete.__proto__ || Object.getPrototypeOf(GooglePlacesAutocomplete)).call(this, props));
+
+    _this.fetchSuggestions = (0, _debounce2.default)(function (value) {
+      var autocompletionRequest = _this.props.autocompletionRequest;
+
+
+      _this.setState({ loading: true });
+      _this.placesService.getPlacePredictions(_extends({}, (0, _autocompletionRequestBuilder2.default)(autocompletionRequest), {
+        input: value
+      }), _this.fetchSuggestionsCallback);
+    }, _this.props.debounce);
+
+
+    _this.state = {
+      activeSuggestion: null,
+      loading: false,
+      placesServiceStatus: null,
+      suggestions: [],
+      value: props.initialValue
+    };
+
+    _this.changeActiveSuggestion = _this.changeActiveSuggestion.bind(_this);
+    _this.changeValue = _this.changeValue.bind(_this);
+    _this.clearSuggestions = _this.clearSuggestions.bind(_this);
+    _this.fetchSuggestionsCallback = _this.fetchSuggestionsCallback.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
+    _this.handleKeyDown = _this.handleKeyDown.bind(_this);
+    _this.initalizeService = _this.initializeService.bind(_this);
+    _this.onSuggestionSelect = _this.onSuggestionSelect.bind(_this);
+    _this.renderInput = _this.renderInput.bind(_this);
+    _this.renderSuggestions = _this.renderSuggestions.bind(_this);
+    return _this;
+  }
+
+  _createClass(GooglePlacesAutocomplete, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.initalizeService();
+      document.addEventListener('click', this.handleClick);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      document.removeEventListener('click', this.handleClick);
+    }
+  }, {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
+      // eslint-disable-line
+      if (nextProps.initialValue) {
+        this.setState({ value: nextProps.initialValue });
+      }
+    }
+  }, {
+    key: 'handleClick',
+    value: function handleClick(ev) {
+      var idPrefix = this.props.idPrefix;
+
+
+      if (!ev.target.id.includes(idPrefix + '-google-places-autocomplete')) {
+        this.clearSuggestions();
+      }
+    }
+  }, {
+    key: 'changeValue',
+    value: function changeValue(value) {
+      this.setState({ value: value });
+
+      if (value.length > 0) {
+        this.fetchSuggestions(value);
+      } else {
+        this.setState({ suggestions: [] });
+      }
+    }
+  }, {
+    key: 'initializeService',
+    value: function initializeService() {
+      var _this2 = this;
+
+      if (!window.google) {
+        console.error('[react-google-places-autocomplete]: Google script not loaded'); // eslint-disable-line no-console
+        setTimeout(function () {
+          _this2.initalizeService();
+        }, 1000);
+
+        return;
+      }
+
+      if (!window.google.maps) {
+        console.error('[react-google-places-autocomplete]: Google maps script not loaded'); // eslint-disable-line no-console
+        setTimeout(function () {
+          _this2.initalizeService();
+        }, 1000);
+
+        return;
+      }
+
+      if (!window.google.maps.places) {
+        console.error('[react-google-places-autocomplete]: Google maps places script not loaded'); // eslint-disable-line no-console
+        setTimeout(function () {
+          _this2.initializeService();
+        }, 1000);
+
+        return;
+      }
+
+      this.placesService = new window.google.maps.places.AutocompleteService();
+      this.setState({
+        placesServiceStatus: window.google.maps.places.PlacesServiceStatus.OK
+      });
+    }
+  }, {
+    key: 'renderInput',
+    value: function renderInput() {
+      var _this3 = this;
+
+      var value = this.state.value,
+          _props = this.props,
+          idPrefix = _props.idPrefix,
+          inputClassName = _props.inputClassName,
+          inputStyle = _props.inputStyle,
+          placeholder = _props.placeholder,
+          renderInput = _props.renderInput,
+          required = _props.required,
+          disabled = _props.disabled;
+
+
+      if (renderInput) {
+        return renderInput({
+          autoComplete: 'off',
+          id: idPrefix + '-google-places-autocomplete-input',
+          value: value,
+          onChange: function onChange(_ref) {
+            var target = _ref.target;
+            return _this3.changeValue(target.value);
+          },
+          onKeyDown: this.handleKeyDown,
+          type: 'text',
+          placeholder: placeholder,
+          required: required,
+          disabled: disabled
+        });
+      }
+
+      return _react2.default.createElement('input', {
+        autoComplete: 'off',
+        className: inputClassName || 'google-places-autocomplete__input',
+        id: idPrefix + '-google-places-autocomplete-input',
+        onChange: function onChange(_ref2) {
+          var target = _ref2.target;
+          return _this3.changeValue(target.value);
+        },
+        onKeyDown: this.handleKeyDown,
+        placeholder: placeholder,
+        style: inputStyle,
+        type: 'text',
+        value: value,
+        required: required,
+        disabled: disabled
+      });
+    }
+  }, {
+    key: 'renderSuggestions',
+    value: function renderSuggestions() {
+      var _this4 = this;
+
+      var _state = this.state,
+          activeSuggestion = _state.activeSuggestion,
+          suggestions = _state.suggestions,
+          _props2 = this.props,
+          idPrefix = _props2.idPrefix,
+          renderSuggestions = _props2.renderSuggestions,
+          suggestionsClassNames = _props2.suggestionsClassNames,
+          suggestionsStyles = _props2.suggestionsStyles;
+
+
+      if (suggestions.length === 0) {
+        return null;
+      }
+
+      if (renderSuggestions) {
+        return renderSuggestions(activeSuggestion, suggestions, this.onSuggestionSelect);
+      }
+
+      return _react2.default.createElement(
+        'div',
+        {
+          id: idPrefix + '-google-places-suggestions-container',
+          className: suggestionsClassNames.container || 'google-places-autocomplete__suggestions-container',
+          style: suggestionsStyles.container
+        },
+        suggestions.map(function (suggestion, index) {
+          return _react2.default.createElement(
+            'div',
+            {
+              id: idPrefix + '-google-places-autocomplete-suggestion--' + index,
+              key: suggestion.id,
+              className: (suggestionsClassNames.suggestion || 'google-places-autocomplete__suggestion') + ' ' + (activeSuggestion === index ? suggestionsClassNames.suggestionActive || 'google-places-autocomplete__suggestion--active' : ''),
+              style: suggestionsStyles.suggestion,
+              onClick: function onClick(event) {
+                return _this4.onSuggestionSelect(suggestion, event);
+              },
+              role: 'presentation'
+            },
+            suggestion.description
+          );
+        })
+      );
+    }
+  }, {
+    key: 'renderLoader',
+    value: function renderLoader() {
+      var loader = this.props.loader;
+
+
+      if (loader) {
+        return loader;
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'google-places-autocomplete__suggestions-container' },
+        _react2.default.createElement(
+          'div',
+          { className: 'google-places-autocomplete__suggestions' },
+          'Loading...'
+        )
+      );
+    }
+  }, {
+    key: 'onSuggestionSelect',
+    value: function onSuggestionSelect(suggestion) {
+      var ev = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (ev) {
+        ev.stopPropagation();
+      }
+
+      var onSelect = this.props.onSelect;
+
+
+      this.setState({
+        activeSuggestion: null,
+        suggestions: [],
+        value: suggestion.description
+      });
+
+      onSelect(suggestion);
+    }
+  }, {
+    key: 'fetchSuggestionsCallback',
+    value: function fetchSuggestionsCallback(suggestions, status) {
+      var placesServiceStatus = this.state.placesServiceStatus;
+
+
+      if (status !== placesServiceStatus) {
+        // show error
+      }
+
+      this.setState({
+        loading: false,
+        suggestions: suggestions || []
+      });
+    }
+  }, {
+    key: 'handleKeyDown',
+    value: function handleKeyDown(event) {
+      var _state2 = this.state,
+          activeSuggestion = _state2.activeSuggestion,
+          suggestions = _state2.suggestions;
+
+
+      switch (event.key) {
+        case 'Enter':
+          event.preventDefault();
+          if (activeSuggestion !== null) {
+            this.onSuggestionSelect(suggestions[activeSuggestion]);
+          }
+          break;
+        case 'ArrowDown':
+          this.changeActiveSuggestion(1);
+          break;
+        case 'ArrowUp':
+          this.changeActiveSuggestion(-1);
+          break;
+        case 'Escape':
+          this.clearSuggestions();
+          break;
+        default:
+      }
+    }
+  }, {
+    key: 'clearSuggestions',
+    value: function clearSuggestions() {
+      this.setState({
+        activeSuggestion: null,
+        suggestions: []
+      });
+    }
+  }, {
+    key: 'changeActiveSuggestion',
+    value: function changeActiveSuggestion(direction) {
+      var suggs = this.state.suggestions;
+
+
+      if (suggs.length === 0) {
+        return;
+      }
+
+      switch (direction) {
+        case 1:
+          this.setState(function (_ref3) {
+            var activeSuggestion = _ref3.activeSuggestion,
+                suggestions = _ref3.suggestions;
+
+            if (activeSuggestion === null || activeSuggestion === suggestions.length - 1) {
+              return { activeSuggestion: 0 };
+            }
+
+            return { activeSuggestion: activeSuggestion + 1 };
+          });
+          break;
+        case -1:
+          this.setState(function (_ref4) {
+            var activeSuggestion = _ref4.activeSuggestion,
+                suggestions = _ref4.suggestions;
+
+            if (!activeSuggestion) {
+              return { activeSuggestion: suggestions.length - 1 };
+            }
+
+            return { activeSuggestion: activeSuggestion - 1 };
+          });
+          break;
+        default:
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var loading = this.state.loading;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'google-places-autocomplete' },
+        this.renderInput(),
+        loading ? this.renderLoader() : this.renderSuggestions()
+      );
+    }
+  }]);
+
+  return GooglePlacesAutocomplete;
+}(_react.Component);
+
+GooglePlacesAutocomplete.propTypes = {
+  autocompletionRequest: _customPropTypes.autocompletionRequestType,
+  debounce: _propTypes2.default.number,
+  initialValue: _propTypes2.default.string,
+  inputClassName: _propTypes2.default.string,
+  inputStyle: _propTypes2.default.object,
+  loader: _propTypes2.default.node,
+  onSelect: _propTypes2.default.func,
+  placeholder: _propTypes2.default.string,
+  renderInput: _propTypes2.default.func,
+  renderSuggestions: _propTypes2.default.func,
+  suggestionsClassNames: _customPropTypes.suggestionClassNamesType,
+  suggestionsStyles: _customPropTypes.suggestionStylesType,
+  required: _propTypes2.default.bool,
+  disabled: _propTypes2.default.bool,
+  idPrefix: _propTypes2.default.string
+};
+
+GooglePlacesAutocomplete.defaultProps = {
+  autocompletionRequest: {},
+  debounce: 300,
+  initialValue: '',
+  inputClassName: '',
+  inputStyle: {},
+  loader: null,
+  onSelect: function onSelect() {},
+  placeholder: 'Address',
+  renderInput: undefined,
+  renderSuggestions: undefined,
+  suggestionsClassNames: {
+    container: '',
+    suggestion: '',
+    suggestionActive: ''
+  },
+  suggestionsStyles: {
+    container: {},
+    suggestion: {}
+  },
+  required: false,
+  disabled: false,
+  idPrefix: ''
+};
+
+exports.default = GooglePlacesAutocomplete;
+
+/***/ }),
+
+/***/ "./node_modules/react-google-places-autocomplete/dist/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/react-google-places-autocomplete/dist/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getLatLng = exports.geocodeByPlaceId = exports.geocodeByAddress = undefined;
+
+var _GooglePlacesAutocomplete = __webpack_require__(/*! ./GooglePlacesAutocomplete */ "./node_modules/react-google-places-autocomplete/dist/GooglePlacesAutocomplete/index.js");
+
+var _GooglePlacesAutocomplete2 = _interopRequireDefault(_GooglePlacesAutocomplete);
+
+var _googleGeocodesHelper = __webpack_require__(/*! ./utils/googleGeocodesHelper */ "./node_modules/react-google-places-autocomplete/dist/utils/googleGeocodesHelper.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.geocodeByAddress = _googleGeocodesHelper.geocodeByAddress;
+exports.geocodeByPlaceId = _googleGeocodesHelper.geocodeByPlaceId;
+exports.getLatLng = _googleGeocodesHelper.getLatLng;
+exports.default = _GooglePlacesAutocomplete2.default;
+
+/***/ }),
+
+/***/ "./node_modules/react-google-places-autocomplete/dist/utils/autocompletionRequestBuilder.js":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/react-google-places-autocomplete/dist/utils/autocompletionRequestBuilder.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var autocompletionRequestBuilder = function autocompletionRequestBuilder(autocompletionRequest) {
+  var res = _extends({}, autocompletionRequest);
+
+  if (autocompletionRequest.bounds) {
+    res.bounds = new (Function.prototype.bind.apply(google.maps.LatLngBounds, [null].concat(_toConsumableArray(autocompletionRequest.bounds))))();
+  }
+
+  if (autocompletionRequest.location) {
+    res.location = new google.maps.LatLng(autocompletionRequest.location);
+  }
+
+  return res;
+};
+
+exports.default = autocompletionRequestBuilder;
+
+/***/ }),
+
+/***/ "./node_modules/react-google-places-autocomplete/dist/utils/customPropTypes.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/react-google-places-autocomplete/dist/utils/customPropTypes.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.suggestionStylesType = exports.suggestionClassNamesType = exports.autocompletionRequestType = undefined;
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var latLngBoundsType = function latLngBoundsType(props, propName, componentName) {
+  var prop = props[propName];
+
+  if (!prop) {
+    return null;
+  }
+
+  if (Array.isArray(prop) && prop.length === 2 && prop.every(function (value) {
+    return Object.keys(value).length === 2 && value.hasOwnProperty('lat') && value.hasOwnProperty('lng') // eslint-disable-line no-prototype-builtins
+    && Number(value.lat) && Number(value.lng);
+  })) {
+    return null;
+  }
+
+  return new Error('Invalid prop `' + propName + '` supplied to `' + componentName + '`. Validation failed.');
+};
+
+var componentRestrictionsType = _propTypes2.default.shape({
+  country: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)])
+});
+
+var latLngType = _propTypes2.default.shape({
+  lat: _propTypes2.default.number,
+  lng: _propTypes2.default.number
+});
+
+var autocompletionRequestType = exports.autocompletionRequestType = _propTypes2.default.shape({
+  bounds: latLngBoundsType,
+  componentRestrictions: componentRestrictionsType,
+  location: latLngType,
+  offset: _propTypes2.default.number,
+  radius: _propTypes2.default.number,
+  types: _propTypes2.default.arrayOf(_propTypes2.default.string)
+});
+
+var suggestionClassNamesType = exports.suggestionClassNamesType = _propTypes2.default.shape({
+  container: _propTypes2.default.string,
+  suggestion: _propTypes2.default.string,
+  suggestionActive: _propTypes2.default.string
+});
+
+var suggestionStylesType = exports.suggestionStylesType = _propTypes2.default.shape({
+  container: _propTypes2.default.object,
+  suggestion: _propTypes2.default.object
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-google-places-autocomplete/dist/utils/debounce.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/react-google-places-autocomplete/dist/utils/debounce.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* eslint-disable */
+
+var debounce = function debounce(callback, timeout) {
+  var d = void 0,
+      e = void 0;
+  return function () {
+    function helper() {
+      d = null, e = callback.apply(thisRef, argumentsRef);
+    }
+    var thisRef = this,
+        argumentsRef = arguments;
+    return clearTimeout(d), d = setTimeout(helper, timeout), !d && (e = callback.apply(thisRef, argumentsRef)), e;
+  };
+};
+
+exports.default = debounce;
+
+/***/ }),
+
+/***/ "./node_modules/react-google-places-autocomplete/dist/utils/googleGeocodesHelper.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/react-google-places-autocomplete/dist/utils/googleGeocodesHelper.js ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var geocodeByAddress = exports.geocodeByAddress = function geocodeByAddress(address) {
+  var geocoder = new window.google.maps.Geocoder();
+  var OK = window.google.maps.GeocoderStatus.OK;
+
+
+  return new Promise(function (resolve, reject) {
+    geocoder.geocode({ address: address }, function (results, status) {
+      if (status !== OK) {
+        return reject(status);
+      }
+      return resolve(results);
+    });
+  });
+};
+
+var getLatLng = exports.getLatLng = function getLatLng(result) {
+  return new Promise(function (resolve, reject) {
+    try {
+      var latLng = {
+        lat: result.geometry.location.lat(),
+        lng: result.geometry.location.lng()
+      };
+      return resolve(latLng);
+    } catch (e) {
+      return reject(e);
+    }
+  });
+};
+
+var geocodeByPlaceId = exports.geocodeByPlaceId = function geocodeByPlaceId(placeId) {
+  var geocoder = new window.google.maps.Geocoder();
+  var OK = window.google.maps.GeocoderStatus.OK;
+
+
+  return new Promise(function (resolve, reject) {
+    geocoder.geocode({ placeId: placeId }, function (results, status) {
+      if (status !== OK) {
+        return reject(status);
+      }
+      return resolve(results);
+    });
+  });
+};
 
 /***/ }),
 

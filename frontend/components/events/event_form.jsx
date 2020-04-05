@@ -1,4 +1,5 @@
 import React from 'react';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Redirect } from 'react-router-dom';
 
 import keys from '../../../config/keys_places';
@@ -90,7 +91,22 @@ class EventForm extends React.Component {
                             <input type="text" placeholder='Give it a short distinct name' value={this.state.title} onChange={this.update('title')}/>
 
                         <label className='form-label'>Location<span id='red-asterisk'>*</span></label>
-                            <input type="text" placeholder='Search for a venue or address.' value={this.state.location} onChange={this.update('location')} />
+                            <GooglePlacesAutocomplete
+                                autocompletionRequest={{
+                                    componentRestrictions: {
+                                        country: ['us']
+                                    }
+                                }}
+                                placeholder='Search for a venue or address.'
+                                onSelect={({ description }) => (
+                                    this.setState({ location: description })
+                                )}
+                                suggestionsClassNames={{
+                                    container: 'suggestion-container',
+                                    suggestion: 'suggestion'
+                                }}
+                                loader={<div className='event-form-loader'>Loading...</div>}
+                            />
                         
                         <div id='starts-ends-container'>
                             <div className='form-starts-ends'>
