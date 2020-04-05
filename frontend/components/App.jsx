@@ -35,9 +35,7 @@ const App = () => (
             <ProtectedRoute exact path='/u/:userId' component={UserShowContainer} />
         </Switch>
 
-        <footer>
-            <Footer />
-        </footer>
+        <Footer />
     </div>
 );
 

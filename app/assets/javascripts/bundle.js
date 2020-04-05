@@ -516,7 +516,7 @@ var App = function App() {
     exact: true,
     path: "/u/:userId",
     component: _user_user_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_13__["default"], null)));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_13__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
