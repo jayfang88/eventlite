@@ -2,8 +2,6 @@ import React from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Redirect } from 'react-router-dom';
 
-import keys from '../../../config/keys_places';
-
 class EventForm extends React.Component {
     constructor(props) {
         super(props);
