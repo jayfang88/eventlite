@@ -718,28 +718,10 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
     _this.state = _this.props.event;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleTicketChange = _this.handleTicketChange.bind(_assertThisInitialized(_this));
-
-    _this.useScript();
-
     return _this;
   }
 
   _createClass(EventForm, [{
-    key: "useScript",
-    value: function useScript() {
-      var autocompletes = document.getElementsByClassName('autocomplete');
-
-      if (autocompletes.length < 1) {
-        var script = document.createElement('script');
-        script.className = 'autocomplete';
-        script.src = "https://maps.googleapis.com/maps/api/js?key=".concat(_config_keys_places__WEBPACK_IMPORTED_MODULE_3___default.a.key, "&libraries=places");
-        script.async = true;
-        document.body.appendChild(script);
-      }
-
-      ;
-    }
-  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;

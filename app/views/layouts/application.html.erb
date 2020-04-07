@@ -16,5 +16,6 @@
 
   <body>
     <%= yield %>
+    <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google[:api_key] %>&libraries=places'></script>
   </body>
 </html>
