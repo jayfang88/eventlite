@@ -37,12 +37,16 @@
 
 #create-event-link {
     display: flex;
-    width: 120px;
-    padding: 20px 5px;
+    width: 160px;
+    padding: 20px 10px;
     font-size: 13px;
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+#create-event-link:hover {
+    // background-color: #f8f7fa;
 }
 
 #create-link {

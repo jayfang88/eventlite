@@ -1555,6 +1555,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var _util_time_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/time_util */ "./frontend/util/time_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1579,6 +1580,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var EventShow = /*#__PURE__*/function (_React$Component) {
   _inherits(EventShow, _React$Component);
 
@@ -1593,19 +1595,6 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.requestEvent(this.props.match.params.eventId);
       window.scrollTo(0, 0);
-    }
-  }, {
-    key: "convertDate",
-    value: function convertDate(eventDate) {
-      var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      var fullDate = new Date(eventDate);
-      var day = days[fullDate.getDay()];
-      var month = months[fullDate.getMonth()];
-      var date = fullDate.getDate() + 1;
-      var yr = fullDate.getFullYear();
-      var combined = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(yr);
-      return combined;
     }
   }, {
     key: "renderTicketErrors",
@@ -1742,9 +1731,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         className: "event-show-label"
       }, "Date and Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "event-show-deets"
-      }, this.convertDate(event.startdate), ", ", event.starttime, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_4__["convertDate"])(event.startdate), ", ", event.starttime, " - "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "event-show-deets"
-      }, this.convertDate(event.enddate), ", ", event.endtime, " PST")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_4__["convertDate"])(event.enddate), ", ", event.endtime, " PST")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-show-aside-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "event-show-label"
@@ -2227,7 +2216,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
         id: "user-link"
-      }, currentUser.fname, " ", currentUser.lname, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, currentUser.fname, " ", currentUser.lname, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "user-link-email"
       }, currentUser.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/u/".concat(currentUser.id)
@@ -2314,6 +2303,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_time_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/time_util */ "./frontend/util/time_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2335,6 +2325,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SearchBar = /*#__PURE__*/function (_React$Component) {
   _inherits(SearchBar, _React$Component);
 
@@ -2347,7 +2338,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       events: []
     };
-    _this.searchQuery = _this.props.searchQuery;
+    _this.searchQuery = '';
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.parseEvents = _this.parseEvents.bind(_assertThisInitialized(_this));
@@ -2368,7 +2359,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick() {
-      console.log('taking u to the event');
       this.searchQuery = '';
       this.setState({
         events: []
@@ -2396,13 +2386,16 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var searchEvents = this.state.events.map(function (event, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i,
-          className: "search-event"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/e/".concat(event.id),
-          onClick: _this3.handleClick
-        }, event.title));
+          onClick: _this3.handleClick,
+          key: i
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "search-event"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: event.photoUrl,
+          className: "search-img"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_2__["convertDate"])(event.startdate), " ", event.starttime))));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "nav-search"
@@ -2412,7 +2405,11 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
         placeholder: "Search for events",
         value: this.searchQuery,
         onChange: this.handleInput
-      }), this.searchQuery.length > 0 ? searchEvents.slice(0, 5) : null);
+      }), this.searchQuery.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-results-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-results-title"
+      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, searchEvents.slice(0, 5))) : null);
     }
   }]);
 
@@ -2442,8 +2439,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    events: Object.values(state.entities.events),
-    searchQuery: ''
+    events: Object.values(state.entities.events)
   };
 };
 
@@ -4148,6 +4144,30 @@ var deleteTicket = function deleteTicket(ticketId) {
     method: 'DELETE',
     url: "/api/tickets/".concat(ticketId)
   });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/time_util.js":
+/*!************************************!*\
+  !*** ./frontend/util/time_util.js ***!
+  \************************************/
+/*! exports provided: convertDate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "convertDate", function() { return convertDate; });
+var convertDate = function convertDate(eventDate) {
+  var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var fullDate = new Date(eventDate);
+  var day = days[fullDate.getDay()];
+  var month = months[fullDate.getMonth()];
+  var date = fullDate.getDate() + 1;
+  var yr = fullDate.getFullYear();
+  var combined = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(yr);
+  return combined;
 };
 
 /***/ }),

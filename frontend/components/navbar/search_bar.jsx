@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { convertDate } from '../../util/time_util';
 
 export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = { events: [] };
-        this.searchQuery = this.props.searchQuery;
+        this.searchQuery = '';
         this.handleInput = this.handleInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.parseEvents = this.parseEvents.bind(this);
@@ -22,7 +23,6 @@ export default class SearchBar extends React.Component {
     }
 
     handleClick() {
-        console.log('taking u to the event');
         this.searchQuery = '';
         this.setState({ events: [] });
     }
@@ -38,22 +38,29 @@ export default class SearchBar extends React.Component {
 
     render() {
         let searchEvents = this.state.events.map((event, i) => 
-            <li key={i} className='search-event'>
-                <Link to={`/e/${event.id}`}
-                    onClick={this.handleClick}>
-                    {event.title}
-                </Link>
-            </li>
+            <Link to={`/e/${event.id}`} onClick={this.handleClick} key={i}>
+                <li className='search-event'>
+                    <img src={event.photoUrl} className='search-img' />
+                    <div>
+                        <p>{event.title}</p>
+                        <p>{convertDate(event.startdate)} {event.starttime}</p>
+                    </div>
+                </li>
+            </Link>
         );
 
         return(
             <div id='nav-search'>
-                <input id='searchbar'
-                type="text" 
-                placeholder='Search for events'
-                value={this.searchQuery}
-                onChange={this.handleInput} />
-                {this.searchQuery.length > 0 ? searchEvents.slice(0,5) : null}
+                <input id='searchbar' type="text" placeholder='Search for events'
+                value={this.searchQuery} onChange={this.handleInput} />
+                {this.searchQuery.length > 0 ? (
+                    <div className='search-results-container'>
+                        <div className='search-results-title'>Events</div>
+                        <div>{searchEvents.slice(0,5)}</div>
+                    </div>
+                ) : (
+                    null
+                )}
             </div>
         )
     }

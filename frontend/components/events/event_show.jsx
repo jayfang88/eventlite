@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { convertDate } from '../../util/time_util';
 
 class EventShow extends React.Component {
     constructor(props) {
@@ -12,20 +13,6 @@ class EventShow extends React.Component {
     componentDidMount() {
         this.props.requestEvent(this.props.match.params.eventId)
         window.scrollTo(0, 0);
-    }
-
-    convertDate(eventDate) {
-        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-        let fullDate = new Date(eventDate);
-        let day = days[fullDate.getDay()];
-        let month = months[fullDate.getMonth()];
-        let date = fullDate.getDate()+1;
-        let yr = fullDate.getFullYear();
-
-        let combined = `${day}, ${month} ${date}, ${yr}`;
-        return combined;
     }
 
     renderTicketErrors() {
@@ -115,8 +102,8 @@ class EventShow extends React.Component {
                         <div id='event-show-aside'>
                             <div className='event-show-aside-container'>
                                 <h2 className='event-show-label'>Date and Time</h2>
-                                <p className='event-show-deets'>{this.convertDate(event.startdate)}, {event.starttime} - </p>
-                                <p className='event-show-deets'>{this.convertDate(event.enddate)}, {event.endtime} PST</p>
+                                <p className='event-show-deets'>{convertDate(event.startdate)}, {event.starttime} - </p>
+                                <p className='event-show-deets'>{convertDate(event.enddate)}, {event.endtime} PST</p>
                             </div>
                             <div className='event-show-aside-container'>
                                 <h2 className='event-show-label'>Location</h2>

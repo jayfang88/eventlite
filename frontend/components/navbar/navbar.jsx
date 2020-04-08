@@ -13,8 +13,12 @@ class NavBar extends React.Component {
         let currentUser = this.props.currentUser;
         return(
             <div className='navbar'>
-                <Link to='/events/all'><h1 id='logo-link'><span className='tilt-e'>e</span>v<span className='tilt-e'>e</span>ntlit<span className='tilt-e'>e</span></h1></Link>
-                <FontAwesomeIcon id='search-icon' icon                                                                                                                        ={faSearch} />
+                <Link to='/events/all'><h1 id='logo-link'>
+                    <span className='tilt-e'>e</span>v
+                    <span className='tilt-e'>e</span>ntlit
+                    <span className='tilt-e'>e</span></h1>
+                </Link>
+                <FontAwesomeIcon id='search-icon' icon={faSearch} />
                 <SearchBarContainer />
 
                 <p id='create-event-link'><Link id='create-link' to='/create'>Create Event</Link></p>
@@ -24,7 +28,14 @@ class NavBar extends React.Component {
                         <FontAwesomeIcon className='user-icon' icon={faUser} />
                         <FontAwesomeIcon className='user-icon-caret' icon={faAngleDown} />
                         <div className='nav-dropdown'>
-                            <Link to={`/u/${currentUser.id}`}><button className='dropdown-item' id='user-link'>{currentUser.fname} {currentUser.lname}<br /> <span id='user-link-email'>{currentUser.email}</span></button></Link>
+                            <Link to={`/u/${currentUser.id}`}>
+                                <button className='dropdown-item' 
+                                id='user-link'>{currentUser.fname} {currentUser.lname}<br />
+                                <span id='user-link-email'>
+                                    {currentUser.email}
+                                </span>
+                                </button>
+                            </Link>
                             <Link to={`/u/${currentUser.id}`}><button className='dropdown-item'>Tickets</button></Link>
                             <Link to={`/u/${currentUser.id}`}><button className='dropdown-item'>Bookmarks</button></Link>
                             <Link to='/create'><button className='dropdown-item'>Create Event</button></Link>
