@@ -19,25 +19,6 @@
     -webkit-transform: rotate(-15deg);
 }
 
-
-#search-icon {
-    margin: 22px 10px 22px 25px;
-    color: rgb(175, 172, 172);
-}
-
-#nav-search {
-    width: 90%;
-    margin: 18px 5px;
-    font-size: 14px;
-    border: none;
-    color: #39364f;
-    letter-spacing: 0.5px;
-}
-
-#nav-search::placeholder {
-    color: #cecdd6;
-}
-
 #nav-link-holder {
     display: flex;
     box-sizing: border-box;
@@ -53,7 +34,6 @@
     align-items: center;
     color: #6f7287;
 }
-
 
 #create-event-link {
     display: flex;

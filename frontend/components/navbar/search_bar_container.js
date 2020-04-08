@@ -4,6 +4,7 @@ import { requestEvents } from '../../actions/event_actions';
 import SearchBar from './search_bar';
 
 const mSTP = state => ({
+    events: Object.values(state.entities.events),
     searchQuery: ''
 });
 

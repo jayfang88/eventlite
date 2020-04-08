@@ -2313,6 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SearchBar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2333,6 +2334,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SearchBar = /*#__PURE__*/function (_React$Component) {
   _inherits(SearchBar, _React$Component);
 
@@ -2342,8 +2344,12 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, SearchBar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBar).call(this, props));
+    _this.state = {
+      events: []
+    };
     _this.searchQuery = _this.props.searchQuery;
-    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.parseEvents = _this.parseEvents.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2356,19 +2362,52 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     key: "handleInput",
     value: function handleInput() {
       this.searchQuery = event.target.value;
+      this.parseEvents();
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick() {
+      console.log('taking u to the event');
     }
   }, {
     key: "parseEvents",
-    value: function parseEvents() {}
+    value: function parseEvents() {
+      var _this2 = this;
+
+      var parsedEvents = this.props.events.filter(function (event) {
+        var title = event.title.toLowerCase().split(' ').join('');
+
+        var search = _this2.searchQuery.toLowerCase().split(' ').join('');
+
+        return title.includes(search);
+      });
+      this.setState({
+        events: parsedEvents
+      });
+    }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "nav-search",
+      var _this3 = this;
+
+      var searchEvents = this.state.events.map(function (event, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: i,
+          className: "search-event"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/e/".concat(event.id),
+          path: "/e/".concat(event.id),
+          onClick: _this3.handleClick
+        }, event.title));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "nav-search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "searchbar",
         type: "text",
         placeholder: "Search for events",
         onChange: this.handleInput
-      });
+      }), this.searchQuery.length > 0 ? searchEvents.slice(0, 5) : null);
     }
   }]);
 
@@ -2398,6 +2437,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
+    events: Object.values(state.entities.events),
     searchQuery: ''
   };
 };

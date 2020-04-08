@@ -1,0 +1,31 @@
+#search-icon {
+    margin: 22px 10px 22px 25px;
+    color: rgb(175, 172, 172);
+}
+
+#nav-search {
+    width: 90%;
+    font-size: 14px;
+    border: none;
+    color: #39364f;
+    letter-spacing: 0.5px;
+}
+
+#searchbar {
+    width: 100%;
+    margin: 19.5px 5px;
+    font-size: 14px;
+    border: none;
+    color: #39364f;
+    letter-spacing: 0.5px;
+}
+
+#searchbar::placeholder {
+    color: #cecdd6;
+}
+
+.search-event {
+    z-index: 1;
+    position: relative;
+    height: 20px;
+}
