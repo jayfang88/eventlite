@@ -6,6 +6,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
+import SearchBarContainer from './search_bar_container';
+
 class NavBar extends React.Component {
     render() {
         let currentUser = this.props.currentUser;
@@ -13,7 +15,7 @@ class NavBar extends React.Component {
             <div className='navbar'>
                 <Link to='/events/all'><h1 id='logo-link'><span className='tilt-e'>e</span>v<span className='tilt-e'>e</span>ntlit<span className='tilt-e'>e</span></h1></Link>
                 <FontAwesomeIcon id='search-icon' icon                                                                                                                        ={faSearch} />
-                <input id='nav-search' type="text" placeholder='Search for events'/>
+                <SearchBarContainer />
 
                 <p id='create-event-link'><Link id='create-link' to='/create'>Create Event</Link></p>
 
