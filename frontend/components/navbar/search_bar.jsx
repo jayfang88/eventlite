@@ -8,6 +8,7 @@ export default class SearchBar extends React.Component {
         this.state = { events: [] };
         this.searchQuery = this.props.searchQuery;
         this.handleInput = this.handleInput.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.parseEvents = this.parseEvents.bind(this);
     }
     
@@ -22,6 +23,8 @@ export default class SearchBar extends React.Component {
 
     handleClick() {
         console.log('taking u to the event');
+        this.searchQuery = '';
+        this.setState({ events: [] });
     }
 
     parseEvents() {
@@ -37,7 +40,6 @@ export default class SearchBar extends React.Component {
         let searchEvents = this.state.events.map((event, i) => 
             <li key={i} className='search-event'>
                 <Link to={`/e/${event.id}`}
-                    path={`/e/${event.id}`}
                     onClick={this.handleClick}>
                     {event.title}
                 </Link>
@@ -49,6 +51,7 @@ export default class SearchBar extends React.Component {
                 <input id='searchbar'
                 type="text" 
                 placeholder='Search for events'
+                value={this.searchQuery}
                 onChange={this.handleInput} />
                 {this.searchQuery.length > 0 ? searchEvents.slice(0,5) : null}
             </div>

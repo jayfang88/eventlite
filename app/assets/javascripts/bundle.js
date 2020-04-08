@@ -2349,6 +2349,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     };
     _this.searchQuery = _this.props.searchQuery;
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.parseEvents = _this.parseEvents.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -2368,6 +2369,10 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     key: "handleClick",
     value: function handleClick() {
       console.log('taking u to the event');
+      this.searchQuery = '';
+      this.setState({
+        events: []
+      });
     }
   }, {
     key: "parseEvents",
@@ -2396,7 +2401,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
           className: "search-event"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/e/".concat(event.id),
-          path: "/e/".concat(event.id),
           onClick: _this3.handleClick
         }, event.title));
       });
@@ -2406,6 +2410,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
         id: "searchbar",
         type: "text",
         placeholder: "Search for events",
+        value: this.searchQuery,
         onChange: this.handleInput
       }), this.searchQuery.length > 0 ? searchEvents.slice(0, 5) : null);
     }
