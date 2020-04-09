@@ -64,7 +64,7 @@ return(
 
 ## Events
 
-Users can look up events by event title using the search bar.
+Users can find and look up events by event title using the search bar.
 
 ![Search demo](app/assets/images/search-demo1.gif)
 
@@ -85,6 +85,4 @@ Registered and bookmarked events appear in the user's profile page.
 
 
 ### Future Features
-- Search capabilities to find and look up events by title
-- Implement Google Maps API to show a map with location marker for each event
-- Use Google Maps Places Autocomplete API to provide address suggestions upon user input (during event creation)
+- Utilize existing Google Maps API to display map with location marker for/on each event page
