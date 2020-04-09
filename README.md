@@ -22,6 +22,7 @@ Eventlite, an Eventbrite clone, is a full stack event discovery and planning web
 - Create/Read/Update/Delete events
 - Event Registrations and Bookmarks
 - Uploading images via AWS
+- Address autocomplete via Google Maps Places API
 
 ## Landing Page
 
@@ -63,18 +64,19 @@ return(
 
 ## Events
 
-Users can create new events using a form, with the option to upload an event photo. Photo is saved to AWS S3, and if no image is uploaded, a default is set. Google Places Autocomplete is implemented for location input.
+Users can look up events by event title using the search bar.
+![Search demo](app/assets/images/search-demo.gif)
 
+
+Users can create new events using a form, with the option to upload an event photo. Photos are saved to AWS S3, and if no image is uploaded, a default is set. Google Places Autocomplete is implemented for location input.
 ![Autocomplete demo](app/assets/images/autocomplete-demo.gif)
 
 
 Each Event Show page contains functions to Register for, or Bookmark an event.
-
 <img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-eventshow.png' />
 
 
 Registered and bookmarked events appear in the user's profile page.
-
 <img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/readme-usershow.png' />
 
 
