@@ -63,9 +63,9 @@ return(
 
 ## Events
 
-Users can create new events using a form, with the option to upload an event photo. Photo is saved to AWS S3, and if no image is uploaded, a default is set.
+Users can create new events using a form, with the option to upload an event photo. Photo is saved to AWS S3, and if no image is uploaded, a default is set. Google Places Autocomplete is implemented for location input.
 
-<img src='https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/reedme-eventform.png' />
+![Autocomplete demo](app/assets/images/autocomplete-demo.gif)
 
 
 Each Event Show page contains functions to Register for, or Bookmark an event.
