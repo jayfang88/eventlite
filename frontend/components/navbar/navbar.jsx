@@ -21,7 +21,7 @@ class NavBar extends React.Component {
                 <FontAwesomeIcon id='search-icon' icon={faSearch} />
                 <SearchBarContainer />
 
-                <p id='create-event-link'><Link id='create-link' to='/create'>Create Event</Link></p>
+                <Link className='nav-link' id='create-link' to='/create'>Create Event</Link>
 
                 {this.props.currentUser ? (
                     <div className='nav-user'>
