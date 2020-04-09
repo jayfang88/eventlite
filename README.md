@@ -66,12 +66,12 @@ return(
 
 Users can look up events by event title using the search bar.
 
-![Search demo](app/assets/images/search-demo.gif)
+![Search demo](app/assets/images/search-demo1.gif)
 
 
 Users can create new events using a form, with the option to upload an event photo. Photos are saved to AWS S3, and if no image is uploaded, a default is set. Google Places Autocomplete is implemented for location input.
 
-![Autocomplete demo](app/assets/images/autocomplete-demo.gif)
+![Autocomplete demo](app/assets/images/autocomplete-demo1.gif)
 
 
 Each Event Show page contains functions to Register for, or Bookmark an event.
