@@ -88,7 +88,7 @@ class EventShow extends React.Component {
                             ) : (
                                 <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmarked-icon' /></button>
                             )}
-                            <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button>
+                            {/* <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button> */}
                         </div>
                         <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.handleTicketButton()}>Tickets</button></div>
                         {this.renderTicketErrors()}
