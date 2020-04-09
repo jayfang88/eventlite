@@ -41,9 +41,10 @@ export default class SearchBar extends React.Component {
             <Link to={`/e/${event.id}`} onClick={this.handleClick} key={i}>
                 <li className='search-event'>
                     <img src={event.photoUrl} className='search-img' />
-                    <div>
-                        <p>{event.title}</p>
-                        <p>{convertDate(event.startdate)} {event.starttime}</p>
+                    <div className='search-body'>
+                        <p className='search-b-title'>{event.title}</p>
+                        <p className='search-b-info'>{convertDate(event.startdate)} {event.starttime}</p>
+                        <p className='search-b-info'>{event.location}</p>
                     </div>
                 </li>
             </Link>
@@ -53,7 +54,7 @@ export default class SearchBar extends React.Component {
             <div id='nav-search'>
                 <input id='searchbar' type="text" placeholder='Search for events'
                 value={this.searchQuery} onChange={this.handleInput} />
-                {this.searchQuery.length > 0 ? (
+                {this.searchQuery.length > 0 && searchEvents.length > 0 ? (
                     <div className='search-results-container'>
                         <div className='search-results-title'>Events</div>
                         <div>{searchEvents.slice(0,5)}</div>

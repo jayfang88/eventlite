@@ -2395,7 +2395,15 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: event.photoUrl,
           className: "search-img"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_2__["convertDate"])(event.startdate), " ", event.starttime))));
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "search-body"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "search-b-title"
+        }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "search-b-info"
+        }, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_2__["convertDate"])(event.startdate), " ", event.starttime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "search-b-info"
+        }, event.location))));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "nav-search"
@@ -2405,7 +2413,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
         placeholder: "Search for events",
         value: this.searchQuery,
         onChange: this.handleInput
-      }), this.searchQuery.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), this.searchQuery.length > 0 && searchEvents.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-results-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-results-title"
