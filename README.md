@@ -64,7 +64,7 @@ return(
 
 ## Events
 
-Users can find and look up events by event title using the search bar.
+Users can find and look up events by title, category, location, organizer name, and other keywords using the search bar.
 
 ![Search demo](app/assets/images/search-demo1.gif)
 
