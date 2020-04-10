@@ -2359,16 +2359,26 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "parseInfo",
+    value: function parseInfo(param) {
+      return param.toLowerCase().split(' ').join('');
+    }
+  }, {
     key: "parseEvents",
     value: function parseEvents() {
       var _this2 = this;
 
       var parsedEvents = this.props.events.filter(function (event) {
-        var title = event.title.toLowerCase().split(' ').join('');
+        var info = '';
+        var details = [event.title, event.description, event.location, event.organizerFname, event.organizerLname, event.category, event.ticket_type];
 
-        var search = _this2.searchQuery.toLowerCase().split(' ').join('');
+        for (var i = 0; i < details.length; i++) {
+          info += _this2.parseInfo(details[i]);
+        }
 
-        return title.includes(search);
+        var search = _this2.parseInfo(_this2.searchQuery);
+
+        return info.includes(search);
       });
       this.setState({
         events: parsedEvents

@@ -27,11 +27,23 @@ export default class SearchBar extends React.Component {
         this.setState({ events: [] });
     }
 
+    parseInfo(param) {
+        return param.toLowerCase().split(' ').join('');
+    }
+
     parseEvents() {
         let parsedEvents = this.props.events.filter(event => {
-            let title = event.title.toLowerCase().split(' ').join('');
-            let search = this.searchQuery.toLowerCase().split(' ').join('');
-            return title.includes(search);
+            let info = '';
+            let details = [event.title, event.description, event.location,
+                event.organizerFname, event.organizerLname, event.category,
+                event.ticket_type];
+
+            for (let i = 0; i < details.length; i++) {
+                info += this.parseInfo(details[i]);
+            }
+
+            let search = this.parseInfo(this.searchQuery);
+            return info.includes(search);
         })
         this.setState({ events: parsedEvents });
     }
