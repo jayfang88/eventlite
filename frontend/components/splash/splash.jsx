@@ -11,7 +11,7 @@ class Splash extends React.Component {
 
     scrollDown() {
         window.scrollTo({
-            top: 680,
+            top: 700,
             behavior: 'smooth'
         })
     }

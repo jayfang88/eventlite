@@ -2946,7 +2946,7 @@ var Splash = /*#__PURE__*/function (_React$Component) {
     key: "scrollDown",
     value: function scrollDown() {
       window.scrollTo({
-        top: 680,
+        top: 700,
         behavior: 'smooth'
       });
     }
