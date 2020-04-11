@@ -20,7 +20,7 @@ const mDTP = dispatch => ({
     deleteEvent: eventId => dispatch(deleteEvent(eventId)),
     createBookmark: (bookmark, eventId) => dispatch(createBookmark(bookmark, eventId)),
     deleteBookmark: (bookmarkId, eventId) => dispatch(deleteBookmark(bookmarkId, eventId)),
-    openModal: modal => dispatch(openModal(modal)),
+    openModal: (modal, eventId) => dispatch(openModal(modal, eventId)),
     closeModal: () => dispatch(closeModal())
 });
 

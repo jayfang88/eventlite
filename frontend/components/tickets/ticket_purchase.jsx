@@ -3,7 +3,7 @@ import { convertDate } from '../../util/time_util';
 
 class TicketPurchase extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     handleRegistration() {
@@ -14,7 +14,7 @@ class TicketPurchase extends React.Component {
                     event_id: this.props.event.id,
                 }, this.props.event.id)
             } else {
-                this.props.deleteTicket(this.props.event.ticketId, this.props.event.id)
+                this.props.deleteTicket(this.props.event.ticketId, this.props.event.id);
             }
         }
     }
@@ -56,10 +56,8 @@ class TicketPurchase extends React.Component {
                     </div>
                 </div>
                 <div id='ticket-purchase-right'>
-                    <div id='ticket-purchase-img-container'>
-                        <img id='ticket-purchase-img'
-                        src={event.photoUrl} alt="event-photo"/>
-                    </div>
+                    <img id='ticket-purchase-img'
+                    src={event.photoUrl} alt="event-photo"/>
                 </div>
             </div>
         )

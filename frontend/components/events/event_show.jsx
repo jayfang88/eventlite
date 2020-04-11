@@ -29,7 +29,7 @@ class EventShow extends React.Component {
 
     handleTicketButton() {
         if (this.props.currentUserId) {
-            this.props.openModal('purchase');
+            this.props.openModal('purchase', this.props.event.id);
         } else {
             this.props.history.push('/login');
         }
@@ -48,11 +48,6 @@ class EventShow extends React.Component {
         } else {
             this.props.history.push('/login')
         }
-    }
-    
-    handleDelete() {
-        this.props.deleteEvent(this.props.event.id);
-        this.props.history.push('/');
     }
 
     render() {
@@ -80,8 +75,17 @@ class EventShow extends React.Component {
                             </div>
                             <h2 id='esht'>{event.title}</h2>
                             <p id='esho'>by {event.organizerFname} {event.organizerLname}
-                                {(this.props.currentUserId === event.organizer_id) ? (<span id='event-show-edit-event'><Link id='edit-event-link' to={`/e/${event.id}/edit`}>Edit Event</Link></span>) : ''}
-                                {(this.props.currentUserId === event.organizer_id) ? (<button id='event-show-delete-event' onClick={() => this.handleDelete()}>Delete Event</button>) : ''}
+                                {(this.props.currentUserId === event.organizer_id) ? 
+                                    (<Link id='edit-event-link' to={`/e/${event.id}/edit`}>
+                                        Edit Event
+                                    </Link>) 
+                                : ''}
+                                {(this.props.currentUserId === event.organizer_id) ? 
+                                    (<button id='event-show-delete-event' 
+                                    onClick={() => this.props.openModal('delete', this.props.event.id)}>
+                                        Delete Event
+                                    </button>) 
+                                : ''}
                             </p>
                         </div>
                     </div>
@@ -89,13 +93,24 @@ class EventShow extends React.Component {
                     <div id='event-show-save'>
                         <div id='es-likes-container'>
                             {!bookmarked ? (
-                                <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmark-icon' /></button>
+                                <button onClick={() => this.handleBookmark()} 
+                                        className='es-icon-container'>
+                                    <FontAwesomeIcon icon={faBookmark} id='bookmark-icon' />
+                                </button>
                             ) : (
-                                <button onClick={() => this.handleBookmark()} className='es-icon-container'><FontAwesomeIcon icon={faBookmark} id='bookmarked-icon' /></button>
+                                <button onClick={() => this.handleBookmark()}
+                                        className='es-icon-container'>
+                                    <FontAwesomeIcon icon={faBookmark} id='bookmarked-icon' />
+                                </button>
                             )}
                             {/* <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button> */}
                         </div>
-                        <div className='tickets-button-container'><button id='tickets-button' onClick={() => this.handleTicketButton()}>Tickets</button></div>
+                        <div className='tickets-button-container'>
+                            <button id='tickets-button'
+                                    onClick={() => this.handleTicketButton()}>
+                                Tickets
+                            </button>
+                        </div>
                         {this.renderTicketErrors()}
                     </div>
                     <div id='event-show-content'>

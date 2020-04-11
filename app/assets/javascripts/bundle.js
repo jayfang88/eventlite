@@ -264,10 +264,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeModal", function() { return closeModal; });
 var OPEN_MODAL = 'OPEN_MODAL';
 var CLOSE_MODAL = 'CLOSE-MODAL';
-var openModal = function openModal(modal) {
+var openModal = function openModal(modal, eventId) {
   return {
     type: OPEN_MODAL,
-    modal: modal
+    modal: modal,
+    eventId: eventId
   };
 };
 var closeModal = function closeModal() {
@@ -649,6 +650,103 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/events/event_delete.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/events/event_delete.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var EventDelete = /*#__PURE__*/function (_React$Component) {
+  _inherits(EventDelete, _React$Component);
+
+  function EventDelete() {
+    _classCallCheck(this, EventDelete);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EventDelete).apply(this, arguments));
+  }
+
+  _createClass(EventDelete, [{
+    key: "handleDelete",
+    value: function handleDelete() {
+      this.props.deleteEvent(this.props.event.id);
+      this.props.history.push('/');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-delete-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "delete-modal-title"
+      }, "Are you sure you want to delete your event?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "delete-modal-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "confirm-delete",
+        onClick: function onClick() {
+          return _this.handleDelete();
+        }
+      }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "cancel-delete",
+        onClick: function onClick() {
+          return _this.props.closeModal();
+        }
+      }, "Cancel")));
+    }
+  }]);
+
+  return EventDelete;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+
+var mSTP = function mSTP(state, ownProps) {
+  debugger;
+  return {};
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(EventDelete));
 
 /***/ }),
 
@@ -1610,7 +1708,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     key: "handleTicketButton",
     value: function handleTicketButton() {
       if (this.props.currentUserId) {
-        this.props.openModal('purchase');
+        this.props.openModal('purchase', this.props.event.id);
       } else {
         this.props.history.push('/login');
       }
@@ -1630,12 +1728,6 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       } else {
         this.props.history.push('/login');
       }
-    }
-  }, {
-    key: "handleDelete",
-    value: function handleDelete() {
-      this.props.deleteEvent(this.props.event.id);
-      this.props.history.push('/');
     }
   }, {
     key: "render",
@@ -1679,15 +1771,13 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "esht"
       }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "esho"
-      }, "by ", event.organizerFname, " ", event.organizerLname, this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "event-show-edit-event"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "by ", event.organizerFname, " ", event.organizerLname, this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         id: "edit-event-link",
         to: "/e/".concat(event.id, "/edit")
-      }, "Edit Event")) : '', this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Edit Event") : '', this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "event-show-delete-event",
         onClick: function onClick() {
-          return _this.handleDelete();
+          return _this.props.openModal('delete', _this.props.event.id);
         }
       }, "Delete Event") : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-save"
@@ -1801,8 +1891,8 @@ var mDTP = function mDTP(dispatch) {
     deleteBookmark: function deleteBookmark(bookmarkId, eventId) {
       return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["deleteBookmark"])(bookmarkId, eventId));
     },
-    openModal: function openModal(modal) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
+    openModal: function openModal(modal, eventId) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal, eventId));
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
@@ -2068,6 +2158,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _tickets_ticket_purchase_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tickets/ticket_purchase_container */ "./frontend/components/tickets/ticket_purchase_container.js");
+/* harmony import */ var _events_event_delete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../events/event_delete */ "./frontend/components/events/event_delete.jsx");
+
 
 
 
@@ -2082,10 +2174,21 @@ function Modal(_ref) {
   }
 
   var component;
+  var id;
 
-  switch (modal) {
+  switch (modal.modal) {
     case 'purchase':
-      component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_tickets_ticket_purchase_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_tickets_ticket_purchase_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        eventId: modal.eventId
+      });
+      id = '';
+      break;
+
+    case 'delete':
+      component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_events_event_delete__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        eventId: modal.eventId
+      });
+      id = 'delete-modal';
       break;
 
     default:
@@ -2097,6 +2200,7 @@ function Modal(_ref) {
     onClick: closeModal
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "modal-child",
+    id: id,
     onClick: function onClick(e) {
       return e.stopPropagation();
     }
@@ -3136,13 +3240,11 @@ var TicketPurchase = /*#__PURE__*/function (_React$Component) {
         }
       }, "Cancel Order")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "ticket-purchase-img-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         id: "ticket-purchase-img",
         src: event.photoUrl,
         alt: "event-photo"
-      }))));
+      })));
     }
   }]);
 
@@ -3659,10 +3761,14 @@ __webpack_require__.r(__webpack_exports__);
 var modalReducer = function modalReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = Object.assign({}, state);
 
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
-      return action.modal;
+      newState.modal = action.modal;
+      newState.eventId = action.eventId;
+      return newState;
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL"]:
       return null;

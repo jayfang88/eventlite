@@ -26,7 +26,8 @@ class NavBar extends React.Component {
                 {this.props.currentUser ? (
                     <div className='nav-user'>
                         <FontAwesomeIcon className='user-icon' icon={faUser} />
-                        <FontAwesomeIcon className='user-icon-caret' icon={faAngleDown} />
+                        <FontAwesomeIcon className='user-icon-caret'
+                        icon={faAngleDown} />
                         <div className='nav-dropdown'>
                             <Link to={`/u/${currentUser.id}`}>
                                 <button className='dropdown-item' 
@@ -36,10 +37,18 @@ class NavBar extends React.Component {
                                 </span>
                                 </button>
                             </Link>
-                            <Link to={`/u/${currentUser.id}`}><button className='dropdown-item'>Tickets</button></Link>
-                            <Link to={`/u/${currentUser.id}`}><button className='dropdown-item'>Bookmarks</button></Link>
-                            <Link to='/create'><button className='dropdown-item'>Create Event</button></Link>
-                            <button onClick={() => this.props.logout()} className='dropdown-item' id='logout-link'>Log Out</button>
+                            <Link to={`/u/${currentUser.id}`}>
+                                <button className='dropdown-item'>Tickets</button>
+                            </Link>
+                            <Link to={`/u/${currentUser.id}`}>
+                                <button className='dropdown-item'>Bookmarks</button>
+                            </Link>
+                            <Link to='/create'>
+                                <button className='dropdown-item'>Create Event</button>
+                            </Link>
+                            <button onClick={() => this.props.logout()}
+                                className='dropdown-item' id='logout-link'>Log Out
+                            </button>
                         </div>
                     </div>
                 ) : (

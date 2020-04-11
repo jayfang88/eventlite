@@ -90,17 +90,9 @@
     outline: none;
 }
 
-
-
-
-
-
-#ticket-purchase-img-container {
-    height: 170px;
-    object-fit: fill;
-    overflow: hidden;
-}
-
 #ticket-purchase-img {
+    object-fit: cover;
+    overflow: hidden;
     width: 100%;
+    height: 170px;
 }

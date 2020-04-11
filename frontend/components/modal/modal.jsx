@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import TicketPurchaseContainer from '../tickets/ticket_purchase_container';
+import EventDelete from '../events/event_delete';
 
 function Modal({modal, closeModal}) {
     if (!modal) {
@@ -9,9 +10,15 @@ function Modal({modal, closeModal}) {
     }
 
     let component;
-    switch (modal) {
+    let id;
+    switch (modal.modal) {
         case 'purchase':
-            component = <TicketPurchaseContainer />;
+            component = <TicketPurchaseContainer eventId={modal.eventId}/>;
+            id = '';
+            break;
+        case 'delete':
+            component = <EventDelete eventId={modal.eventId}/>;
+            id = 'delete-modal';
             break;
         default:
             return null;
@@ -19,7 +26,7 @@ function Modal({modal, closeModal}) {
 
     return(
         <div className='modal-background' onClick={closeModal}>
-            <div className='modal-child' onClick={e => e.stopPropagation()}>
+            <div className='modal-child' id={id} onClick={e => e.stopPropagation()}>
                 { component }
             </div>
         </div>

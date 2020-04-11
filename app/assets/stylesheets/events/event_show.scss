@@ -186,19 +186,17 @@
     font-size: 14px;
 }
 
-#event-show-edit-event {
+#edit-event-link {
     font-size: 13px;
     height: 20px;
-    margin-top: 3px;
-}
-
-#edit-event-link {
-    height: 30px;
-    background-color: darkgray;
+    padding: 3px 7px;
+    border-radius: 2px;
+    background-color: gray;
     color: white;
     font-weight: 500;
-    border-radius: 2px;
-    padding: 3px 7px;
+}
+#edit-event-link:hover {
+    background-color: darkgray;
 }
 
 #event-show-delete-event {
@@ -209,6 +207,11 @@
     font-weight: 500;
     font-size: 12px;
     color: red;
+    filter:brightness(80%);
+}
+#event-show-delete-event:hover {
+    text-decoration: underline;
+    filter:brightness(100%);
 }
 
 #event-show-delete-event:hover {
