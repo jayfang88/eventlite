@@ -29,9 +29,9 @@ class EventShow extends React.Component {
 
     handleTicketButton() {
         if (this.props.currentUserId) {
-            this.props.openModal()
+            this.props.openModal('purchase');
         } else {
-            this.props.history.push('/login')
+            this.props.history.push('/login');
         }
     }
 
@@ -48,6 +48,10 @@ class EventShow extends React.Component {
         } else {
             this.props.history.push('/login')
         }
+    }
+    
+    handleDelete() {
+
     }
 
     render() {

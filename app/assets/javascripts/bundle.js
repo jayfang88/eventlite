@@ -1610,7 +1610,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     key: "handleTicketButton",
     value: function handleTicketButton() {
       if (this.props.currentUserId) {
-        this.props.openModal();
+        this.props.openModal('purchase');
       } else {
         this.props.history.push('/login');
       }
@@ -1631,6 +1631,9 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         this.props.history.push('/login');
       }
     }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete() {}
   }, {
     key: "render",
     value: function render() {
@@ -1795,8 +1798,8 @@ var mDTP = function mDTP(dispatch) {
     deleteBookmark: function deleteBookmark(bookmarkId, eventId) {
       return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["deleteBookmark"])(bookmarkId, eventId));
     },
-    openModal: function openModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])('purchase'));
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
