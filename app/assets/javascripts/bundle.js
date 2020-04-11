@@ -665,7 +665,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -688,6 +690,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var EventDelete = /*#__PURE__*/function (_React$Component) {
   _inherits(EventDelete, _React$Component);
 
@@ -700,7 +704,8 @@ var EventDelete = /*#__PURE__*/function (_React$Component) {
   _createClass(EventDelete, [{
     key: "handleDelete",
     value: function handleDelete() {
-      this.props.deleteEvent(this.props.event.id);
+      this.props.deleteEvent(this.props.eventId);
+      this.props.closeModal();
       this.props.history.push('/');
     }
   }, {
@@ -710,7 +715,7 @@ var EventDelete = /*#__PURE__*/function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-delete-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "delete-modal-title"
       }, "Are you sure you want to delete your event?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "delete-modal-buttons"
@@ -733,20 +738,24 @@ var EventDelete = /*#__PURE__*/function (_React$Component) {
 
 ;
 
-var mSTP = function mSTP(state, ownProps) {
-  debugger;
-  return {};
+var mSTP = function mSTP(state) {
+  return {
+    eventId: state.ui.modal.eventId
+  };
 };
 
 var mDTP = function mDTP(dispatch) {
   return {
+    deleteEvent: function deleteEvent(eventId) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["deleteEvent"])(eventId));
+    },
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(EventDelete));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(EventDelete)));
 
 /***/ }),
 
@@ -1881,9 +1890,6 @@ var mDTP = function mDTP(dispatch) {
   return {
     requestEvent: function requestEvent(eventId) {
       return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["requestEvent"])(eventId));
-    },
-    deleteEvent: function deleteEvent(eventId) {
-      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["deleteEvent"])(eventId));
     },
     createBookmark: function createBookmark(bookmark, eventId) {
       return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["createBookmark"])(bookmark, eventId));

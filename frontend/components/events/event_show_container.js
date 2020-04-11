@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { requestEvent, deleteEvent } from '../../actions/event_actions';
+import { requestEvent } from '../../actions/event_actions';
 import { createBookmark, deleteBookmark } from '../../actions/bookmark_actions';
 import EventShow from './event_show';
 import { openModal, closeModal } from '../../actions/modal_actions'
@@ -17,7 +17,6 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
     requestEvent: eventId => dispatch(requestEvent(eventId)),
-    deleteEvent: eventId => dispatch(deleteEvent(eventId)),
     createBookmark: (bookmark, eventId) => dispatch(createBookmark(bookmark, eventId)),
     deleteBookmark: (bookmarkId, eventId) => dispatch(deleteBookmark(bookmarkId, eventId)),
     openModal: (modal, eventId) => dispatch(openModal(modal, eventId)),
