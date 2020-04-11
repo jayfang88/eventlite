@@ -715,17 +715,21 @@ var EventDelete = /*#__PURE__*/function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-delete-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "delete-modal-head"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "delete-modal-title"
-      }, "Are you sure you want to delete your event?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Are you sure you want to delete your event?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "delete-modal-buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "confirm-delete",
+        className: "delete-modal-button",
+        id: "confirm-delete",
         onClick: function onClick() {
           return _this.handleDelete();
         }
       }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "cancel-delete",
+        className: "delete-modal-button",
+        id: "cancel-delete",
         onClick: function onClick() {
           return _this.props.closeModal();
         }

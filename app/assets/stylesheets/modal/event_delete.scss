@@ -2,4 +2,60 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+}
+
+.delete-modal-head {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(224, 224, 224);
+}
+
+.delete-modal-title {
+    text-align: center;
+    color: rgb(70, 70, 70);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.delete-modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -3px;
+    width: 90%;
+    height: 55%;
+}
+
+.delete-modal-button {
+    width: 40%;
+    height: 38px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    filter: brightness(90%);
+}
+
+.delete-modal-button:hover {
+    cursor: pointer;
+    filter: brightness(100%);
+}
+
+.delete-modal-button:focus {
+    outline: none;
+}
+
+#confirm-delete {
+    background-color: #f05537;
+;
+}
+
+#cancel-delete {
+    background-color: darkgray;
 }

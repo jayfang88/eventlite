@@ -14,13 +14,17 @@ class EventDelete extends React.Component {
     render() {
         return (
             <div className='event-delete-modal'>
-                <p className='delete-modal-title'>Are you sure you want to delete your event?</p>
+                <div className='delete-modal-head'>
+                    <p className='delete-modal-title'>
+                        Are you sure you want to delete your event?
+                    </p>
+                </div>
                 <div className='delete-modal-buttons'>
-                    <button className='confirm-delete'
+                    <button className='delete-modal-button' id='confirm-delete'
                             onClick={() => this.handleDelete()}>
                         Delete
                     </button>
-                    <button className='cancel-delete'
+                    <button className='delete-modal-button' id='cancel-delete'
                             onClick={() => this.props.closeModal()}>
                         Cancel
                     </button>
