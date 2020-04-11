@@ -25,11 +25,12 @@
 
 #splash-main {
     position: absolute;
-    width: 65%;
+    width: 70%;
     height: 580px;
     object-fit: contain;
     top: 10%;
-    left: 12%;
+    left: 50%;
+    transform: translate(-50%, 0%);
     overflow: hidden;
 }
 
@@ -43,9 +44,9 @@
 #made-for {
     position: absolute;
     display: block;
-    top: 38%;
+    top: 36%;
     left: 6%;
-    font-size: 24px;
+    font-size: 34px;
     color: white;
     font-weight: 700;
     opacity: 0.8;
@@ -56,7 +57,7 @@
     display: block;
     top: 44%;
     left: 6%;
-    font-size: 54px;
+    font-size: 58px;
     color: white;
     font-weight: 700;
     letter-spacing: 1.1px;
@@ -66,7 +67,7 @@
     display: flex;
     margin-top: 50px;
     width: 67%;
-    height: 1000px;
+    height: 100%;
     align-items: flex-start;
     justify-content: center;
 }

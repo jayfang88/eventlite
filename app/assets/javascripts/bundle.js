@@ -2962,65 +2962,6 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       }, "Made for"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "those-who"
       }, "those who do"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "search-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "searchbox-label"
-      }, "I want to go out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "searchbox-dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "any date"
-      }, "Any Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "today"
-      }, "Today"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "tomorrow"
-      }, "Tomorrow"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "this weekend"
-      }, "This Weekend"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "this week"
-      }, "This Week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "next week"
-      }, "Next Week"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "this month"
-      }, "This Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "next month"
-      }, "Next Month"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "pick date"
-      }, "Pick a date...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "searchbox-label"
-      }, "In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "searchbox-input",
-        type: "text",
-        placeholder: "Search City"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "searchbox-label"
-      }, "And I'm in the mood for"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "searchbox-dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "anything"
-      }, "Anything"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Business & Professional"
-      }, "Business & Professional"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Community & Culture"
-      }, "Community & Culture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Family & Education"
-      }, "Family & Education"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Food & Drink"
-      }, "Food & Drink"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Health & Wellness"
-      }, "Health & Wellness"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Hobbies & Special Interest"
-      }, "Hobbies & Special Interest"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Music"
-      }, "Music"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Other"
-      }, "Other"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Sports & Fitness"
-      }, "Sports & Fitness"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Travel & Outdoor"
-      }, "Travel & Outdoor")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-        className: "searchbox-arrow",
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faArrowAltCircleRight"]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "splash-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         path: this.props.path

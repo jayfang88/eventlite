@@ -20,7 +20,7 @@ class Splash extends React.Component {
                         <div id='those-who'>those who do</div>
                     </div>   
                 </div>
-                <div id='search-box'>
+                {/* <div id='search-box'>
                     <h5 className='searchbox-label'>I want to go out</h5>
                     <select className='searchbox-dropdown'>
                         <option value="any date">Any Date</option>
@@ -50,7 +50,7 @@ class Splash extends React.Component {
                         <option value="Travel &amp; Outdoor">Travel &amp; Outdoor</option>
                     </select>
                     <FontAwesomeIcon className='searchbox-arrow' icon={faArrowAltCircleRight} />
-                </div>
+                </div> */}
                 <div id='splash-body'>
                     <EventIndexContainer path={this.props.path}/>
                 </div>
