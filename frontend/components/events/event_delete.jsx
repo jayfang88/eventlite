@@ -34,11 +34,9 @@ class EventDelete extends React.Component {
     }
 };
 
-const mSTP = state => {
-    return {
-        eventId: state.ui.modal.eventId
-    }
-};
+const mSTP = state => ({
+    eventId: state.ui.modal.eventId
+});
 
 const mDTP = dispatch => ({
     deleteEvent: eventId => dispatch(deleteEvent(eventId)),

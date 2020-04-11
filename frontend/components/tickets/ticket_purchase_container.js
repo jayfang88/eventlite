@@ -4,12 +4,10 @@ import { requestEvent } from '../../actions/event_actions';
 import { createTicket, deleteTicket } from '../../actions/ticket_actions';
 import { withRouter } from 'react-router-dom';
 
-const mSTP = (state, ownProps) => {
-    const path = ownProps.location.pathname.split('/')
-    const eventId = parseInt(path[path.length -1])
-    const event = state.entities.events[eventId]
+const mSTP = state => {
+    const eventId = state.ui.modal.eventId
     return {
-        event: event,
+        event: state.entities.events[eventId],
         currentUserId: state.session.id,
         attending: event ? event.current_user_attending : null
     }

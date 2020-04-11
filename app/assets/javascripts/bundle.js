@@ -3247,12 +3247,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state, ownProps) {
-  var path = ownProps.location.pathname.split('/');
-  var eventId = parseInt(path[path.length - 1]);
-  var event = state.entities.events[eventId];
+var mSTP = function mSTP(state) {
+  var eventId = state.ui.modal.eventId;
   return {
-    event: event,
+    event: state.entities.events[eventId],
     currentUserId: state.session.id,
     attending: event ? event.current_user_attending : null
   };
