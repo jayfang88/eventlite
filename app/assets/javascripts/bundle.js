@@ -1633,7 +1633,10 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleDelete",
-    value: function handleDelete() {}
+    value: function handleDelete() {
+      this.props.deleteEvent(this.props.event.id);
+      this.props.history.push('/');
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1684,7 +1687,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
       }, "Edit Event")) : '', this.props.currentUserId === event.organizer_id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "event-show-delete-event",
         onClick: function onClick() {
-          return _this.props.deleteEvent(event.id);
+          return _this.handleDelete();
         }
       }, "Delete Event") : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "event-show-save"
@@ -3050,6 +3053,7 @@ var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_time_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/time_util */ "./frontend/util/time_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3070,6 +3074,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var TicketPurchase = /*#__PURE__*/function (_React$Component) {
   _inherits(TicketPurchase, _React$Component);
 
@@ -3080,19 +3085,6 @@ var TicketPurchase = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(TicketPurchase, [{
-    key: "convertDate",
-    value: function convertDate(eventDate, eventTime) {
-      var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      var fullDate = new Date(eventDate);
-      var day = days[fullDate.getDay()];
-      var month = months[fullDate.getMonth()];
-      var date = fullDate.getDate() + 1;
-      var yr = fullDate.getFullYear();
-      var combined = "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(yr, " ").concat(eventTime);
-      return combined;
-    }
-  }, {
     key: "handleRegistration",
     value: function handleRegistration() {
       if (this.props.currentUserId) {
@@ -3124,9 +3116,9 @@ var TicketPurchase = /*#__PURE__*/function (_React$Component) {
         id: "ticket-purchase-title"
       }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-time"
-      }, this.convertDate(event.startdate, event.starttime), " - ", this.convertDate(event.enddate, event.endtime), " PT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.startdate, event.starttime), ", ", event.starttime, " -", Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.enddate, event.endtime), ",", event.endtime, " PT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-body"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, event.description.length > 500 ? event.description.slice(0, 500) + '...' : event.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-footer"
       }, !attending ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ticket-modal-button"

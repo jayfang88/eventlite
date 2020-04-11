@@ -51,7 +51,8 @@ class EventShow extends React.Component {
     }
     
     handleDelete() {
-
+        this.props.deleteEvent(this.props.event.id);
+        this.props.history.push('/');
     }
 
     render() {
@@ -80,7 +81,7 @@ class EventShow extends React.Component {
                             <h2 id='esht'>{event.title}</h2>
                             <p id='esho'>by {event.organizerFname} {event.organizerLname}
                                 {(this.props.currentUserId === event.organizer_id) ? (<span id='event-show-edit-event'><Link id='edit-event-link' to={`/e/${event.id}/edit`}>Edit Event</Link></span>) : ''}
-                                {(this.props.currentUserId === event.organizer_id) ? (<button id='event-show-delete-event' onClick={() => this.props.deleteEvent(event.id)}>Delete Event</button>) : ''}
+                                {(this.props.currentUserId === event.organizer_id) ? (<button id='event-show-delete-event' onClick={() => this.handleDelete()}>Delete Event</button>) : ''}
                             </p>
                         </div>
                     </div>

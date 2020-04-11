@@ -1,22 +1,9 @@
 import React from 'react';
+import { convertDate } from '../../util/time_util';
 
 class TicketPurchase extends React.Component {
     constructor(props) {
         super(props)
-    }
-
-    convertDate(eventDate, eventTime) {
-        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-        let fullDate = new Date(eventDate);
-        let day = days[fullDate.getDay()];
-        let month = months[fullDate.getMonth()];
-        let date = fullDate.getDate() + 1;
-        let yr = fullDate.getFullYear();
-
-        let combined = `${day}, ${month} ${date}, ${yr} ${eventTime}`;
-        return combined;
     }
 
     handleRegistration() {
@@ -40,22 +27,38 @@ class TicketPurchase extends React.Component {
                 <div id='ticket-purchase-left'>
                     <div id='ticket-purchase-head'>
                         <div id='ticket-purchase-title'>{event.title}</div>
-                        <div id='ticket-purchase-time'>{this.convertDate(event.startdate, event.starttime)} - {this.convertDate(event.enddate, event.endtime)} PT</div>
+                        <div id='ticket-purchase-time'>
+                            {convertDate(event.startdate, event.starttime)}, {
+                            event.starttime} - 
+                            {convertDate(event.enddate, event.endtime)}, 
+                            {event.endtime} PT
+                        </div>
                     </div>
                     <div id='ticket-purchase-body'>
-                        
+                        {event.description.length > 500 ? event.description.slice(0, 500)+'...' : event.description}
                     </div>
                     <div id='ticket-purchase-footer'>
                         {!attending ? (
-                            <div className='ticket-modal-button'><button id='checkout' onClick={() => this.handleRegistration()}>Check Out</button></div>
+                            <div className='ticket-modal-button'>
+                                <button id='checkout'
+                                onClick={() => this.handleRegistration()}>
+                                    Check Out
+                                </button>
+                            </div>
                         ) : (
-                            <div className='ticket-modal-button'><button id='sell-ticket' onClick={() => this.handleRegistration()}>Cancel Order</button></div>
+                            <div className='ticket-modal-button'>
+                                <button id='sell-ticket'
+                                onClick={() => this.handleRegistration()}>
+                                    Cancel Order
+                                </button>
+                            </div>
                         )}
                     </div>
                 </div>
                 <div id='ticket-purchase-right'>
                     <div id='ticket-purchase-img-container'>
-                        <img id='ticket-purchase-img' src={event.photoUrl} alt="event-photo"/>
+                        <img id='ticket-purchase-img'
+                        src={event.photoUrl} alt="event-photo"/>
                     </div>
                 </div>
             </div>
