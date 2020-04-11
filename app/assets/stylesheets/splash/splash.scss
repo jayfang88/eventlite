@@ -41,11 +41,15 @@
     object-fit: cover;
 }
 
-#made-for {
+.splash-text {
     position: absolute;
     display: block;
     top: 36%;
     left: 6%;
+    height: 180px;
+}
+
+#made-for {
     font-size: 34px;
     color: white;
     font-weight: 700;
@@ -53,14 +57,44 @@
 }
 
 #those-who {
-    position: absolute;
-    display: block;
-    top: 44%;
-    left: 6%;
+    margin-top: 8px;
     font-size: 58px;
     color: white;
     font-weight: 700;
     letter-spacing: 1.1px;
+}
+
+.browse-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 180px;
+    height: 48px;
+    border-radius: 50px;
+    border: none;
+    background-color: #f05537;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    color: white;
+}
+.browse-button:hover {
+    cursor: pointer;
+}
+.browse-button:focus {
+    outline: none;
+}
+
+.searchbox-arrow {
+    margin-left: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.searchbox-arrow:hover {
+    cursor: pointer;
 }
 
 #splash-body {

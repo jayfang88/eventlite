@@ -49,15 +49,3 @@
 .searchbox-input::placeholder {
     color: rgb(163, 163, 163);
 }
-
-.searchbox-arrow {
-    position: absolute;
-    color: #f05537;
-    font-size: 60px;
-    bottom: -30px;
-    right: 40px;
-}
-
-.searchbox-arrow:hover {
-    cursor: pointer;
-}

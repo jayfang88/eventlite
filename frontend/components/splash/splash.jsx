@@ -9,6 +9,13 @@ class Splash extends React.Component {
         super(props)
     };
 
+    scrollDown() {
+        window.scrollTo({
+            top: 680,
+            behavior: 'smooth'
+        })
+    }
+
     render() {
         return(
             <div id='splash-container'>
@@ -16,8 +23,16 @@ class Splash extends React.Component {
                     <div id='splash-bg-image'></div>
                     <div id='splash-main'>
                         <img id='splash-image' src="https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/concert.jpg" alt="splash-image"/>
-                        <div id='made-for'>Made for</div>
-                        <div id='those-who'>those who do</div>
+                        <div className='splash-text'>
+                            <div id='made-for'>Made for</div>
+                            <div id='those-who'>those who do</div>
+                            <button className='browse-button'
+                                    onClick={() => this.scrollDown()}>
+                                Browse events
+                                <FontAwesomeIcon className='searchbox-arrow'
+                                    icon={faArrowAltCircleRight} />
+                            </button>
+                        </div>
                     </div>   
                 </div>
                 {/* <div id='search-box'>
@@ -49,7 +64,7 @@ class Splash extends React.Component {
                         <option value="Sports &amp; Fitness">Sports &amp; Fitness</option>
                         <option value="Travel &amp; Outdoor">Travel &amp; Outdoor</option>
                     </select>
-                    <FontAwesomeIcon className='searchbox-arrow' icon={faArrowAltCircleRight} />
+                    
                 </div> */}
                 <div id='splash-body'>
                     <EventIndexContainer path={this.props.path}/>

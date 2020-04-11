@@ -2943,8 +2943,18 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Splash, [{
+    key: "scrollDown",
+    value: function scrollDown() {
+      window.scrollTo({
+        top: 680,
+        behavior: 'smooth'
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "splash-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2958,10 +2968,20 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         src: "https://eventlite-fsp-dev.s3-us-west-1.amazonaws.com/concert.jpg",
         alt: "splash-image"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "made-for"
       }, "Made for"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "those-who"
-      }, "those who do"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "those who do"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "browse-button",
+        onClick: function onClick() {
+          return _this.scrollDown();
+        }
+      }, "Browse events", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        className: "searchbox-arrow",
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faArrowAltCircleRight"]
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "splash-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_events_event_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         path: this.props.path
