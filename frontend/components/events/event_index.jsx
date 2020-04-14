@@ -1,7 +1,6 @@
 import React from 'react';
 import EventIndexItem from './event_index_item';
 import { Route, NavLink, Switch } from 'react-router-dom';
-import EventIndexFilterContainer from './event_index/event_index_filter_container';
 import $ from 'jquery';
 
 class EventIndex extends React.Component {

@@ -1254,9 +1254,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _event_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event_index_item */ "./frontend/components/events/event_index_item.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _event_index_event_index_filter_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event_index/event_index_filter_container */ "./frontend/components/events/event_index/event_index_filter_container.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1274,7 +1273,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1301,7 +1299,7 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestEvents();
-      jquery__WEBPACK_IMPORTED_MODULE_4___default()('#all-filter').addClass('event-filter-active');
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()('#all-filter').addClass('event-filter-active');
     }
   }, {
     key: "updateCity",
@@ -1331,8 +1329,8 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "filterEvents",
     value: function filterEvents(filter) {
-      jquery__WEBPACK_IMPORTED_MODULE_4___default()('.event-filters-list li').removeClass('event-filter-active');
-      jquery__WEBPACK_IMPORTED_MODULE_4___default()("#".concat(filter, "-filter")).addClass('event-filter-active');
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()('.event-filters-list li').removeClass('event-filter-active');
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()("#".concat(filter, "-filter")).addClass('event-filter-active');
       this.setState({
         filter: filter
       });
@@ -1445,151 +1443,6 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/events/event_index/event_index_filter_container.js":
-/*!********************************************************************************!*\
-  !*** ./frontend/components/events/event_index/event_index_filter_container.js ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/event_actions */ "./frontend/actions/event_actions.js");
-/* harmony import */ var _event_index_filtered__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event_index_filtered */ "./frontend/components/events/event_index/event_index_filtered.jsx");
-
-
-
-
-var mSTP = function mSTP(state, ownProps) {
-  var path = ownProps.match.path.split('/');
-  var pathId = path[path.length - 1];
-  return {
-    indexPath: pathId,
-    events: Object.values(state.entities.events)
-  };
-};
-
-var mDTP = function mDTP(dispatch) {
-  return {
-    requestEvents: function requestEvents() {
-      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["requestEvents"])());
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_index_filtered__WEBPACK_IMPORTED_MODULE_2__["default"]));
-
-/***/ }),
-
-/***/ "./frontend/components/events/event_index/event_index_filtered.jsx":
-/*!*************************************************************************!*\
-  !*** ./frontend/components/events/event_index/event_index_filtered.jsx ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _event_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../event_index_item */ "./frontend/components/events/event_index_item.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var EventIndexFiltered = /*#__PURE__*/function (_React$Component) {
-  _inherits(EventIndexFiltered, _React$Component);
-
-  function EventIndexFiltered(props) {
-    _classCallCheck(this, EventIndexFiltered);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(EventIndexFiltered).call(this, props));
-  }
-
-  _createClass(EventIndexFiltered, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.requestEvents();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          indexPath = _this$props.indexPath,
-          events = _this$props.events;
-      if (!events) return null; //Match current path with desired criteria such as ticket type or category
-      //to filter and display events.
-
-      var filteredEvents;
-
-      switch (indexPath) {
-        case 'free':
-          filteredEvents = events.filter(function (e) {
-            return e.ticket_type === 'Free';
-          });
-          break;
-
-        case 'music':
-          filteredEvents = events.filter(function (e) {
-            return e.category === 'Music';
-          });
-          break;
-
-        case 'food-drink':
-          filteredEvents = events.filter(function (e) {
-            return e.category === 'Food & Drink';
-          });
-          break;
-
-        case 'sports-fitness':
-          filteredEvents = events.filter(function (e) {
-            return e.category === 'Sports & Fitness';
-          });
-          break;
-
-        default:
-          filteredEvents = events;
-          break;
-      }
-
-      filteredEvents = filteredEvents.map(function (event, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_event_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: i,
-          event: event
-        });
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-index"
-      }, filteredEvents);
-    }
-  }]);
-
-  return EventIndexFiltered;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-;
-/* harmony default export */ __webpack_exports__["default"] = (EventIndexFiltered);
-
-/***/ }),
-
 /***/ "./frontend/components/events/event_index_container.js":
 /*!*************************************************************!*\
   !*** ./frontend/components/events/event_index_container.js ***!
@@ -1606,7 +1459,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state, ownProps) {
+var mSTP = function mSTP(state) {
   return {
     events: Object.values(state.entities.events),
     errors: state.errors.event
