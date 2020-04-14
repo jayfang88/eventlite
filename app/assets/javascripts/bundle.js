@@ -1396,7 +1396,7 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
           return _this2.keyPressed();
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-indexes-wrapper"
+        className: "event-filters-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "event-filter",
         onClick: function onClick() {
@@ -1424,7 +1424,9 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
         }
       }, "Sports & Fitness")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-index"
-      }, filteredEvents));
+      }, filteredEvents.length > 0 ? filteredEvents : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "no-events-match"
+      }, "No events match this criteria :(")));
     }
   }]);
 

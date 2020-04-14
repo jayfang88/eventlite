@@ -82,7 +82,7 @@ class EventIndex extends React.Component {
                            onKeyDown={() => this.keyPressed()}/>
                 </div>
 
-                <div className='event-indexes-wrapper'>
+                <div className='event-filters-container'>
                     <p className='event-filter'
                         onClick={() => this.filterEvents('all')}>All</p>
                     <p className='event-filter'
@@ -96,7 +96,11 @@ class EventIndex extends React.Component {
                 </div>
 
                 <div className='event-index'>
-                    {filteredEvents}
+                    {filteredEvents.length > 0 ? (
+                        filteredEvents 
+                     ) : (
+                        <p className='no-events-match'>No events match this criteria :(</p>
+                    )}
                 </div>
             </div>
         )

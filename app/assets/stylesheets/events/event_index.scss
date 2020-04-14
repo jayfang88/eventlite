@@ -37,10 +37,10 @@
     color: #a4a2ad;
 }
 
-.event-indexes-wrapper {
+.event-filters-container {
     width: 100%;
     display: flex;
-    margin-bottom: 60px;
+    margin-bottom: 53px;
 }
 
 .event-filter {
@@ -52,10 +52,7 @@
     padding-bottom: 5px;
     border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
-.event-indexes {
-}
-.event-index-navlink {
-}
+
 .event-filter:hover {
     cursor: pointer;
     color: black;
@@ -68,4 +65,11 @@
     justify-content: space-between;
     padding-bottom: 20px;
     margin-bottom: 15px;
+}
+
+.no-events-match {
+    color: rgb(59, 59, 59);
+    letter-spacing: 0.5px;
+    font-size: 17px;
+    height: 100px;
 }
