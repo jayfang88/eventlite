@@ -472,9 +472,6 @@ var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_14__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
-    component: _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_12__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/events",
     component: _components_splash_splash_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
@@ -1285,9 +1282,16 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(EventIndex, _React$Component);
 
   function EventIndex(props) {
+    var _this;
+
     _classCallCheck(this, EventIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EventIndex).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventIndex).call(this, props));
+    _this.state = {
+      cityInput: 'San Francisco',
+      filter: 'all'
+    };
+    return _this;
   }
 
   _createClass(EventIndex, [{
@@ -1296,10 +1300,66 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
       this.props.requestEvents();
     }
   }, {
+    key: "updateCity",
+    value: function updateCity() {
+      this.setState({
+        cityInput: event.target.value
+      });
+    }
+  }, {
+    key: "keyPressed",
+    value: function keyPressed() {
+      if (event.key === 'Enter') {
+        console.log(this.state.cityInput);
+      }
+    }
+  }, {
+    key: "filterEvents",
+    value: function filterEvents(filter) {
+      this.setState({
+        filter: filter
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (!this.props.events) return null;
-      var events = this.props.events.map(function (event, i) {
+      var events = this.props.events;
+      var filteredEvents;
+
+      switch (this.state.filter) {
+        case 'free':
+          filteredEvents = events.filter(function (e) {
+            return e.ticket_type === 'Free';
+          });
+          break;
+
+        case 'music':
+          filteredEvents = events.filter(function (e) {
+            return e.category === 'Music';
+          });
+          break;
+
+        case 'food+drink':
+          filteredEvents = events.filter(function (e) {
+            return e.category === 'Food & Drink';
+          });
+          break;
+
+        case 'sports+fitness':
+          filteredEvents = events.filter(function (e) {
+            return e.category === 'Sports & Fitness';
+          });
+          break;
+
+        default:
+          filteredEvents = events;
+          break;
+      }
+
+      filteredEvents = filteredEvents.map(function (event, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_event_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           event: event
@@ -1318,15 +1378,51 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
       }, "Popular in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         id: "event-index-search-input",
-        placeholder: "San Francisco"
+        value: this.city,
+        placeholder: "San Francisco",
+        onChange: function onChange() {
+          return _this2.updateCity();
+        },
+        onKeyDown: function onKeyDown() {
+          return _this2.keyPressed();
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-indexes-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-index-navlink",
+        onClick: function onClick() {
+          return _this2.filterEvents('all');
+        }
+      }, "All"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-index-navlink",
+        onClick: function onClick() {
+          return _this2.filterEvents('free');
+        }
+      }, "Free"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-index-navlink",
+        onClick: function onClick() {
+          return _this2.filterEvents('music');
+        }
+      }, "Music"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-index-navlink",
+        onClick: function onClick() {
+          return _this2.filterEvents('food+drink');
+        }
+      }, "Food & Drink"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "event-index-navlink",
+        onClick: function onClick() {
+          return _this2.filterEvents('sports+fitness');
+        }
+      }, "Sports & Fitness")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-index"
+      }, filteredEvents), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-indexes-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-indexes",
         id: "events-all"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         className: "event-index-navlink",
-        to: "/events/all",
+        to: "/",
         activeStyle: activeStyle
       }, "All")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-indexes",
@@ -1358,7 +1454,7 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
         activeStyle: activeStyle
       }, "Sports & Fitness"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "/events/all",
+        path: "/",
         component: _event_index_event_index_filter_container__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
@@ -2095,7 +2191,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
   _createClass(Greeting, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.history.push('/events/all');
+      this.props.history.push('/');
     }
   }, {
     key: "render",
@@ -2109,7 +2205,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       }, "Are you 18 or older?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "greeting-buttons-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/events/all"
+        to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "greeting-button",
         id: "greeting-enter"
@@ -2299,7 +2395,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/events/all"
+        to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "logo-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -4122,7 +4218,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: "/events/all"
+        to: "/"
       });
     }
   });

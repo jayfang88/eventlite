@@ -13,7 +13,7 @@ class NavBar extends React.Component {
         let currentUser = this.props.currentUser;
         return(
             <div className='navbar'>
-                <Link to='/events/all'><h1 id='logo-link'>
+                <Link to='/'><h1 id='logo-link'>
                     <span className='tilt-e'>e</span>v
                     <span className='tilt-e'>e</span>ntlit
                     <span className='tilt-e'>e</span></h1>
