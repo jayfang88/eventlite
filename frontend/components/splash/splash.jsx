@@ -33,9 +33,9 @@ class Splash extends React.Component {
                                     icon={faArrowAltCircleRight} />
                             </button>
                         </div>
-                    </div>   
+                    </div>
                 </div>
-                
+
                 <div id='splash-body'>
                     <EventIndexContainer path={this.props.path}/>
                 </div>
