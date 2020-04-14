@@ -24,7 +24,15 @@ class EventIndex extends React.Component {
     keyPressed() {
         if (event.key === 'Enter') {
             console.log(this.state.cityInput);
+            this.setState({ cityInput: event.target.value })
         }
+    }
+
+    filterByCity(events, city) {
+        return events.filter(e => {
+            let location = e.location.toLowerCase().split(' ').join('')
+            return location.includes(city.toLowerCase().split(' ').join(''));
+        });
     }
 
     filterEvents(filter) {
@@ -54,6 +62,8 @@ class EventIndex extends React.Component {
                 break;
         }
 
+        filteredEvents = this.filterByCity(filteredEvents, this.state.cityInput);
+
         filteredEvents = filteredEvents.map((event, i) => (
             <EventIndexItem key={i} event={event} />
         ));
@@ -69,20 +79,19 @@ class EventIndex extends React.Component {
                     <h1 id='event-index-search-text'>Popular in</h1>
                     <input type="text" id='event-index-search-input' 
                            value={this.city} placeholder='San Francisco'
-                           onChange={() => this.updateCity()}
                            onKeyDown={() => this.keyPressed()}/>
                 </div>
 
                 <div className='event-indexes-wrapper'>
-                    <p className='event-index-navlink'
+                    <p className='event-filter'
                         onClick={() => this.filterEvents('all')}>All</p>
-                    <p className='event-index-navlink'
+                    <p className='event-filter'
                         onClick={() => this.filterEvents('free')}>Free</p>
-                    <p className='event-index-navlink'
+                    <p className='event-filter'
                         onClick={() => this.filterEvents('music')}>Music</p>
-                    <p className='event-index-navlink'
+                    <p className='event-filter'
                         onClick={() => this.filterEvents('food+drink')}>Food &amp; Drink</p>
-                    <p className='event-index-navlink'
+                    <p className='event-filter'
                         onClick={() => this.filterEvents('sports+fitness')}>Sports &amp; Fitness</p>
                 </div>
 
@@ -90,7 +99,7 @@ class EventIndex extends React.Component {
                     {filteredEvents}
                 </div>
 
-                <div className='event-indexes-wrapper'>
+                {/* <div className='event-indexes-wrapper'>
                     <div className='event-indexes' id='events-all'>
                         <NavLink className='event-index-navlink' to='/' 
                                 activeStyle={activeStyle}>
@@ -127,7 +136,7 @@ class EventIndex extends React.Component {
                 <Route exact path='/events/free' component={EventIndexFilterContainer} />
                 <Route exact path='/events/music' component={EventIndexFilterContainer} />
                 <Route exact path='/events/food-drink' component={EventIndexFilterContainer} />
-                <Route exact path='/events/sports-fitness' component={EventIndexFilterContainer} />
+                <Route exact path='/events/sports-fitness' component={EventIndexFilterContainer} /> */}
             </div>
         )
     }

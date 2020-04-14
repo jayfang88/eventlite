@@ -1311,7 +1311,18 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
     value: function keyPressed() {
       if (event.key === 'Enter') {
         console.log(this.state.cityInput);
+        this.setState({
+          cityInput: event.target.value
+        });
       }
+    }
+  }, {
+    key: "filterByCity",
+    value: function filterByCity(events, city) {
+      return events.filter(function (e) {
+        var location = e.location.toLowerCase().split(' ').join('');
+        return location.includes(city.toLowerCase().split(' ').join(''));
+      });
     }
   }, {
     key: "filterEvents",
@@ -1359,6 +1370,7 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
           break;
       }
 
+      filteredEvents = this.filterByCity(filteredEvents, this.state.cityInput);
       filteredEvents = filteredEvents.map(function (event, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_event_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
@@ -1380,99 +1392,39 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
         id: "event-index-search-input",
         value: this.city,
         placeholder: "San Francisco",
-        onChange: function onChange() {
-          return _this2.updateCity();
-        },
         onKeyDown: function onKeyDown() {
           return _this2.keyPressed();
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-indexes-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "event-index-navlink",
+        className: "event-filter",
         onClick: function onClick() {
           return _this2.filterEvents('all');
         }
       }, "All"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "event-index-navlink",
+        className: "event-filter",
         onClick: function onClick() {
           return _this2.filterEvents('free');
         }
       }, "Free"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "event-index-navlink",
+        className: "event-filter",
         onClick: function onClick() {
           return _this2.filterEvents('music');
         }
       }, "Music"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "event-index-navlink",
+        className: "event-filter",
         onClick: function onClick() {
           return _this2.filterEvents('food+drink');
         }
       }, "Food & Drink"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "event-index-navlink",
+        className: "event-filter",
         onClick: function onClick() {
           return _this2.filterEvents('sports+fitness');
         }
       }, "Sports & Fitness")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-index"
-      }, filteredEvents), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-indexes-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-indexes",
-        id: "events-all"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-        className: "event-index-navlink",
-        to: "/",
-        activeStyle: activeStyle
-      }, "All")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-indexes",
-        id: "events-free"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-        className: "event-index-navlink",
-        to: "/events/free",
-        activeStyle: activeStyle
-      }, "Free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-indexes",
-        id: "events-music"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-        className: "event-index-navlink",
-        to: "/events/music",
-        activeStyle: activeStyle
-      }, "Music")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-indexes",
-        id: "events-fooddrink"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-        className: "event-index-navlink",
-        to: "/events/food-drink",
-        activeStyle: activeStyle
-      }, "Food & Drink")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-indexes",
-        id: "events-sports"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-        className: "event-index-navlink",
-        to: "/events/sports-fitness",
-        activeStyle: activeStyle
-      }, "Sports & Fitness"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/",
-        component: _event_index_event_index_filter_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/events/free",
-        component: _event_index_event_index_filter_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/events/music",
-        component: _event_index_event_index_filter_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/events/food-drink",
-        component: _event_index_event_index_filter_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/events/sports-fitness",
-        component: _event_index_event_index_filter_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }));
+      }, filteredEvents));
     }
   }]);
 
@@ -4093,7 +4045,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4__["default"]));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2__["logger"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
