@@ -100,7 +100,7 @@ e4 = Event.create!(
 )
 e5 = Event.create!(
     title: "Basketball Masterclass w/ Carlos Garcia",
-    location: "Tha Streets",
+    location: "YMCA, Gorgas Avenue, San Francisco, CA, USA",
     startdate: "2020-03-31",
     starttime: "1:30 PM",
     enddate: "2020-03-31",
@@ -113,7 +113,7 @@ e5 = Event.create!(
 )
 e6 = Event.create!(
     title: "Brownie Baking 101",
-    location: "Ryan's Apartment",
+    location: "1637 Haight Street, San Francisco, CA, USA",
     startdate: "2020-05-21",
     starttime: "6:00 PM",
     enddate: "2020-05-21",
@@ -152,7 +152,7 @@ e8 = Event.create!(
 )
 e9 = Event.create!(
     title: 'Cheese Grating w/ the Cheese Masters',
-    location: 'Cheese Academy SF',
+    location: 'Cheese Academy SF, San Francisco, CA',
     startdate: '2020-03-21',
     starttime: '4:00 PM',
     enddate: '2020-03-21',
@@ -165,7 +165,7 @@ e9 = Event.create!(
 )
 e10 = Event.create!(
     title: 'Boba Time',
-    location: 'Boba Time SF',
+    location: 'The Boba Shop, 3rd Street, San Francisco, CA, USA',
     startdate: '2020-05-13',
     starttime: '12:45 PM',
     enddate: '2020-05-13',
