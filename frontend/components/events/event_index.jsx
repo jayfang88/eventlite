@@ -2,6 +2,7 @@ import React from 'react';
 import EventIndexItem from './event_index_item';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import EventIndexFilterContainer from './event_index/event_index_filter_container';
+import $ from 'jquery';
 
 class EventIndex extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class EventIndex extends React.Component {
 
     componentDidMount() {
         this.props.requestEvents();
+        $('#all-filter').addClass('event-filter-active');
     }
 
     updateCity() {
@@ -36,6 +38,9 @@ class EventIndex extends React.Component {
     }
 
     filterEvents(filter) {
+        $('.event-filters-list li').removeClass('event-filter-active');
+        $(`#${filter}-filter`).addClass('event-filter-active');
+
         this.setState({filter: filter});
     }
     
@@ -51,10 +56,10 @@ class EventIndex extends React.Component {
             case 'music':
                 filteredEvents = events.filter(e => e.category === 'Music')
                 break;
-            case 'food+drink':
+            case 'food-drink':
                 filteredEvents = events.filter(e => e.category === 'Food & Drink')
                 break;
-            case 'sports+fitness':
+            case 'sports-fitness':
                 filteredEvents = events.filter(e => e.category === 'Sports & Fitness')
                 break;
             default:
@@ -68,11 +73,6 @@ class EventIndex extends React.Component {
             <EventIndexItem key={i} event={event} />
         ));
 
-        const activeStyle = {
-            color: "blue",
-            borderBottom: "2px solid blue"
-        };
-
         return (
             <div id='event-index-container'>
                 <div id='event-index-search'>
@@ -82,18 +82,18 @@ class EventIndex extends React.Component {
                            onKeyDown={() => this.keyPressed()}/>
                 </div>
 
-                <div className='event-filters-container'>
-                    <p className='event-filter'
-                        onClick={() => this.filterEvents('all')}>All</p>
-                    <p className='event-filter'
-                        onClick={() => this.filterEvents('free')}>Free</p>
-                    <p className='event-filter'
-                        onClick={() => this.filterEvents('music')}>Music</p>
-                    <p className='event-filter'
-                        onClick={() => this.filterEvents('food+drink')}>Food &amp; Drink</p>
-                    <p className='event-filter'
-                        onClick={() => this.filterEvents('sports+fitness')}>Sports &amp; Fitness</p>
-                </div>
+                <ul className='event-filters-list'>
+                    <li className='event-filter' id='all-filter'
+                        onClick={() => this.filterEvents('all')}>All</li>
+                    <li className='event-filter' id='free-filter'
+                        onClick={() => this.filterEvents('free')}>Free</li>
+                    <li className='event-filter' id='music-filter'
+                        onClick={() => this.filterEvents('music')}>Music</li>
+                    <li className='event-filter' id='food-drink-filter'
+                        onClick={() => this.filterEvents('food-drink')}>Food &amp; Drink</li>
+                    <li className='event-filter' id='sports-fitness-filter'
+                        onClick={() => this.filterEvents('sports-fitness')}>Sports &amp; Fitness</li>
+                </ul>
 
                 <div className='event-index'>
                     {filteredEvents.length > 0 ? (

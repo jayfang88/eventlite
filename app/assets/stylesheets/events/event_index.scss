@@ -37,7 +37,7 @@
     color: #a4a2ad;
 }
 
-.event-filters-container {
+.event-filters-list {
     width: 100%;
     display: flex;
     margin-bottom: 53px;
@@ -59,6 +59,11 @@
     border-bottom: 2px solid black;
 }
 
+.event-filter-active {
+    color: blue;
+    border-bottom: 2px solid blue;
+}
+
 .event-index {
     display: flex;
     flex-wrap: wrap;
@@ -68,8 +73,8 @@
 }
 
 .no-events-match {
-    color: rgb(59, 59, 59);
-    letter-spacing: 0.5px;
+    color: rgb(75, 75, 75);
+    letter-spacing: 0.7px;
     font-size: 17px;
     height: 100px;
 }
