@@ -21,10 +21,10 @@ class TicketPurchase extends React.Component {
 
     renderTicketErrors() {
         return (
-            <ul>
+            <ul className='ticket-purchase-error'>
                 {this.props.ticketErrors.map((error, i) => (
                     <li className='error-message' key={`error-${i}`}>
-                        {`*${error}`}
+                        *{error} - please refresh and go back
                     </li>
                 ))}
             </ul>
@@ -49,8 +49,8 @@ class TicketPurchase extends React.Component {
                     <div id='ticket-purchase-body'>
                         {event.description.length > 500 ? event.description.slice(0, 500)+'...' : event.description}
                     </div>
-                    {this.renderTicketErrors()}
                     <div id='ticket-purchase-footer'>
+                        {this.renderTicketErrors()}
                         {!attending ? (
                             <div className='ticket-modal-button'>
                                 <button id='checkout'

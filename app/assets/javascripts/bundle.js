@@ -3076,11 +3076,13 @@ var TicketPurchase = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderTicketErrors",
     value: function renderTicketErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.ticketErrors.map(function (error, i) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "ticket-purchase-error"
+      }, this.props.ticketErrors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "error-message",
           key: "error-".concat(i)
-        }, "*".concat(error));
+        }, "*", error, " - please refresh and go back");
       }));
     }
   }, {
@@ -3103,9 +3105,9 @@ var TicketPurchase = /*#__PURE__*/function (_React$Component) {
         id: "ticket-purchase-time"
       }, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.startdate, event.starttime), ", ", event.starttime, " -", Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.enddate, event.endtime), ",", event.endtime, " PT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-body"
-      }, event.description.length > 500 ? event.description.slice(0, 500) + '...' : event.description), this.renderTicketErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, event.description.length > 500 ? event.description.slice(0, 500) + '...' : event.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-footer"
-      }, !attending ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.renderTicketErrors(), !attending ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ticket-modal-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "checkout",
