@@ -98,45 +98,6 @@ class EventIndex extends React.Component {
                 <div className='event-index'>
                     {filteredEvents}
                 </div>
-
-                {/* <div className='event-indexes-wrapper'>
-                    <div className='event-indexes' id='events-all'>
-                        <NavLink className='event-index-navlink' to='/' 
-                                activeStyle={activeStyle}>
-                            All
-                        </NavLink> 
-                    </div>
-                    <div className='event-indexes' id='events-free'>
-                        <NavLink className='event-index-navlink' to='/events/free' 
-                                activeStyle={activeStyle}>
-                            Free
-                        </NavLink>
-                    </div>
-                    <div className='event-indexes' id='events-music'>
-                        <NavLink className='event-index-navlink' to='/events/music' 
-                                activeStyle={activeStyle}>
-                            Music
-                        </NavLink> 
-                    </div>
-                    <div className='event-indexes' id='events-fooddrink'>
-                        <NavLink className='event-index-navlink' to='/events/food-drink' 
-                                activeStyle={activeStyle}>
-                            Food &amp; Drink
-                        </NavLink>
-                    </div>
-                    <div className='event-indexes' id='events-sports'>
-                        <NavLink className='event-index-navlink' to='/events/sports-fitness' 
-                                activeStyle={activeStyle}>
-                            Sports &amp; Fitness
-                        </NavLink>
-                    </div>
-                </div>
-
-                <Route exact path='/' component={EventIndexFilterContainer} />
-                <Route exact path='/events/free' component={EventIndexFilterContainer} />
-                <Route exact path='/events/music' component={EventIndexFilterContainer} />
-                <Route exact path='/events/food-drink' component={EventIndexFilterContainer} />
-                <Route exact path='/events/sports-fitness' component={EventIndexFilterContainer} /> */}
             </div>
         )
     }
