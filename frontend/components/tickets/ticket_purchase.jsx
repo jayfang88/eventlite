@@ -8,7 +8,7 @@ class TicketPurchase extends React.Component {
 
     handleRegistration() {
         if (this.props.currentUserId) {
-            if (!this.props.event.current_user_attending) {
+            if (!this.props.attending) {
                 this.props.createTicket({
                     user_id: this.props.currentUserId,
                     event_id: this.props.event.id,
@@ -19,8 +19,20 @@ class TicketPurchase extends React.Component {
         }
     }
 
+    renderTicketErrors() {
+        return (
+            <ul>
+                {this.props.ticketErrors.map((error, i) => (
+                    <li className='error-message' key={`error-${i}`}>
+                        {`*${error}`}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
     render() {
-        const { event, attending } = this.props
+        const { event, attending } = this.props;
 
         return(
             <div id='ticket-purchase'>
@@ -37,6 +49,7 @@ class TicketPurchase extends React.Component {
                     <div id='ticket-purchase-body'>
                         {event.description.length > 500 ? event.description.slice(0, 500)+'...' : event.description}
                     </div>
+                    {this.renderTicketErrors()}
                     <div id='ticket-purchase-footer'>
                         {!attending ? (
                             <div className='ticket-modal-button'>

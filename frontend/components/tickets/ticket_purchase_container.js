@@ -5,10 +5,11 @@ import { createTicket, deleteTicket } from '../../actions/ticket_actions';
 import { withRouter } from 'react-router-dom';
 
 const mSTP = state => {
-    const eventId = state.ui.modal.eventId
+    const event = state.entities.events[state.ui.modal.eventId]
     return {
-        event: state.entities.events[eventId],
+        event,
         currentUserId: state.session.id,
+        ticketErrors: state.errors.ticket,
         attending: event ? event.current_user_attending : null
     }
 };

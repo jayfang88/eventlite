@@ -11,21 +11,12 @@ class EventShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestEvent(this.props.match.params.eventId)
+        this.props.requestEvent(this.props.match.params.eventId);
+        this.props.fetchTickets();
         window.scrollTo(0, 0);
     }
 
-    renderTicketErrors() {
-        return (
-            <ul>
-                {this.props.ticketErrors.map((error, i) => (
-                    <li className='error-message' key={`error-${i}`}>
-                        {`*${error}`}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
+    
 
     handleTicketButton() {
         if (this.props.currentUserId) {
@@ -111,7 +102,6 @@ class EventShow extends React.Component {
                                 Tickets
                             </button>
                         </div>
-                        {this.renderTicketErrors()}
                     </div>
                     <div id='event-show-content'>
                         <div id='event-show-body'>
