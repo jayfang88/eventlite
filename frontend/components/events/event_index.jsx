@@ -22,11 +22,11 @@ class EventIndex extends React.Component {
         this.setState({cityInput: event.target.value});
     }
 
-    keyPressed() {
-        if (event.key === 'Enter') {
-            this.setState({ cityInput: event.target.value })
-        }
-    }
+    // keyPressed() {
+    //     if (event.key === 'Enter') {
+    //         this.setState({ cityInput: event.target.value })
+    //     }
+    // }
 
     filterByCity(events, city) {
         return events.filter(e => {
@@ -77,7 +77,7 @@ class EventIndex extends React.Component {
                     <h1 id='event-index-search-text'>Popular in</h1>
                     <input type="text" id='event-index-search-input' 
                            value={this.city} placeholder='San Francisco'
-                           onKeyDown={() => this.keyPressed()}/>
+                           onChange={() => this.updateCity()} />
                 </div>
 
                 <ul className='event-filters-list'>

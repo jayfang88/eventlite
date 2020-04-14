@@ -1307,16 +1307,12 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
       this.setState({
         cityInput: event.target.value
       });
-    }
-  }, {
-    key: "keyPressed",
-    value: function keyPressed() {
-      if (event.key === 'Enter') {
-        this.setState({
-          cityInput: event.target.value
-        });
-      }
-    }
+    } // keyPressed() {
+    //     if (event.key === 'Enter') {
+    //         this.setState({ cityInput: event.target.value })
+    //     }
+    // }
+
   }, {
     key: "filterByCity",
     value: function filterByCity(events, city) {
@@ -1391,8 +1387,8 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
         id: "event-index-search-input",
         value: this.city,
         placeholder: "San Francisco",
-        onKeyDown: function onKeyDown() {
-          return _this2.keyPressed();
+        onChange: function onChange() {
+          return _this2.updateCity();
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "event-filters-list"
