@@ -1312,7 +1312,6 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
     key: "keyPressed",
     value: function keyPressed() {
       if (event.key === 'Enter') {
-        console.log(this.state.cityInput);
         this.setState({
           cityInput: event.target.value
         });

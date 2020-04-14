@@ -35,37 +35,7 @@ class Splash extends React.Component {
                         </div>
                     </div>   
                 </div>
-                {/* <div id='search-box'>
-                    <h5 className='searchbox-label'>I want to go out</h5>
-                    <select className='searchbox-dropdown'>
-                        <option value="any date">Any Date</option>
-                        <option value="today">Today</option>
-                        <option value="tomorrow">Tomorrow</option>
-                        <option value="this weekend">This Weekend</option>
-                        <option value="this week">This Week</option>
-                        <option value="next week">Next Week</option>
-                        <option value="this month">This Month</option>
-                        <option value="next month">Next Month</option>
-                        <option value="pick date">Pick a date...</option>
-                    </select>
-                    <h5 className='searchbox-label'>In</h5>
-                    <input className='searchbox-input' type="text" placeholder='Search City'/>
-                    <h5 className='searchbox-label'>And I'm in the mood for</h5>
-                    <select className='searchbox-dropdown'>
-                        <option value="anything">Anything</option>
-                        <option value="Business &amp; Professional">Business &amp; Professional</option>
-                        <option value="Community &amp; Culture">Community &amp; Culture</option>
-                        <option value="Family &amp; Education">Family &amp; Education</option>
-                        <option value="Food &amp; Drink">Food &amp; Drink</option>
-                        <option value="Health &amp; Wellness">Health &amp; Wellness</option>
-                        <option value="Hobbies &amp; Special Interest">Hobbies &amp; Special Interest</option>
-                        <option value="Music">Music</option>
-                        <option value="Other">Other</option>
-                        <option value="Sports &amp; Fitness">Sports &amp; Fitness</option>
-                        <option value="Travel &amp; Outdoor">Travel &amp; Outdoor</option>
-                    </select>
-                    
-                </div> */}
+                
                 <div id='splash-body'>
                     <EventIndexContainer path={this.props.path}/>
                 </div>

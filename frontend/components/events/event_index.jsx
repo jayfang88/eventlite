@@ -24,7 +24,6 @@ class EventIndex extends React.Component {
 
     keyPressed() {
         if (event.key === 'Enter') {
-            console.log(this.state.cityInput);
             this.setState({ cityInput: event.target.value })
         }
     }
