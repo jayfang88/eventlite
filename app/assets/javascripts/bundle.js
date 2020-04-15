@@ -1316,6 +1316,7 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "filterByCity",
     value: function filterByCity(events, city) {
+      city = city || 'San Francisco';
       return events.filter(function (e) {
         var location = e.location.toLowerCase().split(' ').join('');
         return location.includes(city.toLowerCase().split(' ').join(''));

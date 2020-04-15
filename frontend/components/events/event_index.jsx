@@ -29,6 +29,7 @@ class EventIndex extends React.Component {
     // }
 
     filterByCity(events, city) {
+        city = city || 'San Francisco'
         return events.filter(e => {
             let location = e.location.toLowerCase().split(' ').join('')
             return location.includes(city.toLowerCase().split(' ').join(''));
