@@ -7,7 +7,7 @@ import { convertDate } from '../../util/time_util';
 
 class EventShow extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     componentDidMount() {
@@ -15,8 +15,6 @@ class EventShow extends React.Component {
         this.props.fetchTickets();
         window.scrollTo(0, 0);
     }
-
-    
 
     handleTicketButton() {
         if (this.props.currentUserId) {
