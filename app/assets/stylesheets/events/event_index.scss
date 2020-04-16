@@ -40,7 +40,7 @@
 .event-filters-list {
     width: 100%;
     display: flex;
-    margin-bottom: 53px;
+    margin-bottom: 50px;
 }
 
 .event-filter {
@@ -51,6 +51,7 @@
     color: #6F7287;
     padding-bottom: 5px;
     border-bottom: 2px solid rgba(0, 0, 0, 0);
+    height: 27px;
 }
 
 .event-filter:hover {
@@ -68,9 +69,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-bottom: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
 }
+
+// .event-index {
+//     display: grid;
+    // margin-bottom: 35px;
+// }
 
 .no-events-match {
     color: rgb(75, 75, 75);

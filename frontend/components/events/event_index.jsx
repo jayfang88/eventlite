@@ -94,13 +94,17 @@ class EventIndex extends React.Component {
                         onClick={() => this.filterEvents('sports-fitness')}>Sports &amp; Fitness</li>
                 </ul>
 
+                {filteredEvents.length > 0 ? '' : (<p className='no-events-match'>No events match this criteria.</p>)}
                 <div className='event-index'>
+                    { filteredEvents }
+                </div>
+                {/* <div className='event-index'>
                     {filteredEvents.length > 0 ? (
                         filteredEvents 
                      ) : (
-                        <p className='no-events-match'>No events match this criteria :(</p>
+                        <p className='no-events-match'>No events match this criteria.</p>
                     )}
-                </div>
+                </div> */}
             </div>
         )
     }

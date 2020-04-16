@@ -1423,11 +1423,11 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.filterEvents('sports-fitness');
         }
-      }, "Sports & Fitness")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "event-index"
-      }, filteredEvents.length > 0 ? filteredEvents : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "Sports & Fitness")), filteredEvents.length > 0 ? '' : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "no-events-match"
-      }, "No events match this criteria :(")));
+      }, "No events match this criteria."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "event-index"
+      }, filteredEvents));
     }
   }]);
 
