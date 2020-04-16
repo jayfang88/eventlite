@@ -1,6 +1,7 @@
 #event-index-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
 }
 
@@ -73,8 +74,10 @@
 }
 
 // .event-index {
+//     width: 100%;
 //     display: grid;
-    // margin-bottom: 35px;
+//     grid-template-columns: repeat(4, 24%);
+//     margin-bottom: 35px;
 // }
 
 .no-events-match {
