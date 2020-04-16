@@ -4,8 +4,8 @@ import { requestEvent } from '../../actions/event_actions';
 import { createTicket, deleteTicket } from '../../actions/ticket_actions';
 import { withRouter } from 'react-router-dom';
 
-const mSTP = state => {
-    const event = state.entities.events[state.ui.modal.eventId]
+const mSTP = (state, ownProps) => {
+    const event = state.entities.events[ownProps.eventId]
     return {
         event,
         currentUserId: state.session.id,

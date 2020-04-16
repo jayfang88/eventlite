@@ -3152,8 +3152,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state) {
-  var event = state.entities.events[state.ui.modal.eventId];
+var mSTP = function mSTP(state, ownProps) {
+  var event = state.entities.events[ownProps.eventId];
   return {
     event: event,
     currentUserId: state.session.id,
