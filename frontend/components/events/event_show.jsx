@@ -11,7 +11,6 @@ class EventShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestEvent(this.props.match.params.eventId);
         this.props.fetchTickets();
         window.scrollTo(0, 0);
     }
@@ -40,7 +39,7 @@ class EventShow extends React.Component {
     }
 
     render() {
-        const {event, bookmarked, attending} = this.props;
+        const {event, bookmarked} = this.props;
         if (!event) return null;
 
         let newDate = new Date(event.startdate);

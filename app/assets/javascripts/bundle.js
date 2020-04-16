@@ -1610,7 +1610,6 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
   _createClass(EventShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestEvent(this.props.match.params.eventId);
       this.props.fetchTickets();
       window.scrollTo(0, 0);
     }
@@ -1646,8 +1645,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
 
       var _this$props = this.props,
           event = _this$props.event,
-          bookmarked = _this$props.bookmarked,
-          attending = _this$props.attending;
+          bookmarked = _this$props.bookmarked;
       if (!event) return null;
       var newDate = new Date(event.startdate);
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -1766,12 +1764,10 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
-/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
-/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
-/* harmony import */ var _event_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./event_show */ "./frontend/components/events/event_show.jsx");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-
+/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
+/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
+/* harmony import */ var _event_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event_show */ "./frontend/components/events/event_show.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 
 
 
@@ -1783,35 +1779,31 @@ var mSTP = function mSTP(state, ownProps) {
   return {
     event: event,
     currentUserId: state.session.id,
-    bookmarked: event ? event.current_user_bookmarked : null,
-    attending: event ? event.current_user_attending : null
+    bookmarked: event ? event.current_user_bookmarked : null
   };
 };
 
 var mDTP = function mDTP(dispatch) {
   return {
     fetchTickets: function fetchTickets() {
-      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTickets"])());
-    },
-    requestEvent: function requestEvent(eventId) {
-      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["requestEvent"])(eventId));
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_1__["fetchTickets"])());
     },
     createBookmark: function createBookmark(bookmark, eventId) {
-      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["createBookmark"])(bookmark, eventId));
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["createBookmark"])(bookmark, eventId));
     },
     deleteBookmark: function deleteBookmark(bookmarkId, eventId) {
-      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_3__["deleteBookmark"])(bookmarkId, eventId));
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["deleteBookmark"])(bookmarkId, eventId));
     },
     openModal: function openModal(modal, eventId) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])(modal, eventId));
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal, eventId));
     },
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_show__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
