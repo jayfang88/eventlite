@@ -1,6 +1,10 @@
 class Api::TicketsController < ApplicationController
     def index
-        @tickets = current_user.tickets
+        if current_user
+            @tickets = current_user.tickets
+        else
+            @tickets = []
+        end
     end
 
     def create

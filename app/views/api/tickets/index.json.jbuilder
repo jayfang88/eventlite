@@ -7,9 +7,11 @@ json.tickets do
 end
 
 json.events do 
-    current_user.attending_events.each do |event|
-        json.set! event.id do
-            json.partial! 'api/events/event', event: event
+    if current_user
+        current_user.attending_events.each do |event|
+            json.set! event.id do
+                json.partial! 'api/events/event', event: event
+            end
         end
     end
 end
