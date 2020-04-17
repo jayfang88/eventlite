@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { AuthRoute } from '../../util/route_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { faTicketAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,7 +27,26 @@ class NavBar extends React.Component {
                 <FontAwesomeIcon id='search-icon' icon={faSearch} />
                 <SearchBarContainer />
 
-                <Link className='nav-link' id='create-link' to='/create'>Create Event</Link>
+                <Link className='nav-link' id='create-link' to='/create'>
+                    {this.props.currentUser ? (
+                        <FontAwesomeIcon className='link-icon'
+                            icon={faPlusSquare} />
+                    ) : (
+                        ''
+                    )}
+                    Create Event
+                </Link>
+
+                {this.props.currentUser ? (
+                    <Link className='nav-link' id='tickets-link'
+                    to={`/u/${currentUser.id}`}>
+                        <FontAwesomeIcon className='link-icon' 
+                        id='tickets-link-icon' icon={faTicketAlt} />
+                        Tickets
+                    </Link>
+                ) : (
+                    ''
+                )}
 
                 {this.props.currentUser ? (
                     <div className='nav-user'>

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #eeedf2;
-    height: 59px;
+    height: 65px;
 }
 
 #logo-link {
@@ -16,6 +16,7 @@
 
 .tilt-e {
     display: inline-block;
+    transform: rotate(-15deg);
     -webkit-transform: rotate(-15deg);
 }
 
@@ -26,12 +27,15 @@
 
 .nav-link {
     display: flex;
+    flex-direction: column;
     width: 80px;
     font-size: 13px;
+    padding: 12px 0px;
     text-align: center;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     color: #6f7287;
+    letter-spacing: 0.3px;
 }
 
 .nav-link:hover {
@@ -41,4 +45,19 @@
 #create-link {
     min-width: 115px;
     color: blue;
+}
+
+#tickets-link {
+    min-width: 85px;
+    color: #39364f;
+}
+
+#tickets-link-icon {
+    color: #39364fea;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+.link-icon {
+    font-size: 18px;
 }

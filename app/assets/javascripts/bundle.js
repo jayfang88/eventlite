@@ -2254,6 +2254,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var NavBar = /*#__PURE__*/function (_React$Component) {
   _inherits(NavBar, _React$Component);
 
@@ -2294,7 +2296,18 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "nav-link",
         id: "create-link",
         to: "/create"
-      }, "Create Event"), this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        className: "link-icon",
+        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faPlusSquare"]
+      }) : '', "Create Event"), this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "nav-link",
+        id: "tickets-link",
+        to: "/u/".concat(currentUser.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        className: "link-icon",
+        id: "tickets-link-icon",
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faTicketAlt"]
+      }), "Tickets") : '', this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-user"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
         className: "user-icon",
@@ -2815,10 +2828,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleSubmit
       }, this.props.formType)), this.props.history.location.pathname === '/signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "below-submit"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Have an account? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "below-link",
         to: "/login"
-      }, "Log In Instead")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Log in instead")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "below-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "below-link",

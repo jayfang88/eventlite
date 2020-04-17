@@ -1,5 +1,5 @@
 #search-icon {
-    margin: 22px 10px 22px 25px;
+    margin: 24px 10px 22px 25px;
     color: rgb(175, 172, 172);
 }
 
@@ -13,7 +13,7 @@
 
 #searchbar {
     width: 100%;
-    margin: 19.5px 0px 19.5px 0px;
+    margin: 21.5px 0px 19.5px 0px;
     font-size: 14px;
     border: none;
     color: #39364f;
@@ -22,12 +22,13 @@
 
 #searchbar::placeholder {
     color: #cecdd6;
+    font-weight: 300;
 }
 
 .search-results-container {
     position: relative;
     z-index: 1;
-    top: -1px;
+    top: 7px;
     left: -33px;
     min-width: 450px;
     width: 30%;

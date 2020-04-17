@@ -1,7 +1,7 @@
 .nav-user {
     position: relative;
     display: flex;
-    width: 100px;
+    min-width: 70px;
     align-items: center;
     justify-content: center;
 }
@@ -71,4 +71,8 @@
 
 #logout-link {
     border-top: 1px solid #dddcdf;
+}
+
+#logout-link:hover {
+    color: rgb(233, 0, 0);
 }
