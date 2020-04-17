@@ -2264,6 +2264,12 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(NavBar, [{
+    key: "handleLogout",
+    value: function handleLogout() {
+      this.props.logout();
+      location.reload();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -2319,7 +2325,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "dropdown-item"
       }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this.props.logout();
+          return _this.handleLogout();
         },
         className: "dropdown-item",
         id: "logout-link"

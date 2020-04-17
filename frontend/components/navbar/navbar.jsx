@@ -9,6 +9,10 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import SearchBarContainer from './search_bar_container';
 
 class NavBar extends React.Component {
+    handleLogout() {
+        this.props.logout();
+        location.reload();
+    }
     render() {
         let currentUser = this.props.currentUser;
         return(
@@ -46,7 +50,7 @@ class NavBar extends React.Component {
                             <Link to='/create'>
                                 <button className='dropdown-item'>Create Event</button>
                             </Link>
-                            <button onClick={() => this.props.logout()}
+                            <button onClick={() => this.handleLogout()}
                                 className='dropdown-item' id='logout-link'>Log Out
                             </button>
                         </div>

@@ -7,9 +7,9 @@ import { openModal, closeModal } from '../../actions/modal_actions'
 const mSTP = (state, ownProps) => {
     const event = state.entities.events[ownProps.match.params.eventId];
     return{
-    event,
-    currentUserId: state.session.id,
-    bookmarked: event ? event.current_user_bookmarked : null
+        event,
+        currentUserId: state.session.id,
+        bookmarked: event ? event.current_user_bookmarked : null
     }
 };
 
