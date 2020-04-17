@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { convertDate } from '../../util/time_util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as reg from '@fortawesome/free-regular-svg-icons';
 import * as sol from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { convertDate } from '../../util/time_util';
 
 class EventShow extends React.Component {
     constructor(props) {
@@ -91,7 +90,7 @@ class EventShow extends React.Component {
                                     className='bookmarked-icon' />
                                 )}
                             </button>
-                            {/* <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button> */}
+                            {/* <button className='es-icon-container'><FontAwesomeIcon icon={reg.faHeart} id='like-icon' /></button> */}
                         </div>
                         <div className='tickets-button-container'>
                             <button id='tickets-button'
