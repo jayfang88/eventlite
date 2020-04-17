@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import * as reg from '@fortawesome/free-regular-svg-icons';
+import * as sol from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { convertDate } from '../../util/time_util';
 
@@ -82,12 +83,13 @@ class EventShow extends React.Component {
                         <div id='es-likes-container'>
                             <button onClick={() => this.handleBookmark()}
                                 className='es-icon-container'>
-                                <FontAwesomeIcon icon={faBookmark}
-                                    className={!bookmarked ? (
-                                        'bookmark-icon'
-                                    ) : (
-                                        'bookmarked-icon'
-                                    )}/>
+                                {!bookmarked ? (
+                                    <FontAwesomeIcon icon={reg.faBookmark}
+                                    className='bookmark-icon' />
+                                ) : (
+                                    <FontAwesomeIcon icon={sol.faBookmark}
+                                    className='bookmarked-icon' />
+                                )}
                             </button>
                             {/* <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button> */}
                         </div>

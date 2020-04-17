@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import * as reg from '@fortawesome/free-regular-svg-icons';
+import * as sol from '@fortawesome/free-solid-svg-icons';
 
 class EventIndexItem extends React.Component {
     constructor(props) {
@@ -50,9 +51,13 @@ class EventIndexItem extends React.Component {
                 <div className='event-index-item-textbox'>
                     <button onClick={() => this.handleBookmark()}
                         className='es-icon-container' id='eii-icon'>
-                        <FontAwesomeIcon icon={faBookmark}
-                            className={!bookmarked ? 'bookmark-icon' : 'bookmarked-icon'}
-                            id='event-index-bookmark' />
+                        {!bookmarked ? (
+                            <FontAwesomeIcon icon={reg.faBookmark}
+                            className='bookmark-icon' id='event-index-bookmark' />
+                        ) : (
+                            <FontAwesomeIcon icon={sol.faBookmark}
+                            className='bookmarked-icon' id='event-index-bookmark' />
+                        )}
                     </button>
                     <h4>{this.combineDate(event.startdate, event.starttime)}</h4>
                     <Link to={`/e/${event.id}`}><h3>{event.title}</h3></Link>
