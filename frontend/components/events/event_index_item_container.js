@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { createBookmark, deleteBookmark } from '../../actions/bookmark_actions';
 import EventIndexItem from './event_index_item'
 
@@ -15,4 +16,4 @@ const mDTP = dispatch => ({
     deleteBookmark: (bookmarkId, eventId) => dispatch(deleteBookmark(bookmarkId, eventId))
 });
 
-export default connect(mSTP, mDTP)(EventIndexItem)
+export default withRouter(connect(mSTP, mDTP)(EventIndexItem));

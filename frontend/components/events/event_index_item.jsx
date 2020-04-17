@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as reg from '@fortawesome/free-regular-svg-icons';
 import * as sol from '@fortawesome/free-solid-svg-icons';

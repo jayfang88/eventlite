@@ -1610,8 +1610,10 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
-/* harmony import */ var _event_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event_index_item */ "./frontend/components/events/event_index_item.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
+/* harmony import */ var _event_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event_index_item */ "./frontend/components/events/event_index_item.jsx");
+
 
 
 
@@ -1628,15 +1630,15 @@ var mSTP = function mSTP(state, ownProps) {
 var mDTP = function mDTP(dispatch) {
   return {
     createBookmark: function createBookmark(bookmark, eventId) {
-      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__["createBookmark"])(bookmark, eventId));
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["createBookmark"])(bookmark, eventId));
     },
     deleteBookmark: function deleteBookmark(bookmarkId, eventId) {
-      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__["deleteBookmark"])(bookmarkId, eventId));
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_2__["deleteBookmark"])(bookmarkId, eventId));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_index_item__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_index_item__WEBPACK_IMPORTED_MODULE_3__["default"])));
 
 /***/ }),
 
@@ -2711,6 +2713,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(SessionForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.scrollTo(0, 0);
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -2914,6 +2921,11 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Splash, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.scrollTo(0, 0);
+    }
+  }, {
     key: "scrollDown",
     value: function scrollDown() {
       window.scrollTo({

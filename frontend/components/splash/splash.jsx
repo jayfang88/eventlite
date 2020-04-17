@@ -9,6 +9,10 @@ class Splash extends React.Component {
         super(props)
     };
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+    
     scrollDown() {
         window.scrollTo({
             top: 700,
