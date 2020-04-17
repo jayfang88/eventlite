@@ -1252,7 +1252,7 @@ var EventForm = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _event_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event_index_item */ "./frontend/components/events/event_index_item.jsx");
+/* harmony import */ var _event_index_item_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./event_index_item_container */ "./frontend/components/events/event_index_item_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
@@ -1372,7 +1372,7 @@ var EventIndex = /*#__PURE__*/function (_React$Component) {
 
       filteredEvents = this.filterByCity(filteredEvents, this.state.cityInput);
       filteredEvents = filteredEvents.map(function (event, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_event_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_event_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           event: event
         });
@@ -1486,6 +1486,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1503,6 +1505,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -1529,9 +1533,31 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
       return "".concat(day, ", ").concat(month, " ").concat(date, ", ").concat(time);
     }
   }, {
+    key: "handleBookmark",
+    value: function handleBookmark() {
+      if (this.props.currentUserId) {
+        if (!this.props.event.current_user_bookmarked) {
+          this.props.createBookmark({
+            user_id: this.props.currentUserId,
+            event_id: this.props.event.id
+          }, this.props.event.id);
+        } else {
+          this.props.deleteBookmark(this.props.event.bookmarkId, this.props.event.id);
+        }
+
+        ;
+      } else {
+        this.props.history.push('/login');
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var event = this.props.event;
+      var _this = this;
+
+      var _this$props = this.props,
+          event = _this$props.event,
+          bookmarked = _this$props.bookmarked;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "event-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1544,7 +1570,27 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
         alt: "event-photo"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-index-item-textbox"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, this.combineDate(event.startdate, event.starttime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, !bookmarked ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this.handleBookmark();
+        },
+        className: "es-icon-container",
+        id: "eii-icon"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
+        className: "bookmark-icon",
+        id: "event-index-bookmark"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this.handleBookmark();
+        },
+        className: "es-icon-container",
+        id: "eii-icon"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
+        className: "bookmarked-icon",
+        id: "event-index-bookmark"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, this.combineDate(event.startdate, event.starttime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/e/".concat(event.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)));
     }
@@ -1555,6 +1601,45 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (EventIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/events/event_index_item_container.js":
+/*!******************************************************************!*\
+  !*** ./frontend/components/events/event_index_item_container.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/bookmark_actions */ "./frontend/actions/bookmark_actions.js");
+/* harmony import */ var _event_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event_index_item */ "./frontend/components/events/event_index_item.jsx");
+
+
+
+
+var mSTP = function mSTP(state, ownProps) {
+  return {
+    event: ownProps.event,
+    currentUserId: state.session.id,
+    bookmarked: event.current_user_bookmarked
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    createBookmark: function createBookmark(bookmark, eventId) {
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__["createBookmark"])(bookmark, eventId));
+    },
+    deleteBookmark: function deleteBookmark(bookmarkId, eventId) {
+      return dispatch(Object(_actions_bookmark_actions__WEBPACK_IMPORTED_MODULE_1__["deleteBookmark"])(bookmarkId, eventId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_event_index_item__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -1698,7 +1783,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         className: "es-icon-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
-        id: "bookmark-icon"
+        className: "bookmark-icon"
       })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this.handleBookmark();
@@ -1706,7 +1791,7 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         className: "es-icon-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
-        id: "bookmarked-icon"
+        className: "bookmarked-icon"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tickets-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

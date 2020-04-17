@@ -1,5 +1,5 @@
 import React from 'react';
-import EventIndexItem from './event_index_item';
+import EventIndexItemContainer from './event_index_item_container';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import $ from 'jquery';
 
@@ -69,7 +69,7 @@ class EventIndex extends React.Component {
         filteredEvents = this.filterByCity(filteredEvents, this.state.cityInput);
 
         filteredEvents = filteredEvents.map((event, i) => (
-            <EventIndexItem key={i} event={event} />
+            <EventIndexItemContainer key={i} event={event} />
         ));
 
         return (
