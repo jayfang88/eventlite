@@ -48,19 +48,12 @@ class EventIndexItem extends React.Component {
                     </Link>
                 </div>
                 <div className='event-index-item-textbox'>
-                    {!bookmarked ? (
-                        <button onClick={() => this.handleBookmark()}
-                            className='es-icon-container' id='eii-icon'>
-                            <FontAwesomeIcon icon={faBookmark}
-                            className='bookmark-icon' id='event-index-bookmark' />
-                        </button>
-                    ) : (
-                        <button onClick={() => this.handleBookmark()}
-                            className='es-icon-container' id='eii-icon'>
-                            <FontAwesomeIcon icon={faBookmark}
-                            className='bookmarked-icon' id='event-index-bookmark' />
-                        </button>
-                    )}
+                    <button onClick={() => this.handleBookmark()}
+                        className='es-icon-container' id='eii-icon'>
+                        <FontAwesomeIcon icon={faBookmark}
+                            className={!bookmarked ? 'bookmark-icon' : 'bookmarked-icon'}
+                            id='event-index-bookmark' />
+                    </button>
                     <h4>{this.combineDate(event.startdate, event.starttime)}</h4>
                     <Link to={`/e/${event.id}`}><h3>{event.title}</h3></Link>
                     <p>{event.location}</p>

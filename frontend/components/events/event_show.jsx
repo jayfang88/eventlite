@@ -80,19 +80,15 @@ class EventShow extends React.Component {
 
                     <div id='event-show-save'>
                         <div id='es-likes-container'>
-                            {!bookmarked ? (
-                                <button onClick={() => this.handleBookmark()} 
-                                        className='es-icon-container'>
-                                    <FontAwesomeIcon icon={faBookmark}
-                                        className='bookmark-icon' />
-                                </button>
-                            ) : (
-                                <button onClick={() => this.handleBookmark()}
-                                        className='es-icon-container'>
-                                    <FontAwesomeIcon icon={faBookmark}
-                                        className='bookmarked-icon' />
-                                </button>
-                            )}
+                            <button onClick={() => this.handleBookmark()}
+                                className='es-icon-container'>
+                                <FontAwesomeIcon icon={faBookmark}
+                                    className={!bookmarked ? (
+                                        'bookmark-icon'
+                                    ) : (
+                                        'bookmarked-icon'
+                                    )}/>
+                            </button>
                             {/* <button className='es-icon-container'><FontAwesomeIcon icon={faHeart} id='like-icon' /></button> */}
                         </div>
                         <div className='tickets-button-container'>

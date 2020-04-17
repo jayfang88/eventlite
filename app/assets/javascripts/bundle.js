@@ -1570,7 +1570,7 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
         alt: "event-photo"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "event-index-item-textbox"
-      }, !bookmarked ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this.handleBookmark();
         },
@@ -1578,17 +1578,7 @@ var EventIndexItem = /*#__PURE__*/function (_React$Component) {
         id: "eii-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
-        className: "bookmark-icon",
-        id: "event-index-bookmark"
-      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.handleBookmark();
-        },
-        className: "es-icon-container",
-        id: "eii-icon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
-        className: "bookmarked-icon",
+        className: !bookmarked ? 'bookmark-icon' : 'bookmarked-icon',
         id: "event-index-bookmark"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, this.combineDate(event.startdate, event.starttime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/e/".concat(event.id)
@@ -1776,22 +1766,14 @@ var EventShow = /*#__PURE__*/function (_React$Component) {
         id: "event-show-save"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "es-likes-container"
-      }, !bookmarked ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this.handleBookmark();
         },
         className: "es-icon-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
-        className: "bookmark-icon"
-      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.handleBookmark();
-        },
-        className: "es-icon-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBookmark"],
-        className: "bookmarked-icon"
+        className: !bookmarked ? 'bookmark-icon' : 'bookmarked-icon'
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tickets-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
