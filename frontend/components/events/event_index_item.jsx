@@ -38,7 +38,7 @@ class EventIndexItem extends React.Component {
 
     render() {
         const { event, bookmarked } = this.props;
-
+        
         return(
             <li className='event-index-item'>
                 <div id='event-index-img-container'>

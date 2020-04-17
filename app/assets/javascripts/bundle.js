@@ -1611,8 +1611,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  var event = ownProps.event;
   return {
-    event: ownProps.event,
+    event: event,
     currentUserId: state.session.id,
     bookmarked: event.current_user_bookmarked
   };
