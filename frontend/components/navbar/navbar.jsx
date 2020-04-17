@@ -54,14 +54,12 @@ class NavBar extends React.Component {
                         <FontAwesomeIcon className='user-icon-caret'
                         icon={faAngleDown} />
                         <div className='nav-dropdown'>
-                            <Link to={`/u/${currentUser.id}`}>
-                                <button className='dropdown-item' 
+                            <button className='dropdown-item'
                                 id='user-link'>{currentUser.fname} {currentUser.lname}<br />
                                 <span id='user-link-email'>
                                     {currentUser.email}
                                 </span>
-                                </button>
-                            </Link>
+                            </button>
                             <Link to={`/u/${currentUser.id}`}>
                                 <button className='dropdown-item'>Tickets</button>
                             </Link>

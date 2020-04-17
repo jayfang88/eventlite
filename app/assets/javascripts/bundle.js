@@ -2317,14 +2317,12 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faAngleDown"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/u/".concat(currentUser.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item",
         id: "user-link"
       }, currentUser.fname, " ", currentUser.lname, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "user-link-email"
-      }, currentUser.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, currentUser.email)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/u/".concat(currentUser.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-item"
