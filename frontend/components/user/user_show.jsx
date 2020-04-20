@@ -11,8 +11,9 @@ class UserShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchTickets()
-        this.props.fetchBookmarks()
+        window.scrollTo(0,0);
+        this.props.fetchTickets();
+        this.props.fetchBookmarks();
     }
 
     render() {
