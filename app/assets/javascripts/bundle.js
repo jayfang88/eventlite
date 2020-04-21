@@ -2268,8 +2268,9 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   _createClass(NavBar, [{
     key: "handleLogout",
     value: function handleLogout() {
-      this.props.logout();
-      location.reload();
+      this.props.logout().then(function () {
+        return location.reload();
+      });
     }
   }, {
     key: "render",

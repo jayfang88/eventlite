@@ -12,8 +12,7 @@ import SearchBarContainer from './search_bar_container';
 
 class NavBar extends React.Component {
     handleLogout() {
-        this.props.logout();
-        location.reload();
+        this.props.logout().then(() => location.reload());
     }
     render() {
         let currentUser = this.props.currentUser;
