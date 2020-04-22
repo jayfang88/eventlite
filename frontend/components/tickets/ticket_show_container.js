@@ -11,7 +11,7 @@ const mSTP = (state, ownProps) => {
     let event;
     if (state.entities.tickets.tickets) {
         ticket = state.entities.tickets.tickets[ticketId];
-        event = state.entities.events[ticket.event_id];
+        if (ticket) event = state.entities.events[ticket.event_id];
     }
     
     return{
