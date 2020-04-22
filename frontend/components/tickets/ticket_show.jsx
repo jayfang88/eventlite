@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class TicketShow extends React.Component {
     componentDidMount() {
@@ -15,6 +16,8 @@ export default class TicketShow extends React.Component {
                 your name is: {user.fname}
                 <br/>
                 the event you're going to is {event.title}
+                <br/>
+                Ticket for <Link to={`/e/${event.id}`}>{event.title}</Link>
                 <br/>
                 This is your ticket lol.
             </div>
