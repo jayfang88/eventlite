@@ -40,9 +40,9 @@ class TicketPurchase extends React.Component {
                     <div id='ticket-purchase-head'>
                         <div id='ticket-purchase-title'>{event.title}</div>
                         <div id='ticket-purchase-time'>
-                            {convertDate(event.startdate, event.starttime)}, {
+                            {convertDate(event.startdate)}, {
                             event.starttime} - 
-                            {convertDate(event.enddate, event.endtime)}, 
+                            {convertDate(event.enddate)}, 
                             {event.endtime} PT
                         </div>
                     </div>

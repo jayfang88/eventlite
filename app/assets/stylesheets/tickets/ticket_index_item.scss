@@ -26,8 +26,8 @@
     font-size: 17px;
 }
 .ticket-img {
-    width: 400px;
-    height: 200px;
+    width: 280px;
+    height: 150px;
     object-fit: cover;
     border-radius: 2.5px;
 }
@@ -35,12 +35,12 @@
 #ticket-item-info {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 #ticket-item-title {
     width: 100%;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 28px;
     margin-top: 20px;
@@ -49,6 +49,6 @@
 
 #ticket-item-infodate {
     margin-top: 10px;
-    font-size: 13px;
+    font-size: 14px;
     color: darkgray;
 }

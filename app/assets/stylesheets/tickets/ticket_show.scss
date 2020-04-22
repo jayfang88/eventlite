@@ -1,3 +1,148 @@
 .ticket-show {
+    width: 100%;
     height: 100vh;
+    background-color: #f8f7fa;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 3em;
+    color: #39364f;
+}
+
+.ticket-show-back {
+    display: flex;
+    width: 100%;
+    min-width: 600px;
+    max-width: 1000px;
+    margin: 20px auto 0 auto;
+    align-items: center;
+    color: #3659e3;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+.ticket-show-back:hover {
+    color: #3d64ff;
+    text-decoration: underline;
+}
+.ticket-show-backarrow {
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.ticket-show-header {
+    width: 100%;
+    min-width: 600px;
+    max-width: 1000px;
+    margin: 20px auto 0 auto;
+    font-size: 30px;
+}
+
+.ticket-show-header h1 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #1e0a3c;
+}
+
+.ticket-show-link {
+    color: #3659e3;
+}
+.ticket-show-link:hover {
+    color: #3d64ff;
+    text-decoration: underline;
+}
+
+.ticket-show-header p {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.ticket-show-main {
+    display: flex;
+    width: 100%;
+    min-width: 600px;
+    max-width: 1000px;
+    margin: 20px auto 0 auto;
+}
+
+.ticket-show-column {
+    width: 25%;
+    height: auto;
+    padding: 0 15px 0 0;
+}
+
+.ticket-show-column a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    text-align: center;
+    // border: 2px solid gray;
+    // background-color: white;
+    // color: #39364f;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    background-color: #f05537;
+    color: white;
+    filter: brightness(90%);
+}
+.ticket-show-column a:hover {
+    // background-color: #f05537;
+    filter: brightness(100%);
+}
+
+.ticket-show-column h6 {
+    border-top: 1px solid rgba(211, 211, 211, 0.63);
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.ticket-show-column p {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.ticket-show-info {
+    width: 75%;
+    height: auto;
+    background-color: white;
+}
+
+.ticket-show-info h3 {
+    padding: 18px 30px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.63);
+    font-size: 24px;
+}
+
+.ticket-show-details {
+    padding: 20px 30px;
+}
+
+.ticket-show-details h5 {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.ticket-show-details-title {
+    font-size: 15px;
+    letter-spacing: 0.8px;
+    font-weight: 400;
+}
+
+.red-asterisk {
+    color: red;
+    font-size: 15px;
+}
+
+.ticket-show-details-info {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: #6f7287;
+    margin: 5px 0 20px 0;
 }

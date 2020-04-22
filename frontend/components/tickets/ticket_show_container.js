@@ -15,6 +15,7 @@ const mSTP = (state, ownProps) => {
     }
     
     return{
+        ticketId,
         event,
         user: state.entities.users[state.session.id]
 }};

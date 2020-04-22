@@ -3138,7 +3138,7 @@ var TicketPurchase = /*#__PURE__*/function (_React$Component) {
         id: "ticket-purchase-title"
       }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-time"
-      }, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.startdate, event.starttime), ", ", event.starttime, " -", Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.enddate, event.endtime), ",", event.endtime, " PT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.startdate), ", ", event.starttime, " -", Object(_util_time_util__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(event.enddate), ",", event.endtime, " PT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-body"
       }, event.description.length > 500 ? event.description.slice(0, 500) + '...' : event.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-purchase-footer"
@@ -3235,6 +3235,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_time_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/time_util */ "./frontend/util/time_util.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3252,6 +3255,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 
 
@@ -3275,14 +3281,56 @@ var TicketShow = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
+          ticketId = _this$props.ticketId,
           user = _this$props.user,
           event = _this$props.event;
       if (!event) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ticket-show"
-      }, "your name is: ", user.fname, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "the event you're going to is ", event.title, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Ticket for ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/e/".concat(event.id)
-      }, event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "This is your ticket lol.");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/u/".concat(user.id),
+        className: "ticket-show-back"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faArrowLeft"],
+        className: "ticket-show-backarrow"
+      }), " Back to Tickets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "ticket-show-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Order for ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/e/".concat(event.id),
+        className: "ticket-show-link"
+      }, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Order #", ticketId), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_2__["convertDate"])(event.startdate), " at ", event.starttime, " -"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_util_time_util__WEBPACK_IMPORTED_MODULE_2__["convertDate"])(event.enddate), " at ", event.endtime, " (PDT)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, event.location)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
+        className: "ticket-show-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "ticket-show-column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "mailto:".concat(user.email)
+      }, "Contact The Organizer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Refund Policy:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No Refunds")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "ticket-show-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Ticket"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ticket-show-details"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Contact Information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-title"
+      }, "First Name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-info"
+      }, user.fname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-title"
+      }, "Last Name ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-info"
+      }, user.lname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-title"
+      }, "Email ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "red-asterisk"
+      }, "*")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-info"
+      }, user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-title"
+      }, "Delivery Method"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "ticket-show-details-info"
+      }, "eTicket")))));
     }
   }]);
 
@@ -3326,6 +3374,7 @@ var mSTP = function mSTP(state, ownProps) {
   }
 
   return {
+    ticketId: ticketId,
     event: event,
     user: state.entities.users[state.session.id]
   };
