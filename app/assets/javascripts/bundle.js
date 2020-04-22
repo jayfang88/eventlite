@@ -449,7 +449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events_create_event_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./events/create_event_container */ "./frontend/components/events/create_event_container.js");
 /* harmony import */ var _events_update_event_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./events/update_event_container */ "./frontend/components/events/update_event_container.jsx");
 /* harmony import */ var _user_user_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user/user_show_container */ "./frontend/components/user/user_show_container.js");
-/* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! .//greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
+/* harmony import */ var _tickets_ticket_show_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./tickets/ticket_show_container */ "./frontend/components/tickets/ticket_show_container.js");
 /* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./footer */ "./frontend/components/footer.jsx");
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
 
@@ -501,6 +501,10 @@ var App = function App() {
     exact: true,
     path: "/u/:userId",
     component: _user_user_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+    exact: true,
+    path: "/u/:userId/t/:ticketId",
+    component: _tickets_ticket_show_container__WEBPACK_IMPORTED_MODULE_12__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_13__["default"], null));
 };
 
@@ -2023,110 +2027,6 @@ function Footer() {
 
 /***/ }),
 
-/***/ "./frontend/components/greeting/greeting.jsx":
-/*!***************************************************!*\
-  !*** ./frontend/components/greeting/greeting.jsx ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var Greeting = /*#__PURE__*/function (_React$Component) {
-  _inherits(Greeting, _React$Component);
-
-  function Greeting() {
-    _classCallCheck(this, Greeting);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Greeting).apply(this, arguments));
-  }
-
-  _createClass(Greeting, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.history.push('/');
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greeting-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "greeting-title"
-      }, "Welcome to Eventlite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "greeting-question"
-      }, "Are you 18 or older?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greeting-buttons-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greeting-button",
-        id: "greeting-enter"
-      }, "Yes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greeting-button",
-        id: "greeting-no"
-      }, "No")));
-    }
-  }]);
-
-  return Greeting;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-;
-/* harmony default export */ __webpack_exports__["default"] = (Greeting);
-
-/***/ }),
-
-/***/ "./frontend/components/greeting/greeting_container.js":
-/*!************************************************************!*\
-  !*** ./frontend/components/greeting/greeting_container.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _greeting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./greeting */ "./frontend/components/greeting/greeting.jsx");
-
-
-
-var mSTP = function mSTP(state, ownProps) {
-  return {};
-};
-
-var mDTP = function mDTP(dispatch) {
-  return {};
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_greeting__WEBPACK_IMPORTED_MODULE_1__["default"]));
-
-/***/ }),
-
 /***/ "./frontend/components/modal/modal.jsx":
 /*!*********************************************!*\
   !*** ./frontend/components/modal/modal.jsx ***!
@@ -3083,7 +2983,11 @@ var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var event = this.props.event;
+      var _this$props = this.props,
+          event = _this$props.event,
+          userId = _this$props.userId,
+          ticketId = _this$props.ticketId;
+      if (!event) return null;
       var newDate = new Date(event.startdate);
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       var mon = months[newDate.getMonth()].toUpperCase();
@@ -3093,7 +2997,7 @@ var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-item-date"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, mon), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/e/".concat(event.id)
+        to: "/u/".concat(userId, "/t/").concat(ticketId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "ticket-img",
         src: event.photoUrl,
@@ -3101,7 +3005,7 @@ var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-item-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/e/".concat(event.id)
+        to: "/u/".concat(userId, "/t/").concat(ticketId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ticket-item-title"
       }, event.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3115,6 +3019,36 @@ var TicketIndexItem = /*#__PURE__*/function (_React$Component) {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (TicketIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/tickets/ticket_index_item_container.js":
+/*!********************************************************************!*\
+  !*** ./frontend/components/tickets/ticket_index_item_container.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _ticket_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ticket_index_item */ "./frontend/components/tickets/ticket_index_item.jsx");
+
+
+
+var mSTP = function mSTP(state, ownProps) {
+  return {
+    ticketId: ownProps.ticketId,
+    event: state.entities.events[ownProps.eventId],
+    userId: ownProps.userId
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_ticket_index_item__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -3288,6 +3222,126 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/tickets/ticket_show.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/tickets/ticket_show.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TicketShow; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var TicketShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(TicketShow, _React$Component);
+
+  function TicketShow() {
+    _classCallCheck(this, TicketShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TicketShow).apply(this, arguments));
+  }
+
+  _createClass(TicketShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.scrollTo(0, 0);
+      this.props.fetchTickets();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          user = _this$props.user,
+          event = _this$props.event;
+      if (!event) return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ticket-show"
+      }, "your name is: ", user.fname, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "the event you're going to is ", event.title, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "This is your ticket lol.");
+    }
+  }]);
+
+  return TicketShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+;
+
+/***/ }),
+
+/***/ "./frontend/components/tickets/ticket_show_container.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/tickets/ticket_show_container.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/ticket_actions */ "./frontend/actions/ticket_actions.js");
+/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
+/* harmony import */ var _ticket_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ticket_show */ "./frontend/components/tickets/ticket_show.jsx");
+
+
+
+
+
+
+var mSTP = function mSTP(state, ownProps) {
+  var path = ownProps.location.pathname.split('/');
+  var ticketId = path[path.length - 1];
+  var ticket;
+  var event;
+
+  if (state.entities.tickets.tickets) {
+    ticket = state.entities.tickets.tickets[ticketId];
+    event = state.entities.events[ticket.event_id];
+  }
+
+  return {
+    event: event,
+    user: state.entities.users[state.session.id]
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    fetchTickets: function fetchTickets() {
+      return dispatch(Object(_actions_ticket_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTickets"])());
+    },
+    requestEvent: function requestEvent(eventId) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_3__["requestEvent"])(eventId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_ticket_show__WEBPACK_IMPORTED_MODULE_4__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/user/user_show.jsx":
 /*!************************************************!*\
   !*** ./frontend/components/user/user_show.jsx ***!
@@ -3301,7 +3355,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
-/* harmony import */ var _tickets_ticket_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tickets/ticket_index_item */ "./frontend/components/tickets/ticket_index_item.jsx");
+/* harmony import */ var _tickets_ticket_index_item_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tickets/ticket_index_item_container */ "./frontend/components/tickets/ticket_index_item_container.js");
 /* harmony import */ var _bookmarks_bookmark_index_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../bookmarks/bookmark_index_item */ "./frontend/components/bookmarks/bookmark_index_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -3354,10 +3408,12 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var tix;
 
       if (tickets.events) {
-        tix = Object.values(tickets.events).map(function (event, i) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tickets_ticket_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        tix = Object.values(tickets.tickets).map(function (ticket, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tickets_ticket_index_item_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
             key: i,
-            event: event
+            ticketId: ticket.id,
+            eventId: ticket.event_id,
+            userId: ticket.user_id
           }) // BUTTON TO DELETE TICKET?
           ;
         });
@@ -4012,7 +4068,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4__["default"]));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_2__["logger"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);

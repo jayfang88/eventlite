@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import TicketIndexItem from '../tickets/ticket_index_item';
+import TicketIndexItemContainer from '../tickets/ticket_index_item_container';
 import BookmarkIndexItem from '../bookmarks/bookmark_index_item';
 
 
@@ -21,8 +21,8 @@ class UserShow extends React.Component {
 
         let tix
         if (tickets.events) {
-            tix = Object.values(tickets.events).map((event, i) => (
-                <TicketIndexItem key={i} event={event} />
+            tix = Object.values(tickets.tickets).map((ticket, i) => (
+                <TicketIndexItemContainer key={i} ticketId={ticket.id} eventId={ticket.event_id} userId={ticket.user_id} />
                 // BUTTON TO DELETE TICKET?
             ))
         } else {
