@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <div className='footer'>
             <div className='personal-links-container'>
-                <a href="https://github.com/jayfang88/eventlite">
+                <a href="https://github.com/jayfang88">
                     <img src={window.githubURL} alt='github' id='github' />
                 </a>
                 <a href="https://linkedin.com/in/justinjfang">

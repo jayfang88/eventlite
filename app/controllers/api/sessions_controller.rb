@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
             render 'api/users/show'
         else
             @user = User.new
-            render json: ['Invalid username/password combination'], status: 422
+            render json: ['Invalid email/password combination'], status: 422
         end
     end
 
